@@ -3,6 +3,7 @@ const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+// const Entry = require('./Entry')
 
 const SALT_ROUNDS = 5;
 
@@ -14,6 +15,12 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+  },
+  id: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    primaryKey: true,
+    autoIncrement: true
   }
 })
 
