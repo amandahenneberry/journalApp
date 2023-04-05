@@ -40,17 +40,6 @@ export const authenticate = (username, password, method) => async dispatch => {
   }
 }
 
-// export const fetchEntries = (userId) => {
-//   return async (dispatch) => {
-//     try {
-//       const { data } = await axios.get(`auth/${userId}/entries`);
-//       dispatch(setEntries(data));
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-// };
-
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)
   history.push('/login')
