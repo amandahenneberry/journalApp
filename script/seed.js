@@ -20,20 +20,28 @@ async function seed() {
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
-  // return {
-  //   users: {
-  //     cody: users[0],
-  //     murphy: users[1]
-  //   }
-  // }
+ 
 
   // Creating Entries
-  const entries = await Entry.create({ date: '03/11/2023', title: 'Title test 1', content: 'content test', userId: 1})
+  const entries = await Promise.all([
+    Entry.create({ date: '03/11/2023', title: 'Title test 1 CODY', content: 'content test', userId: 1}),
+    Entry.create({ date: '04/20/2023', title: 'MMURPHY test', content: 'content test', userId: 2}),
+    Entry.create({ date: '05/01/2023', title: 'Title test 2 CODY', content: 'content test', userId: 1}),
+    Entry.create({ date: '02/22/2023', title: '2nd MURPHY test', content: 'content test', userId: 2})
 
-  return{
-    users, entries
+  ])
+
+  return {
+    users: {
+      cody: users[0],
+      murphy: users[1]
+    }, entries: {
+      cody1: entries[0],
+      murphy1: entries[1],
+      cody2: entries[2],
+      murphy2: entries[3]
+    }
   }
-
 }
 
 /*

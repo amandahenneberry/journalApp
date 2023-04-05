@@ -8,6 +8,7 @@ const TOKEN = 'token'
  */
 const SET_AUTH = 'SET_AUTH'
 
+
 /**
  * ACTION CREATORS
  */
@@ -16,6 +17,7 @@ const setAuth = auth => ({type: SET_AUTH, auth})
 /**
  * THUNK CREATORS
  */
+
 export const me = () => async dispatch => {
   const token = window.localStorage.getItem(TOKEN)
   if (token) {
@@ -37,6 +39,17 @@ export const authenticate = (username, password, method) => async dispatch => {
     return dispatch(setAuth({error: authError}))
   }
 }
+
+// export const fetchEntries = (userId) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data } = await axios.get(`auth/${userId}/entries`);
+//       dispatch(setEntries(data));
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)

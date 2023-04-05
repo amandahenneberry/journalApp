@@ -7,7 +7,7 @@ const Entry = require('./models/Entry')
 
 //associations could go here!
 User.hasMany(Entry, {as: 'entries', onDelete: 'cascade'})
-Entry.belongsTo(User, {foreignKey: 'userId'});
+Entry.belongsTo(User, {foreignKey: 'userId', as: 'entries'});
 
 module.exports = {
   db,
