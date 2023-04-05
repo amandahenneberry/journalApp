@@ -1,12 +1,9 @@
 import React, { Component }from 'react'
 import {connect} from 'react-redux'
-import { NewEntryEditor  } from './NewEntryEditor';
-import { Journal } from './Journal';
+import { NewEntryEditor  } from './Journal/NewEntryEditor';
+import { Journal } from './Journal/Journal';
 
 
-/**
- * COMPONENT
- */
 export class Home extends Component {
   
   render(){
@@ -23,9 +20,6 @@ export class Home extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     username: state.auth.username,

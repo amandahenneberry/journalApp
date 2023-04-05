@@ -26,22 +26,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-
-// router.get('/:userId/entries', async (req, res, next) => {
-//   try {
-//     const entries = await Entry.findAll({
-//       where: {
-//         userId: req.params.userId
-//       },
-//       include: [User]
-//     })
-//     res.json(entries)
-//   }
-//   catch (error) {
-//     next(error)
-//   }
-// })
-
 router.get('/:userId/:entryId', async (req, res, next) => {
   try {
     const entry = await Entry.findByPk(req.params.entryId, {

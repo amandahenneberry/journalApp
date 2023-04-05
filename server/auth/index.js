@@ -27,7 +27,6 @@ router.post('/signup', async (req, res, next) => {
 router.get('/me', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization, {
-      // attributes: ['id'], include:[ 'entries ']
       attributes: ['id']
     });
     res.send(user)
@@ -36,27 +35,11 @@ router.get('/me', async (req, res, next) => {
   }
 })
 
-//fetch entries?
-// router.get('me/:userId/entries', async (req, res, next) => {
-//   try {
-//     const entries = await Entry.findAll({
-//       where: {
-//         userId: req.params.userId
-//       }
-//     })
-//     res.json(entries)
-//   }
-//   catch (error) {
-//     next(error)
-//   }
-// })
-
-// router.get('me/entries/:entryId', async (req, res, next) => {
-//   try {
-//     const entry = await Entry.findByPk(req.params.entryId)
-//     res.json(entry)
-//   }
-//   catch (error) {
-//     next(error)
-//   }
-// })
+router.get('/me/entries/:entryId', async (req, res, next) => {
+  try {
+    const entry = await Entry.findByPk(req.params.entryId)
+    res.send(entry)
+  } catch (err) {
+    next(err)
+  }
+})
