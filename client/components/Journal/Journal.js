@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { NewEntryEditor  } from './NewEntryEditor';
+import  NewEntryEditor   from './NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
 
 export const Journal = ({username, entries}) => {
@@ -18,7 +18,7 @@ export const Journal = ({username, entries}) => {
         ) : (
           <div>
             <button onClick={() => setToggle(!toggle)}>View Entries</button>
-            <NewEntryEditor />
+            <NewEntryEditor username = {username} entries = {entries}/>
           </div>
         )}
         

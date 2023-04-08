@@ -14,7 +14,6 @@ const Entry = db.define('entry', {
   },
   id: {
     type: Sequelize.INTEGER,
-    allowNull: true,
     primaryKey: true,
     autoIncrement: true
   }
