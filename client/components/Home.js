@@ -1,23 +1,19 @@
-import React, { Component }from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import { NewEntryEditor  } from './Journal/NewEntryEditor';
 import { Journal } from './Journal/Journal';
 
 
-export class Home extends Component {
-  
-  render(){
-    const {username, id, entries} = this.props;
-    console.log(`userId: ${id}`)
-    console.log(`entries: ${entries}`)
+const Home = (props) =>{
+  const {username, entries} = props;
    return (
       <div>
         <h3>Welcome, {username}</h3>
-        <Journal username ={this.props.username} entries={this.props.entries}/>
+        <Journal username ={username} entries={entries}/>
       </div>
     )
 
-  }
+  
 }
 
 const mapState = state => {

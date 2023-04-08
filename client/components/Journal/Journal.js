@@ -17,7 +17,7 @@ export const Journal = ({username, entries}) => {
           </div>
         ) : (
           <div>
-            <button onClick={() => setToggle(!toggle)}>View Entries</button>
+            <button onClick={() => {setToggle(!toggle); window.location.reload();}}>View Entries</button>
             <NewEntryEditor username = {username} entries = {entries}/>
           </div>
         )}
