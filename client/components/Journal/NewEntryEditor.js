@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+
 // import { postEntry } from '../../store'
 
 
@@ -61,7 +63,7 @@ const NewEntryEditor = props =>{
                     </label>
                     <input type="text" name="content" value={entry.content || ''} onChange={handleChange}/>
                 </div>
-                <button type="submit">Submit</button>
+                <Button variant="outline-dark" type="submit">Submit</Button>
             </form>
             </div>
             ):(

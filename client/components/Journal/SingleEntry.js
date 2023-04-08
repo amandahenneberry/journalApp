@@ -1,6 +1,8 @@
 import React, {Component}  from 'react'
 import {connect} from 'react-redux'
 import { fetchEntry } from '../../store/auth';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 class SingleEntry extends Component{
 
@@ -17,10 +19,25 @@ class SingleEntry extends Component{
         console.log('curr state: '+entry.id)
         return(
             <div>
-                {entry.title}
-                <p>{date}</p>
-                <div>{content}</div>
-            </div>
+            <Modal.Header closeButton>
+                {/* <Modal.Title>
+                </Modal.Title>   */}
+                <span> 
+                <div>{entry.title}</div></span>
+            </Modal.Header>
+            <Modal.Body>
+                <p>{content}</p>
+            </Modal.Body>
+            <Modal.Footer>
+             {/* <Button variant="secondary" onClick={handleClose}>
+               Close
+             </Button> */}
+             {/* <Button variant="primary" onClick={handleClose}>
+               Save Changes
+             </Button> */}
+             <p>{date}</p>
+           </Modal.Footer>
+           </div>
         )
     }
 
