@@ -7,20 +7,18 @@ export function Alert_NewEntry() {
 
   return (
     <>
-      <Alert show={show} variant="success">
-        <Alert.Heading>How's it going?!</Alert.Heading>
+      <Alert show={show} variant="light">
+        <Alert.Heading>Entry's Unsaved!</Alert.Heading>
         <p>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
-          fermentum.
+          You haven't submitted your entry! If you 'Go Home' now, it will be erased.
         </p>
         <hr />
         <div className="d-flex justify-content-end">
-          <Button onClick={() => {setShow(false)}} variant="outline-success">
-            Continue Entry
+          <Button onClick={() => window.location.reload()} variant="outline-danger" size="sm">
+            Go Home
           </Button>
-          <Button onClick={() => window.location.reload()} variant="outline-success">
-            Home
+          <Button onClick={() => {setShow(false)}} variant="outline-secondary" size="sm">
+            Continue Entry
           </Button>
         </div>
       </Alert>
