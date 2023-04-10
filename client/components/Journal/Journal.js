@@ -1,28 +1,43 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
 import  NewEntryEditor   from './NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Alert from 'react-bootstrap/Alert';
 
+// import {Alert_NewEntry} from './Alert_NewEntry';
 
-export const Journal = ({username, entries}) => {
-  //setting up toggle
-  // const [viewEntries, newEntry] = useState(viewEntries);
+import { logout } from '../../store';
+import { Alert_NewEntry } from './Alert_NewEntry';
+
+const Journal = ({username, entries, handleClick}) => {
   const [toggle, setToggle] = useState(false);
-  const [newEntry, setNewEntry] = useState(false);
+  const [showAlert, setShowAlert] = useState(false)
+
     return (
       <div>
+        {console.log('toggle: '+toggle)}
   
-        {/* <h3>{username}'s Journal</h3> */}
         {!toggle ? (
-          <div>
-            <span>
-              <AllUserEntries username={username} entries = {entries} />
-              <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
-            </span>
-          </div>
+          <ButtonGroup>
+            <AllUserEntries username={username} entries = {entries} />
+            <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
+            <Button type='button' variant='link' onClick={()=>handleClick}>
+            Logout
+          </Button> 
+          </ButtonGroup>
         ) : (
           <div>
-            <Button variant="outline-primary" type='button' onClick={() => {setToggle(!toggle); window.location.reload();}}>View Entries</Button>
+            <ButtonGroup>
+            <AllUserEntries username={username} entries = {entries} />
+            <Alert_NewEntry show={showAlert}>
+            Home
+            </Alert_NewEntry>
+            <Button type='button' variant='link' onClick={()=>handleClick}>
+            Logout
+          </Button> 
+          </ButtonGroup>
             <NewEntryEditor username = {username} entries = {entries}/>
           </div>
         )}
@@ -31,3 +46,15 @@ export const Journal = ({username, entries}) => {
       </div>
     )
 }
+
+
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
+
+export default connect(mapDispatch)(Journal)
+

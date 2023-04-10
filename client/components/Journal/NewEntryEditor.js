@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
-// import { postEntry } from '../../store'
-
-
 
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
@@ -37,7 +34,7 @@ const NewEntryEditor = props =>{
         evt.preventDefault();
         setSubmitted(true);
         console.log('new entry: '+entry.content)
-        submitEntry()
+        submitEntry();
     }
     
     return(
@@ -69,6 +66,7 @@ const NewEntryEditor = props =>{
             ):(
             <div>
                 New Entry Submitted!
+                <Button vatraint="link"  onClick={()=>window.location.reload()}>Return Home</Button>
             </div>
             )}
             
@@ -84,20 +82,6 @@ const mapState = state => {
       entries: state.auth.entries
     }
   }
-
-// const mapDispatch = (dispatch, {history}) =>{
-//     return {
-//         handleSubmit(evt){
-//             evt.preventDefault();
-//             // const userId = evt.target.userid
-//             const date = evt.target.date.value
-//             const title = evt.target.title.value
-//             const content = evt.target.content.value
-//             dispatch(postEntry({date, title, content}, history))
-
-//         }
-//     }
-// }
 
   
 export default connect(mapState)(NewEntryEditor)
