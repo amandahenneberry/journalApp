@@ -24,19 +24,20 @@ const Home = (props) =>{
 
 const mapState = state => {
   return {
+    isLoggedIn: !!state.auth.id,
     username: state.auth.username,
     id: state.auth.id,
     entries: state.auth.entries
   }
 }
 
-// const mapDispatch = dispatch => {
-//   return {
-//     handleClick() {
-//       dispatch(logout())
-//     }
-//   }
-// }
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
 
-export default connect(mapState)(Home)
+export default connect(mapState, mapDispatch)(Home)
 

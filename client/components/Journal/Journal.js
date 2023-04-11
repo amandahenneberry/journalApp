@@ -23,7 +23,7 @@ const Journal = ({username, entries, handleClick}) => {
           <ButtonGroup>
             <AllUserEntries username={username} entries = {entries} />
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
-            <Button type='button' variant='link' onClick={()=>handleClick}>
+            <Button type='button' variant='link' onClick={handleClick}>
             Logout
           </Button> 
           </ButtonGroup>
@@ -34,7 +34,7 @@ const Journal = ({username, entries, handleClick}) => {
             <Alert_NewEntry show={showAlert}>
             Home
             </Alert_NewEntry>
-            <Button type='button' variant='link' onClick={()=>handleClick}>
+            <Button type='button' variant='link' onClick={handleClick}>
             Logout
           </Button> 
           </ButtonGroup>
@@ -56,5 +56,14 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapDispatch)(Journal)
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.auth.id,
+    username: state.auth.username,
+    id: state.auth.id,
+    entries: state.auth.entries
+  }
+}
+
+export default connect(mapState, mapDispatch)(Journal)
 

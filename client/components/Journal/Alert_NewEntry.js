@@ -7,7 +7,7 @@ export function Alert_NewEntry() {
 
   return (
     <>
-      <Alert show={show} variant="light">
+      <Alert show={show} variant="secondary">
         <Alert.Heading>Entry's Unsaved!</Alert.Heading>
         <p>
           You haven't submitted your entry! If you 'Go Home' now, it will be erased.

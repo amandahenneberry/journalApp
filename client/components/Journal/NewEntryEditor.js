@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Stack from 'react-bootstrap/Stack';
 
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
@@ -38,40 +39,41 @@ const NewEntryEditor = props =>{
     }
     
     return(
-        <div>
+        <>
             {!submitted ? (
-            <div>
-                <form onSubmit={handleSubmit} userid={id} >
-                <div>
-                    <label htmlFor="date">
-                        <small>Date</small>
-                    </label>
-                    <input type="date" name="date" value={entry.date || ''} onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="title">
-                        <small>Title</small>
-                    </label>
-                    <input type="text" name="title" value={entry.title || ''} onChange={handleChange}/>
-                </div>
-                <div>
-                    <label htmlFor="content">
-                        <small>Entry</small>
-                    </label>
-                    <input type="text" name="content" value={entry.content || ''} onChange={handleChange}/>
-                </div>
+            <Form onSubmit={handleSubmit} userid={id}>
+                {/* <form onSubmit={handleSubmit} userid={id} > */}
+
+                <Form.Group className="mb-3" controlId="date">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control type="date" name="date" value={entry.date || ''} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="title">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control type="text" name="title" value={entry.title || ''} onChange={handleChange}/>
+                </Form.Group>
+                <Stack>
+                <Form.Group className="mb-3" controlId="content">
+                <Form.Label>Entry</Form.Label>
+                    <Form.Control as="textarea" rows={8} name="content" value={entry.content || ''} onChange={handleChange} />
+                </Form.Group>
                 <Button variant="outline-dark" type="submit">Submit</Button>
-            </form>
-            </div>
+                </Stack>
+            </Form>
+               
+                
             ):(
             <div>
                 New Entry Submitted!
-                <Button vatraint="link"  onClick={()=>window.location.reload()}>Return Home</Button>
+                <div>
+                <Button variant="outline-secondary"  onClick={()=>window.location.reload()}>Return Home</Button>
+
+                </div>
             </div>
             )}
             
 
-        </div>
+        </>
     )
 }
 
