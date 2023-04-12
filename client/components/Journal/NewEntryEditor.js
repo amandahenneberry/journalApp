@@ -39,7 +39,7 @@ const NewEntryEditor = props =>{
     }
     
     return(
-        <>
+        <div className='newEntry'>
             {!submitted ? (
             <Form onSubmit={handleSubmit} userid={id}>
                 {/* <form onSubmit={handleSubmit} userid={id} > */}
@@ -73,7 +73,7 @@ const NewEntryEditor = props =>{
             )}
             
 
-        </>
+        </div>
     )
 }
 

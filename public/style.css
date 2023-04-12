@@ -1,5 +1,15 @@
 body {
   font-family: sans-serif;
+  background: url(./pastel-background-with-aesthetic-pink-sky.jpg);
+  background-attachment: scroll, local;  
+  margin: auto;
+  /* height: 100vh;
+  width: 100vw; */
+  /* background-attachment: fixed; */
+  overflow-y: auto;
+
+
+
 }
 
 a {
@@ -18,4 +28,40 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.journalBg {
+  background: url(./JournalApp_bg.avif);
+  /* width: 50%; */
+  display: flex;
+  text-align: center;  
+
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  opacity: 0.8;
+  height: 300px;
+  width: 400px;  
+}
+
+.paperBg {
+  background: url(./JournalApp_Paper.jpeg);
+}
+
+.newEntry {
+  background: url(./JournalApp_Paper.jpeg);
+  height: 450px;
+  width: 600px;  
+}
+
+.buttonText {
+  color: rgb(60, 5, 111)
 }

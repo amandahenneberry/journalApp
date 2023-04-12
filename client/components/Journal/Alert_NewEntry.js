@@ -6,7 +6,7 @@ export function Alert_NewEntry() {
   const [show, setShow] = useState(false);
 
   return (
-    <>
+    <div>
       <Alert show={show} variant="secondary">
         <Alert.Heading>Entry's Unsaved!</Alert.Heading>
         <p>
@@ -24,6 +24,6 @@ export function Alert_NewEntry() {
       </Alert>
 
       {!show && <Button variant='link' onClick={() => setShow(true)}>Home</Button>}
-    </>
+    </div>
   );
 }

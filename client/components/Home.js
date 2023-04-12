@@ -7,15 +7,27 @@ import { logout } from '../store';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 
 const Home = (props) =>{
   const {username, entries, handleClick} = props;
+
    return (
-      <Container>
-        <h3>Welcome, {username}</h3>
-        <Journal username ={username} entries={entries} handleClick={handleClick}/>   
+      <Container fluid className="vertical-center">
+        <Row>
+        <Col></Col>
+        <Col>        
+        <div className='journalBg'> 
+          <div className='paperBg'>
+          <Journal username ={username} entries={entries} handleClick={handleClick}/>  
+          </div>
+        </div>
+        </Col>
+        <Col></Col>
+        </Row>
       </Container>
     )
 

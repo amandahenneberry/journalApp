@@ -3,10 +3,13 @@ import {connect} from 'react-redux'
 import  NewEntryEditor   from './NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Alert from 'react-bootstrap/Alert';
+// import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Nav from 'react-bootstrap/Nav';
 
-// import {Alert_NewEntry} from './Alert_NewEntry';
+import Alert from 'react-bootstrap/Alert';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 import { logout } from '../../store';
 import { Alert_NewEntry } from './Alert_NewEntry';
@@ -20,24 +23,43 @@ const Journal = ({username, entries, handleClick}) => {
         {console.log('toggle: '+toggle)}
   
         {!toggle ? (
-          <ButtonGroup>
-            <AllUserEntries username={username} entries = {entries} />
+          <Container>
+            <h3>{username}'s Journal</h3>
+            <Row className="justify-content-md-center">
+              <Col>
+              <AllUserEntries username={username} entries = {entries} />
+              </Col>
+            </Row>
+            
+            <Row className="justify-content-md-center">
+            <Col>
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
+            </Col>
+            </Row>
+
+            <Row className="justify-content-md-center">
+            <Col>
             <Button type='button' variant='link' onClick={handleClick}>
             Logout
           </Button> 
-          </ButtonGroup>
+            </Col>
+            </Row>
+           
+          </Container>
         ) : (
           <div>
-            <ButtonGroup>
+            {/* <ButtonGroup> */}
+            <Nav>
             <AllUserEntries username={username} entries = {entries} />
-            <Alert_NewEntry show={showAlert}>
+            <Button variant='link'><Alert_NewEntry show={showAlert}>
             Home
-            </Alert_NewEntry>
+            </Alert_NewEntry></Button>
             <Button type='button' variant='link' onClick={handleClick}>
             Logout
           </Button> 
-          </ButtonGroup>
+            </Nav>
+            
+          {/* </ButtonGroup> */}
             <NewEntryEditor username = {username} entries = {entries}/>
           </div>
         )}

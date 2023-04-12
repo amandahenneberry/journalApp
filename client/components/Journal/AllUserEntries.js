@@ -33,6 +33,7 @@ export const AllUserEntries = (props) => {
           <EntryMap entries={entries} onEntryClick ={onEntryClick} />
 
         ) : (<div>
+          <EntryMap entries={entries} onEntryClick ={onEntryClick} />
           <Modal show={show} onHide={handleClose}>
             <SingleEntry username={ username } entryId = {[entry]} />
           </Modal>
