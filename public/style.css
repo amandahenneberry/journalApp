@@ -1,12 +1,16 @@
 body {
   font-family: sans-serif;
-  background: url(./background-3181283_1920.jpg);
+  background: url(./blurrBg.jpeg);
   background-attachment: scroll, local;  
   margin: auto;
   height: 100vh;
   width: 100vw; 
   background-attachment: fixed;
   overflow-y: scroll;
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
   /* max-height: auto; */
 }
 
