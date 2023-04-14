@@ -85,5 +85,7 @@ const mapState = state => {
     }
   }
 
+// const mapDispatch = 
+
   
 export default connect(mapState)(NewEntryEditor)

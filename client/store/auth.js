@@ -55,21 +55,6 @@ export const authenticate = (username, password, method) => async dispatch => {
   }
 }
 
-// export const postEntry = (date, title, content, history) => async dispatch => {
-//   try{
-//     const userId = await axios.get('/auth/me', {
-//       headers: {
-//         authorization: window.localStorage.getItem(TOKEN)
-//       }});
-//     const res  = await axios.post(`/auth/entries`, date, title, content, userId);
-//     const newEntry = res.data
-//     dispatch(postNewEntry(newEntry))
-//     history.push('/home');
-//   } catch (err) {
-//     console.log('error posting new entry')
-//   }
-// }
-
 export const logout = () => {
   window.localStorage.removeItem(TOKEN)
   history.push('/')
