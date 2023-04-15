@@ -43,3 +43,14 @@ router.get('/me/entries/:entryId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.delete('/me/entries/:entryId', async (req, res, next) => {
+  try {
+    const entry = await Entry.findByPk(req.params.entryId)
+    await entry.destroy();
+    res.json(entry)
+  } catch (err) {
+    next(err)
+  }
+})
+
