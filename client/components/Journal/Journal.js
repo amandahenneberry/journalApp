@@ -10,6 +10,8 @@ import Alert from 'react-bootstrap/Alert';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { Stack } from 'react-bootstrap';
+
 
 import { logout } from '../../store';
 import { Alert_NewEntry } from './Alert_NewEntry';
@@ -50,13 +52,15 @@ const Journal = ({username, entries, handleClick}) => {
           <div>
             {/* <ButtonGroup> */}
             <Nav>
+            <Stack direction='horizontal'>
             <AllUserEntries username={username} entries = {entries} />
-            <Button variant='link'><Alert_NewEntry show={showAlert}>
-            Home
-            </Alert_NewEntry></Button>
+              <Alert_NewEntry show={showAlert} variant='link'>
+                Home
+              </Alert_NewEntry>
             <Button type='button' variant='link' onClick={handleClick}>
             Logout
           </Button> 
+          </Stack>
             </Nav>
             
           {/* </ButtonGroup> */}
