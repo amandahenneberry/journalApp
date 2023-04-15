@@ -10,19 +10,13 @@ const NewEntryEditor = props =>{
     const [submitted, setSubmitted] = useState(false)
     const {username, id} = props
 
-
-    useEffect(() => {
-        const {id} = props;
-        setEntry((prev) =>({
-            ...prev,
-            userId: id
-        }));
-    },[props])
-
+    
     const handleChange = ({ target }) => {
+        const {id} = props;
         const { name, value } = target;
         setEntry((prev) => ({
           ...prev,
+          userId: id,
           [name]: value
         }));
     };
@@ -42,8 +36,6 @@ const NewEntryEditor = props =>{
         <div className='newEntry'>
             {!submitted ? (
             <Form onSubmit={handleSubmit} userid={id}>
-                {/* <form onSubmit={handleSubmit} userid={id} > */}
-
                 <Form.Group className="mb-3" controlId="date">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date" name="date" value={entry.date || ''} onChange={handleChange} />

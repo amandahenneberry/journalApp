@@ -22,7 +22,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
           entries.map(entry => (
             <div key={entry.id} >
                 <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>{entry.title}</Button>
-                {/* <Dropdown.Divider /> */}
+                <Dropdown.Divider />
             </div>
           ))
         }

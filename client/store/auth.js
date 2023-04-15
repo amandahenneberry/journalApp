@@ -9,6 +9,7 @@ const TOKEN = 'token'
 const SET_AUTH = 'SET_AUTH'
 const SET_ENTRY = 'SET_ENTRY'
 // const POST_ENTRY = 'POST_ENTRY'
+const DELETE_ENTRY = 'DELETE_ENTRY'
 
 
 /**
@@ -17,7 +18,7 @@ const SET_ENTRY = 'SET_ENTRY'
 const setAuth = auth => ({type: SET_AUTH, auth})
 const setEntry = entry => ({type: SET_ENTRY, entry})
 // const postNewEntry = newEntry =>({type: POST_ENTRY, newEntry})
-
+const removeEntry = entryId => ({type: DELETE_ENTRY, entryId})
 
 /**
  * THUNK CREATORS
@@ -44,6 +45,15 @@ export const fetchEntry = (entryId) => async dispatch => {
   }
 }
 
+export const deleteEntry = (entryId) => async dispatch => {
+  try{
+    const { data: entry } = await axios.delete(`/auth/me/entries/${entryId}`);
+    dispatch(removeEntry(entry));
+  } catch (err){
+    console.log('error in deleteThunk')
+  }
+    
+}
 
 export const authenticate = (username, password, method) => async dispatch => {
   try {
@@ -75,6 +85,8 @@ export default function(state ={}, action) {
       return {...state, entry: action.entry}
     // case POST_ENTRY:
     //   return [...state, action.newEntry]
+    case DELETE_ENTRY:
+      return { entries: state.entries.filter((entry) => entry !== action.entry)}
     default:
       return state
   }
