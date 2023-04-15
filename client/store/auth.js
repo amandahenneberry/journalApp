@@ -49,11 +49,12 @@ export const deleteEntry = (entryId) => async dispatch => {
   try{
     const { data: entry } = await axios.delete(`/auth/me/entries/${entryId}`);
     dispatch(removeEntry(entry));
+    dispatch(me());
   } catch (err){
     console.log('error in deleteThunk')
-  }
-    
+  } 
 }
+
 
 export const authenticate = (username, password, method) => async dispatch => {
   try {
