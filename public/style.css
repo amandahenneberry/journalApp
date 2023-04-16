@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background: url(./blurrBg.jpeg);
+  background: url(./images/blurrBg.jpeg);
   background-attachment: scroll, local;  
   margin: auto;
   height: 100vh;
@@ -45,7 +45,7 @@ form div {
 }
 
 .journalBg {
-  background: url(./JournalApp_bg.avif);
+  background: url(./images/JournalApp_bg.avif);
   /* width: 50%; */
   display: flex;
   text-align: center;  
@@ -60,7 +60,7 @@ form div {
 }
 
 .paperBg {
-  background: url(./JournalApp_Paper.jpeg);
+  background: url(./images/JournalApp_Paper.jpeg);
   border-radius: 25px;
   /* display: flex; */
   /* text-align: center;  
@@ -68,7 +68,7 @@ form div {
 }
 
 .loginBg {
-  background: url(./JournalApp_DESK.png);
+  background: url(./images/JournalApp_DESK.png);
 
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@ form div {
 
 
 .newEntry {
-  background: url(./JournalApp_Paper.jpeg);
+  background: url(./images/JournalApp_Paper.jpeg);
   height: 450px;
   width: 600px;  
   border-radius: 25px;
