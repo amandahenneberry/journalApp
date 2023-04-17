@@ -5,7 +5,6 @@ import {Router} from 'react-router-dom'
 import history from './history'
 import store from './store'
 import App from './App'
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
