@@ -28,7 +28,7 @@ const Home = (props) =>{
   const [weather, setWeather] = useState({})
   const [location, setLocation] = useState(null)
 
-  const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=8418f9d139d369b5c0fd0fbcae584b7e`
+  const url = `//api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=8418f9d139d369b5c0fd0fbcae584b7e`
   
   useEffect(() =>{
     const timer = setInterval(()=>setDate(new Date()), 1000)
@@ -64,11 +64,11 @@ useEffect(()=>{
   }
 }, [lon])
 
-useEffect(() => {
-  if(location){
-    axios.get()
-  }
-})
+// useEffect(() => {
+//   if(location){
+//     axios.get()
+//   }
+// })
 
 return (
   <Container fluid className="vertical-center">
