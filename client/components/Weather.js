@@ -1,15 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 
-const  Weather = () =>{
+
+const  Weather = (props) =>{
+    const { location } = props;
+
+    
+
+    useEffect(() => {
+        console.log('location: '+location);
+      }, [location])
 
     return (
         <div>
             <div className = "container">
                 <div className = "top">
                     <div className = "location">
-                        <p>Dallas</p>
+                        <p>{location}</p>
                     </div>
                     <div className="temp">
                         <h1>68 F</h1>
@@ -35,5 +44,13 @@ const  Weather = () =>{
 
 }
 
+// const mapState = state => {
+//     return {
+//     location: location
+//     }
+//   }
+
+// export default connect(mapState)(Weather)
 export default Weather
+
 
