@@ -11,24 +11,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //
 import { DateTime } from './DateTime';
-import axios from 'axios';
 import  Weather  from './Weather'
-
-
-const apiKey = '8418f9d139d369b5c0fd0fbcae584b7e'
 
 
 const Home = (props) =>{
   const {username, entries, handleClick} = props;
   const [date,  setDate] = useState(new Date());
 
-  //Location & Weather
-  const [lat, setLat] = useState(null)
-  const [lon, setLon] = useState(null)
-  const [weather, setWeather] = useState({})
-  const [location, setLocation] = useState(null)
-
-  const url = `//api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=8418f9d139d369b5c0fd0fbcae584b7e`
+  
   
   useEffect(() =>{
     const timer = setInterval(()=>setDate(new Date()), 1000)
@@ -36,39 +26,6 @@ const Home = (props) =>{
         clearInterval(timer)
     }
 });
-
-const getLocation = () =>{
-  navigator.geolocation.getCurrentPosition(function(position) {
-    setLat(position.coords.latitude);
-    setLon(position.coords.longitude);
-    console.log("Latitude is :", position.coords.latitude);
-    console.log("Longitude is :", position.coords.longitude);
-  });
-}
-
-useEffect(() => {
-  getLocation();
-  console.log(`LAT & LON: `+lat +' ' +lon)
-}, [lon])
-    
-
-useEffect(()=>{
-  if(lat && lon){
-    axios.get(url).then((response) => {
-      setLocation(response.data[0].name)
-      // console.log(response.data[0].name)
-      // console.log(location)
-    })
-  }else{
-    console.log('loading location...')
-  }
-}, [lon])
-
-// useEffect(() => {
-//   if(location){
-//     axios.get()
-//   }
-// })
 
 return (
   <Container fluid className="vertical-center">
@@ -87,7 +44,7 @@ return (
     </Col>
     <Col>
     <div>
-      <Weather location={location}/>
+      <Weather />
     </div>
     </Col>
     </Row>

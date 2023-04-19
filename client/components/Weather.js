@@ -1,56 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {connect} from 'react-redux'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 
+const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
+function Weather() {
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  const [weather, setWeather] = useState(" ");
+  const [temperature, setTemperature] = useState(0);
+  const [cityName, setCityName] = useState(" ");
 
-const  Weather = (props) =>{
-    const { location } = props;
+  const savePositionToState = (position) => {
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  };
 
-    
+  const error =()=>{
+    console.log('error  retrieving location')
+  }
 
-    useEffect(() => {
-        console.log('location: '+location);
-      }, [location])
+  const options = {
+    enableHighAccuracy: true,
+    timeout: Infinity,
+    maximumAge: 0,
+  };
 
-    return (
+  const fetchLocation = async () => {
+    try {
+      await window.navigator.geolocation.getCurrentPosition(
+        savePositionToState, error, options);
+        if(latitude && longitude){
+            const res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${apiKey}
+        `);
+        setCityName(res.data[0].local_names.en);
+        console.log(res.data)
+        }
+        
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchWeather = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+      );
+      setTemperature(res.data.main.temp);
+      setWeather(res.data.weather[0].main);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  
+
+  useEffect(() => {
+    fetchLocation();
+  }, [latitude, longitude]);
+
+  useEffect(()=>{
+    fetchWeather();
+  },[cityName])
+
+  return (
+    <>
+    {cityName === " " && weather === " " ? (
         <div>
-            <div className = "container">
-                <div className = "top">
-                    <div className = "location">
-                        <p>{location}</p>
-                    </div>
-                    <div className="temp">
-                        <h1>68 F</h1>
-                    </div>
-                    <div className="description">
-                        <p>Clouds</p>
-                    </div>
-                </div>
-                    <div className="bottom">
-                        <div className="feels">
-                            <p>65 F</p>
-                        </div>
-                      <div className="humidity">
-                        <p>20%</p>
-                        </div>
-                        <div className="wind">
-                            <p>20 MPH</p>
-                        </div>  
-                    </div>
-            </div>
+            <p>loading...</p>
         </div>
-    )
-
+    ) : (
+        <div className="app">
+      <div className="app__container">
+        <h1>{cityName}</h1>
+        <h2>{temperature}ºF</h2>
+        <h2>{weather}</h2>
+      </div>
+    </div>
+    )}
+    
+    </>
+    
+  );
 }
 
-// const mapState = state => {
-//     return {
-//     location: location
-//     }
-//   }
-
-// export default connect(mapState)(Weather)
-export default Weather
-
-
+export default Weather;
