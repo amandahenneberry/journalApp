@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //
 import { DateTime } from './DateTime';
-import  Weather  from './Weather'
+import  Weather  from './Weather/Weather'
 
 
 const Home = (props) =>{
