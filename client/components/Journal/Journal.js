@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-import  NewEntryEditor   from './NewEntryEditor';
+import  NewEntryEditor   from './NewEntry/NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
 import Button from 'react-bootstrap/Button';
 // import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -14,7 +14,7 @@ import { Stack } from 'react-bootstrap';
 
 
 import { logout } from '../../store';
-import { Alert_NewEntry } from './Alert_NewEntry';
+import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 
 const Journal = ({username, entries, handleClick}) => {
   const [toggle, setToggle] = useState(false);

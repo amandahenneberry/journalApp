@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import { NewEntryEditor  } from './Journal/NewEntryEditor';
+import { NewEntryEditor  } from './Journal/NewEntry/NewEntryEditor';
 import Journal from './Journal/Journal';
 import { logout } from '../store';
 //bootstrap

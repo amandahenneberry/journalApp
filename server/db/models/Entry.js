@@ -3,8 +3,11 @@ const db = require('../db')
 
 const Entry = db.define('entry', {
   date: {
-    type: Sequelize.STRING,
-    allowNull: false
+    // type: Sequelize.STRING,
+    // allowNull: false
+    type: Sequelize.DATEONLY,
+   allowNull: false,
+   defaultValue: Sequelize.NOW
   },
   title: {
     type: Sequelize.STRING
@@ -16,7 +19,11 @@ const Entry = db.define('entry', {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
-  }
+  },
+  photo: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
 }, {timestamps: true})
 
 module.exports = Entry

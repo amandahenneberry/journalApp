@@ -6,12 +6,15 @@ const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
 function Weather() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
-  const [weather, setWeather] = useState(" ");
+  // const [weather, setWeather] = useState(" ");
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState(" ");
   const [description, setDescription] = useState(" ");
   const [icon, setIcon] = useState(" ");
-  const [loadingWeather, setLoadingWeather]  = useState(true)
+  const [loadingWeather, setLoadingWeather]  = useState(true);
+  const [high, setHigh] = useState(0);
+  const [low, setLow] = useState(0);
+
 
   const savePositionToState = (position) => {
     setLatitude(position.coords.latitude);
@@ -50,9 +53,11 @@ function Weather() {
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
       );
       setTemperature(res.data.main.temp);
-      setWeather(res.data.weather[0].main);
+      // setWeather(res.data.weather[0].main);
       setDescription(res.data.weather[0].description);
       setIcon(res.data.weather[0].icon);
+      setHigh(res.data.main.temp_max)
+      setLow(res.data.main.temp_min)
       console.log(res.data);
     } catch (err) {
       console.error(err);
@@ -70,18 +75,9 @@ function Weather() {
   },[cityName])
 
   useEffect(()=>{
-  //   const [latitude, setLatitude] = useState(0);
-  // const [longitude, setLongitude] = useState(0);
-  // const [weather, setWeather] = useState(" ");
-  // const [temperature, setTemperature] = useState(0);
-  // const [cityName, setCityName] = useState(" ");
-  // const [description, setDescription] = useState(" ");
-  // const [icon, setIcon] = useState(" ");
-  // const [loadingWeather, setLoadingWeather]  = useState(true)
-    if(weather !== " " && cityName !== " " && (latitude > 0 || longitude > 0 ) && description !== " "  && icon  !== " "){
+      if(cityName !== " " && (latitude > 0 || longitude > 0 ) && description !== " "  && icon  !== " "){
       setLoadingWeather(false)
-    }
-
+      }
   },[icon])
 
   return (
@@ -93,11 +89,11 @@ function Weather() {
     ) : (
         <div className="app">
       <div className="app__container">
-        <h1>{cityName}</h1>
-        <div><img src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/></div>
-        <h2>{temperature}ºF</h2>
-        <h2>{weather}</h2>
-        <p><em>{description}</em></p>
+        <h3>{cityName}<img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/></h3>
+        <h1>{temperature}ºF</h1>
+        {/* <h2>{weather}</h2> */}
+        <h4>{description}</h4>
+        <p>H:{high}º L:{low}º</p>
       </div>
     </div>
     )}
