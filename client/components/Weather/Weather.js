@@ -6,7 +6,6 @@ const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
 function Weather() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
-  // const [weather, setWeather] = useState(" ");
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState(" ");
   const [description, setDescription] = useState(" ");
@@ -91,7 +90,6 @@ function Weather() {
       <div className="app__container">
         <h3>{cityName}<img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/></h3>
         <h1>{temperature}ºF</h1>
-        {/* <h2>{weather}</h2> */}
         <h4>{description}</h4>
         <p>H:{high}º L:{low}º</p>
       </div>

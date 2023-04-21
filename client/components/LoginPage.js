@@ -12,6 +12,8 @@ import { Stack } from 'react-bootstrap'
 export const LoginPage = () =>{
     const [toggle, setToggle] = useState(false);
 
+    
+
     return(
         <div>
             <Container fluid className='vertical-center'>
@@ -19,10 +21,7 @@ export const LoginPage = () =>{
                 <Row>
                     <Col></Col>
                     <Col>
-                    {/* <div className='loginBg'></div> */}
                     <h1><br></br><center>WebLog</center></h1><br></br><center><em><p>A Journaling App</p></em></center></Col>
-                    {/* <h2><center>Daily Journal</center></h2></Col> */}
-
                     <Col></Col>
                     </Row>
                 {!toggle? (

@@ -8,7 +8,6 @@ import history from '../../history';
 class SingleEntry extends Component{
     constructor(props){
         super(props)
-        // this.handleDelete = this.handleDelete.bind(this)
     }
 
 
@@ -17,35 +16,24 @@ class SingleEntry extends Component{
 
     }
 
-    // handleDelete(){
-    //     this.props.removeEntry(this.props.entryId);
-    // }
-
     render(){
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
         const date = entry.date || '';
         const {handleDelete} = this.props;
 
-        console.log('curr state: '+entry.id)
+        console.log(entry)
         return(
             <div>
             <Modal.Header closeButton>
-                {/* <Modal.Title>
-                </Modal.Title>   */}
                 <span> 
-                <div>{entry.title}</div></span>
+                <div>{entry.title}</div>
+                </span>
             </Modal.Header>
             <Modal.Body>
                 <p>{content}</p>
             </Modal.Body>
             <Modal.Footer>
-             {/* <Button variant="secondary" onClick={handleClose}>
-               Close
-             </Button> */}
-             {/* <Button variant="primary" onClick={handleClose}>
-               Save Changes
-             </Button> */}
                  <Button variant="primary" type='button' onClick={handleDelete}>
                Delete Entry
              </Button>
@@ -70,7 +58,6 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps=(dispatch)=>{
     return{
         loadEntry: (entryId) => dispatch(fetchEntry(entryId)),
-        // removeEntry: (entryId) => dispatch(deleteEntry(entryId)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry);

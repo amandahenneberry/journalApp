@@ -21,7 +21,7 @@ const Entry = db.define('entry', {
     autoIncrement: true
   },
   photo: {
-    type: Sequelize.STRING,
+    type: Sequelize.BLOB,
     allowNull: true
   },
 }, {timestamps: true})

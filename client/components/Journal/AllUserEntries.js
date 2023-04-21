@@ -14,7 +14,6 @@ export const AllUserEntries = (props) => {
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
   const handleDelete = () =>{
     dispatch(deleteEntry([entry]));
   }
@@ -24,7 +23,6 @@ export const AllUserEntries = (props) => {
    setEntry(() => {
     return [entry]
    });
-  //  handleShow();
   setShow(()=>{
     return true
   })

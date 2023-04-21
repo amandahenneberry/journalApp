@@ -11,13 +11,6 @@ const setUser = (user) => {
     }
 }
 
-// const setJournal= (entries) => {
-//     return {
-//       type: SET_USER_JOURNAL,
-//       entries
-//     }
-// }
-
 export const fetchUser = (id) =>{
     return async (dispatch) =>{
         try{
@@ -28,17 +21,6 @@ export const fetchUser = (id) =>{
         }
     }
 }
-
-// export const fetchJournal= (id) => {
-//     return async (dispatch) => {
-//       try {
-//         const {data} = await axios.get(`/api/users/${id}/entries`)
-//         dispatch(setJournal(data))
-//       } catch (err) {
-//         console.log(err)
-//       }
-//     }
-// }
 
 const initialState = {info: {}, journal:[]}
 

@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import  NewEntryEditor   from './NewEntry/NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
 import Button from 'react-bootstrap/Button';
-// import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Nav from 'react-bootstrap/Nav';
 
 import Alert from 'react-bootstrap/Alert';
@@ -18,7 +17,7 @@ import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 
 const Journal = ({username, entries, handleClick}) => {
   const [toggle, setToggle] = useState(false);
-  const [showAlert, setShowAlert] = useState(false)
+  const [showAlert, setShowAlert] = useState(false);
 
     return (
       <div>
@@ -50,7 +49,6 @@ const Journal = ({username, entries, handleClick}) => {
           </Container>
         ) : (
           <div>
-            {/* <ButtonGroup> */}
             <Nav>
             <Stack direction='horizontal'>
             <AllUserEntries username={username} entries = {entries} />
@@ -62,8 +60,6 @@ const Journal = ({username, entries, handleClick}) => {
           </Button> 
           </Stack>
             </Nav>
-            
-          {/* </ButtonGroup> */}
             <NewEntryEditor username = {username} entries = {entries}/>
           </div>
         )}

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Routes from './Routes'
+
+
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Routes />
     </div>
   )

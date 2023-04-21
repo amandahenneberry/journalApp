@@ -3,20 +3,22 @@ body {
   background: url(./images/blurrBg.jpeg);
   background-attachment: scroll, local;  
   margin: auto;
-  height: 100vh;
-  width: 100vw; 
+  height: 200vh;
+  width: 150vw; 
   background-attachment: fixed;
-  overflow-y: scroll;
+  overflow: auto;
   background-size: cover;
 
   background-repeat: no-repeat;
 
-  /* max-height: auto; */
+  max-height: auto;
+
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+  position:sticky
 }
 
 .vertical-center {
@@ -57,6 +59,8 @@ form div {
   width: 400px;  
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
   box-shadow: 0 3px 10px rgb(0, 0, 0);
+  max-height: auto;
+
 }
 
 .paperBg {
@@ -88,12 +92,24 @@ form div {
 
 .newEntry {
   background: url(./images/JournalApp_Paper.jpeg);
-  height: 450px;
+  height: 500px;
   width: 600px;  
   border-radius: 25px;
+  background-repeat: repeat-y;
+  /* overflow-y: scroll; */
+  max-height: auto;
+  /* position: static; */
+  /* position: sticky */
+  max-height: auto;
+
+
 
 }
 
 .buttonText {
   color: rgb(60, 5, 111)
 }
+/* 
+.app{
+  position: sticky
+} */
