@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
+// const apiKey = process.env.NODE_ENV.REACT_APP_WEATHER_API_KEY
+
 function Weather() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  // const [weather, setWeather] = useState(" ");
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState(" ");
   const [description, setDescription] = useState(" ");
@@ -42,7 +45,7 @@ function Weather() {
         }
         
     } catch (err) {
-      console.error(err);
+      console.error('error fetching loaction');
     }
   };
 
@@ -59,44 +62,71 @@ function Weather() {
       setLow(res.data.main.temp_min)
       console.log(res.data);
     } catch (err) {
-      console.error(err);
+      console.error('error fetching weather data');
     }
   };
 
   
 
   useEffect(() => {
-    fetchLocation();
+    const controller = new AbortController();
+    try{
+      fetchLocation(),{
+        signal: controller.signal
+      }
+     
+    }  catch(err){
+      console.log('error fetching location')
+    };
+ 
+    return () => controller?.abort();
   }, [latitude, longitude]);
 
   useEffect(()=>{
-    fetchWeather();
+    const controller = new AbortController();
+    try{
+      fetchWeather(), {
+        signal: controller.signal
+      }
+    } catch(err){
+      console.log('error fetching weather data')
+    };
+
+    return () => controller?.abort();
+   
   },[cityName])
 
   useEffect(()=>{
-      if(cityName !== " " && (latitude > 0 || longitude > 0 ) && description !== " "  && icon  !== " "){
+    
+    if(cityName !== " " && description !== " "  && icon  !== " "){
       setLoadingWeather(false)
-      }
+    }
+
   },[icon])
 
   return (
-    <>
+    <div className="weatherContainer">
     {loadingWeather ? (
         <div>
             <p>loading weather...</p>
+            <Spinner animation="border" role="status"  variant="light">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+
         </div>
     ) : (
         <div className="app">
       <div className="app__container">
         <h3>{cityName}<img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/></h3>
         <h1>{temperature}ºF</h1>
+        {/* <h2>{weather}</h2> */}
         <h4>{description}</h4>
         <p>H:{high}º L:{low}º</p>
       </div>
     </div>
     )}
     
-    </>
+    </div>
     
   );
 }

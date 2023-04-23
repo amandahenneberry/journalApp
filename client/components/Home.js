@@ -31,7 +31,7 @@ return (
   <Container fluid className="vertical-center">
     <Row>
     <Col>
-      <div>
+      <div className= "dateContainer">
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
@@ -43,7 +43,7 @@ return (
     </div>
     </Col>
     <Col>
-    <div>
+    <div className="weatherContainer">
       <Weather />
     </div>
     </Col>

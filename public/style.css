@@ -12,8 +12,8 @@ body {
   background-repeat: no-repeat;
 
   max-height: auto;
-
 }
+
 
 form div {
   margin: 1em;
@@ -47,6 +47,7 @@ form div {
 }
 
 .journalBg {
+  margin-top: 150px;
   background: url(./images/JournalApp_bg.avif);
   /* width: 50%; */
   display: flex;
@@ -60,7 +61,6 @@ form div {
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
   box-shadow: 0 3px 10px rgb(0, 0, 0);
   max-height: auto;
-
 }
 
 .paperBg {
@@ -101,15 +101,18 @@ form div {
   /* position: static; */
   /* position: sticky */
   max-height: auto;
-
-
-
 }
 
-.buttonText {
-  color: rgb(60, 5, 111)
+.weatherContainer {
+  margin-top: 150px;
+  position: sticky;
+  text-align: center;
 }
-/* 
-.app{
-  position: sticky
-} */
+
+.dateContainer {
+  margin-top: 150px;
+  position: sticky;
+  text-align: center;
+}
+
+
