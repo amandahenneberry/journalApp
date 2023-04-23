@@ -63,7 +63,7 @@ const NewEntryEditor = props =>{
     }
 
     return(
-        <div className='newEntry'>
+        <div>
             {!submitted ? (
             <Form onSubmit={handleSubmit} userid={id}>
                 <Stack gap={1}>
@@ -78,7 +78,7 @@ const NewEntryEditor = props =>{
                 
                 
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={8} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
+                    <Form.Control as="textarea" rows={10} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
                 </Form.Group>
                 <div>
                     {photoAdded ? (
@@ -97,8 +97,8 @@ const NewEntryEditor = props =>{
                                         <div className="vr" />
                                         <Stack gap={3}>
                                             <br/>
-                                        <Button size="sm" onClick={handleRemovePhoto}>Remove photo</Button>
-                                        <Button size="sm" onClick={addPhoto}>Add photo</Button>
+                                        <Button size="sm" variant="outline-primary" onClick={handleRemovePhoto}>Remove photo</Button>
+                                        <Button size="sm" variant="outline-primary" onClick={addPhoto}>Add photo</Button>
                                         </Stack>
                                     </Stack>
                                         
@@ -113,7 +113,7 @@ const NewEntryEditor = props =>{
                 
                 
                 
-                <Button variant="outline-dark" type="submit">Submit</Button>
+                <Button variant="primary" type="submit">Submit Entry</Button>
                 </Stack>
             </Form>
                

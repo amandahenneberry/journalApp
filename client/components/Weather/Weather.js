@@ -70,23 +70,26 @@ function Weather() {
 
   useEffect(() => {
     const controller = new AbortController();
+
     try{
-      fetchLocation(),{
+      fetchLocation(), {
         signal: controller.signal
       }
      
     }  catch(err){
       console.log('error fetching location')
     };
- 
+
     return () => controller?.abort();
+
+ 
   }, [latitude, longitude]);
 
   useEffect(()=>{
     const controller = new AbortController();
     try{
       fetchWeather(), {
-        signal: controller.signal
+        
       }
     } catch(err){
       console.log('error fetching weather data')
@@ -102,7 +105,7 @@ function Weather() {
       setLoadingWeather(false)
     }
 
-  },[icon])
+  },[cityName])
 
   return (
     <div className="weatherContainer">
@@ -117,11 +120,14 @@ function Weather() {
     ) : (
         <div className="app">
       <div className="app__container">
-        <h3>{cityName}<img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/></h3>
+        <h4>{cityName}</h4>
         <h1>{temperature}ºF</h1>
         {/* <h2>{weather}</h2> */}
-        <h4>{description}</h4>
-        <p>H:{high}º L:{low}º</p>
+        <h5>
+          <img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/>
+          <em>{description}</em>
+        </h5>
+        <h5>H:{high}º L:{low}º</h5>
       </div>
     </div>
     )}

@@ -48,7 +48,7 @@ const Journal = ({username, entries, handleClick}) => {
            
           </Container>
         ) : (
-          <div>
+          <div className='newEntry'>
             <Nav>
             <Stack direction='horizontal'>
             <AllUserEntries username={username} entries = {entries} />
@@ -61,6 +61,7 @@ const Journal = ({username, entries, handleClick}) => {
           </Stack>
             </Nav>
             <NewEntryEditor username = {username} entries = {entries}/>
+            <br/>
           </div>
         )}
         

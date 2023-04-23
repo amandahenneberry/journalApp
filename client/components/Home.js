@@ -35,12 +35,15 @@ return (
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
-    <Col>        
-    <div className='journalBg'> 
-      <div className='paperBg'>
-      <Journal username ={username} entries={entries} handleClick={handleClick}/>  
-      </div>
-    </div>
+    <Col xs={6}>  
+      <center>
+        <div className='journalBg'> 
+          <div className='paperBg'>
+            <Journal username ={username} entries={entries} handleClick={handleClick}/>  
+          </div>
+        </div>
+      </center>      
+    
     </Col>
     <Col>
     <div className="weatherContainer">
