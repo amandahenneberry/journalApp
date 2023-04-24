@@ -5,10 +5,9 @@ const Entry = db.define('entry', {
   date: {
     // type: Sequelize.STRING,
     // allowNull: false
-    type: Sequelize.DATEONLY,
-   allowNull: false,
-   defaultValue: Sequelize.NOW
-  },
+    type: Sequelize.STRING,
+   allowNull: false
+    },
   title: {
     type: Sequelize.STRING
   },

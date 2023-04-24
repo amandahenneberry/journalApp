@@ -10,8 +10,9 @@ export const DateTime = (props) =>{
 
     return(
         <div>
-            <p>{day}, {date}</p>
-            <p>{time}</p>
+            <h1>{time}</h1>
+            <h4>{day}, {date}</h4>
+            
         </div>
     )
 }

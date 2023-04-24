@@ -78,7 +78,7 @@ const NewEntryEditor = props =>{
                 
                 
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={10} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
+                    <Form.Control as="textarea" rows={12} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
                 </Form.Group>
                 <div>
                     {photoAdded ? (
