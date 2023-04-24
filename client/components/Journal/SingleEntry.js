@@ -19,6 +19,7 @@ class SingleEntry extends Component{
     render(){
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
+        const  photo = entry.photo || 'error loading photo';
         const date = entry.date || '';
         const {handleDelete} = this.props;
 
@@ -32,6 +33,7 @@ class SingleEntry extends Component{
             </Modal.Header>
             <Modal.Body>
                 <p>{content}</p>
+                <p><img alt='photo?' src={photo}/></p>
             </Modal.Body>
             <Modal.Footer>
                  <Button variant="primary" type='button' onClick={handleDelete}>

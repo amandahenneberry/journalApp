@@ -3,8 +3,8 @@ body {
   background: url(./images/blurrBg.jpeg);
   background-attachment: scroll, local;  
   margin: auto;
-  height: 200vh;
-  width: 150vw; 
+  height: 125vh;
+  width: 175vw; 
   background-attachment: fixed;
   overflow: auto;
   background-size: cover;
@@ -124,10 +124,10 @@ form div {
 }
 
 .weatherContainer {
-  margin-top: 200px;
+  margin-top: 125px;
   position: relative;
   text-align: center;
-  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.549));  border-radius: 25px;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.25));  border-radius: 25px;
   /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
   /* color: rgb(53, 53, 53); */
   color:aliceblue;
@@ -135,7 +135,7 @@ form div {
   /* text-shadow: 2px 2px 4px #fefefeca; */
   text-shadow: 2px 2px 4px #00000025;
 
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
   /* border-bottom: 3px solid rgba(0, 0, 0, 0.537); */
 
 
@@ -144,14 +144,14 @@ form div {
 }
 
 .dateContainer {
-  margin-top: 200px;
+  margin-top: 125px;
   position: relative;
   text-align: center;
-  background-image: linear-gradient(to left, rgba(87, 87, 87, 0), rgba(68, 118, 157, 0.48));  border-radius: 25px;
+  background-image: linear-gradient(to left, rgba(87, 87, 87, 0), rgba(68, 118, 157, 0.25));  border-radius: 25px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   color: white;
   text-shadow: 2px 2px 4px #00000025;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
 
 
 }
