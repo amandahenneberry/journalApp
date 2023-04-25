@@ -6,27 +6,40 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { FloatingLabel, Modal } from 'react-bootstrap';
 
+//alerts
 //for 'upload photo'
 
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
     const [submitted, setSubmitted] = useState(false)
     const {username, id} = props
+    //alerts
+    const [showTitleAlert, setTitleAlert] = useState(false);
+
     //image  and upload image pop-up
     const [selectedImage, setSelectedImage] = useState('');
     const [photoAdded, setPhotoAdded] = useState(false)
-
     
-
-    
+  
+   
     const handleChange = ({ target }) => {
         const {id} = props;
         const { name, value } = target;
+        const title= entry.title;
+        
         setEntry((prev) => ({
           ...prev,
           userId: id,
           [name]: value
-        }));
+        }));   
+
+        if(title.length  >=  12){
+            setTitleAlert(true)
+        } else {
+            setTitleAlert(false)
+        }
+
+        
     };
 
     const submitEntry = () =>{
@@ -66,6 +79,8 @@ const NewEntryEditor = props =>{
         <div>
             {!submitted ? (
             <Form onSubmit={handleSubmit} userid={id}>
+                 {/* <div>{showTitleAlert? (<div style={{color:'red'}}>hi</div>):('')}</div> */}
+
                 <Stack gap={1}>
                 <Stack direction='horizontal' className='d-flex align-items-center justify-content-center text-center not-found-container'>
                     <Form.Group className="mb-3" controlId="date">
@@ -73,10 +88,9 @@ const NewEntryEditor = props =>{
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="title">
                         <Form.Control type="text" name="title" value={entry.title || ''} onChange={handleChange} placeholder='Title'/>
+                     {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 12 characters or less</small></div>):('')}
                     </Form.Group>
                 </Stack>
-                
-                
                 <Form.Group className="mb-3" controlId="content">
                     <Form.Control as="textarea" rows={12} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
                 </Form.Group>

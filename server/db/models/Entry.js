@@ -6,7 +6,7 @@ const Entry = db.define('entry', {
     // type: Sequelize.STRING,
     // allowNull: false
     type: Sequelize.STRING,
-   allowNull: false
+    allowNull: false
     },
   title: {
     type: Sequelize.STRING
