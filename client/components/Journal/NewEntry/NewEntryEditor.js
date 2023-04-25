@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { FloatingLabel, Modal } from 'react-bootstrap';
+const moment = require('moment');
+
 
 //alerts
 //for 'upload photo'
@@ -26,6 +28,13 @@ const NewEntryEditor = props =>{
         const {id} = props;
         const { name, value } = target;
         const title= entry.title;
+        const today = moment().format("YYYY-MM-DD")
+        if(!entry.date){
+            setEntry((prev) => ({
+                ...prev,
+                date: today.toString()
+              }));   
+        }
         
         setEntry((prev) => ({
           ...prev,
@@ -33,13 +42,12 @@ const NewEntryEditor = props =>{
           [name]: value
         }));   
 
-        if(title.length  >=  12){
+        if(title.length  >=  30){
             setTitleAlert(true)
         } else {
             setTitleAlert(false)
         }
 
-        
     };
 
     const submitEntry = () =>{
@@ -84,11 +92,11 @@ const NewEntryEditor = props =>{
                 <Stack gap={1}>
                 <Stack direction='horizontal' className='d-flex align-items-center justify-content-center text-center not-found-container'>
                     <Form.Group className="mb-3" controlId="date">
-                        <Form.Control type="date" name="date" value={entry.date || ''} onChange={handleChange} />
+                        <Form.Control type="date" name="date" value={entry.date || moment().format("YYYY-MM-DD")} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="title">
-                        <Form.Control type="text" name="title" value={entry.title || ''} onChange={handleChange} placeholder='Title'/>
-                     {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 12 characters or less</small></div>):('')}
+                        <Form.Control type="text" name="title" value={entry.title || ' '} onChange={handleChange} placeholder='Title'/>
+                     {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')}
                     </Form.Group>
                 </Stack>
                 <Form.Group className="mb-3" controlId="content">
@@ -126,7 +134,7 @@ const NewEntryEditor = props =>{
                 </div>
                 
                 
-                
+
                 <Button variant="primary" type="submit">Submit Entry</Button>
                 </Stack>
             </Form>

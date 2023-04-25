@@ -15,13 +15,19 @@ export const EntryMap = ({ entries, onEntryClick }) => {
         onEntryClick(entry);
       };
 
+    
+
       
     return (
         <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
         {
           entries.map(entry => (
             <div key={entry.id} >
-                <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>{entry.date} <div class="vr"></div> {entry.title}</Button>
+                <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
+                    {entry.date}
+                    <div className="vr"></div>
+                    {entry.title.slice(0, 12)}...
+                  </Button>
                 <Dropdown.Divider />
             </div>
           ))

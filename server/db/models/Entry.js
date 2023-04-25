@@ -3,10 +3,7 @@ const db = require('../db')
 
 const Entry = db.define('entry', {
   date: {
-    // type: Sequelize.STRING,
-    // allowNull: false
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
     },
   title: {
     type: Sequelize.STRING
@@ -23,6 +20,6 @@ const Entry = db.define('entry', {
     type: Sequelize.STRING,
     allowNull: true
   },
-}, {timestamps: true})
+})
 
 module.exports = Entry
