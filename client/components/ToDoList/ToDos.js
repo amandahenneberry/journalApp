@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
+import Form from 'react-bootstrap/Form';
+
 
 
 
@@ -28,14 +30,14 @@ export const ToDos = () =>{
   };
 
     return(
-        <main>
-        <h1>To Do List</h1>
-        <NewTask
+        <Form onSubmit={handleSubmit}>
+          <AllTasks allTasks={allTasks} handleDelete={handleDelete} />
+
+          <NewTask
           newTask={newTask}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
-        <AllTasks allTasks={allTasks} handleDelete={handleDelete} />
-      </main>
+      </Form>
     )
 }

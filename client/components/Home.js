@@ -56,7 +56,6 @@ return (
     >
       <Tab eventKey="journal" title="Journal">
       <center>
-
         <div className='journalBg'> 
           <div className='paperBg'>
             <Journal username ={username} entries={entries} handleClick={handleClick}/>  
@@ -64,9 +63,13 @@ return (
         </div>
       </center>   
       </Tab> 
+      
       <Tab eventKey="toDos" title="To-Do List">
-        <ToDos />
-        </Tab>  
+      <div className='ToDoBg'> 
+      <ToDos />
+      </div>
+      </Tab>  
+      
       </Tabs>
       </Row>
     </Col>

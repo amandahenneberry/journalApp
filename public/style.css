@@ -2,16 +2,16 @@ body {
   font-family: sans-serif;
   background: url(./images/blurrBg.jpeg);
   /* background-attachment: scroll, local;   */
-  margin: auto;
-  /* height: 125vh; */
-  width: 100vw; 
+  margin: 0%;
+  height: 100%;
+  width: 100%;
   background-attachment: fixed;
-  overflow-y: auto;
+  overflow-y: scroll;
   background-size: cover;
 
   background-repeat: no-repeat;
 
-  max-height: auto;
+  max-height: 100%;
 }
 
 
@@ -46,20 +46,6 @@ form div {
   align-items: center;
 }
 
-.ToDoList {
-  display: flex;
-  text-align: center;  
-  align-items: center;
-  justify-content: center;
-  border-radius: 25px;
-  opacity: 0.8;
-  height: 325px;
-  width: 500px;  
-  box-shadow: 0 3px 10px rgb(0, 0, 0);
-  max-height: auto;
-  position: static;
-}
-
 .journalBg {
   background: url(./images/JournalApp_bg.avif);
   display: flex;
@@ -68,12 +54,39 @@ form div {
   justify-content: center;
   border-radius: 25px;
   /* opacity: 0.8; */
-  height: 325px;
+  height: 400px;
   width: 500px;  
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
   box-shadow: 0 3px 10px rgb(0, 0, 0);
   max-height: auto;
   position: static;
+}
+
+.ToDoBg {
+  padding-left: 5%;  
+  /* margin-top: 325px; */
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.724), rgba(255, 255, 255, 0.61)), url(./images/JournalApp_Paper.jpeg);
+  display: flex;
+  text-align: left;  
+  /* align-items: center; */
+  justify-content: left;
+  border-radius: 25px;
+  /* opacity: 0.8; */
+  height: 400px;
+  width: 500px;  
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
+  box-shadow: 0 3px 10px rgb(0, 0, 0);
+  max-height: auto;
+  position: relative;
+  background-size: cover;
+  background-repeat: repeat-y;
+  /* max-height: auto; */
+  /* overflow: hidden; */
+  overflow-y: auto;
+
+
+
+
 }
 
 .paperBg {
@@ -126,10 +139,6 @@ form div {
   background-size: cover;
   background-repeat: repeat-y;
   max-height: auto;
-  
-
-
-
 }
 
 .weatherContainer {
@@ -142,9 +151,6 @@ form div {
   text-shadow: 2px 2px 4px #00000025;
 
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-
-
-
 
 }
 
@@ -161,6 +167,7 @@ form div {
 }
 
 .tabBar {
+  margin-top: 325px;
   border-top: 3px solid;
   border-left: 2px solid;
   border-image: linear-gradient(to bottom right,  #8f8e8ec3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
