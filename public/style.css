@@ -1,12 +1,12 @@
 body {
   font-family: sans-serif;
   background: url(./images/blurrBg.jpeg);
-  background-attachment: scroll, local;  
+  /* background-attachment: scroll, local;   */
   margin: auto;
-  height: 125vh;
-  width: 175vw; 
+  /* height: 125vh; */
+  width: 100vw; 
   background-attachment: fixed;
-  overflow: auto;
+  overflow-y: auto;
   background-size: cover;
 
   background-repeat: no-repeat;
@@ -46,16 +46,28 @@ form div {
   align-items: center;
 }
 
-.journalBg {
-  margin-top: 150px;
-  background: url(./images/JournalApp_bg.avif);
-  /* width: 50%; */
+.ToDoList {
   display: flex;
   text-align: center;  
   align-items: center;
   justify-content: center;
   border-radius: 25px;
   opacity: 0.8;
+  height: 325px;
+  width: 500px;  
+  box-shadow: 0 3px 10px rgb(0, 0, 0);
+  max-height: auto;
+  position: static;
+}
+
+.journalBg {
+  background: url(./images/JournalApp_bg.avif);
+  display: flex;
+  text-align: center;  
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  /* opacity: 0.8; */
   height: 325px;
   width: 500px;  
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
@@ -113,9 +125,6 @@ form div {
   border-radius: 25px;
   background-size: cover;
   background-repeat: repeat-y;
-  /* overflow-y: scroll; */
-  /* position: static; */
-  /* position: sticky */
   max-height: auto;
   
 
@@ -124,19 +133,15 @@ form div {
 }
 
 .weatherContainer {
-  margin-top: 125px;
   position: relative;
   text-align: center;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.25));  border-radius: 25px;
-  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
-  /* color: rgb(53, 53, 53); */
+
   color:aliceblue;
-  /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.527), 0 0 25px rgba(0, 166, 255, 0.154), 0 0 5px rgba(0, 0, 139, 0); */
-  /* text-shadow: 2px 2px 4px #fefefeca; */
+
   text-shadow: 2px 2px 4px #00000025;
 
-  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
-  /* border-bottom: 3px solid rgba(0, 0, 0, 0.537); */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 
 
 
@@ -144,16 +149,28 @@ form div {
 }
 
 .dateContainer {
-  margin-top: 125px;
   position: relative;
   text-align: center;
   background-image: linear-gradient(to left, rgba(87, 87, 87, 0), rgba(68, 118, 157, 0.25));  border-radius: 25px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   color: white;
   text-shadow: 2px 2px 4px #00000025;
-  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 
 
 }
+
+.tabBar {
+  border-top: 3px solid;
+  border-left: 2px solid;
+  border-image: linear-gradient(to bottom right,  #8f8e8ec3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
+  display: flex;
+  width: 20%;
+  position: static;
+  margin-left:100px;
+}
+
+
+
 
 
