@@ -22,6 +22,8 @@ class SingleEntry extends Component{
         const content = entry.content || 'content fail';
         const  photo = entry.photo || 'error loading photo';
         const date = entry.date || '';
+        const location = entry.location || '';
+        const weatherIcon = entry.weatherIcon || '';
         const {handleDelete} = this.props;
 
         console.log(entry)
@@ -30,7 +32,7 @@ class SingleEntry extends Component{
             <Modal.Header closeButton>
                 <span>
                     <h3>{entry.title}</h3>
-                    <p><small>{date}</small></p>
+                    <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
                     </span>
                 
             </Modal.Header>

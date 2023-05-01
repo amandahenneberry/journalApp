@@ -168,7 +168,7 @@ return (
       <center>
         <div className='journalBg'> 
           <div className='paperBg'>
-            <Journal username ={username} entries={entries} handleClick={handleClick}/>  
+            <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon}/>  
           </div>
         </div>
       </center>   

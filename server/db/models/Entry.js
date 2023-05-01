@@ -20,6 +20,12 @@ const Entry = db.define('entry', {
     type: Sequelize.STRING,
     allowNull: true
   },
+  location: {
+    type: Sequelize.STRING
+  },
+  weatherIcon: {
+    type: Sequelize.STRING
+  }
 })
 
 module.exports = Entry

@@ -15,7 +15,7 @@ import { Stack } from 'react-bootstrap';
 import { logout } from '../../store';
 import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 
-const Journal = ({username, entries, handleClick}) => {
+const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
   const [toggle, setToggle] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -60,7 +60,7 @@ const Journal = ({username, entries, handleClick}) => {
           </Button> 
           </Stack>
             </Nav>
-            <NewEntryEditor username = {username} entries = {entries}/>
+            <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon}/>
             <br/>
           </div>
         )}

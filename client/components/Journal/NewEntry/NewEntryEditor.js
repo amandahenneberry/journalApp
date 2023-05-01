@@ -14,7 +14,7 @@ const moment = require('moment');
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
     const [submitted, setSubmitted] = useState(false)
-    const {username, id} = props
+    const {username, id, cityName, weatherIcon} = props
     //alerts
     const [showTitleAlert, setTitleAlert] = useState(false);
 
@@ -25,7 +25,7 @@ const NewEntryEditor = props =>{
   
    
     const handleChange = ({ target }) => {
-        const {id} = props;
+        const {id, cityName, weatherIcon} = props;
         const { name, value } = target;
         const title= entry.title;
         const today = moment().format("YYYY-MM-DD")
@@ -39,7 +39,9 @@ const NewEntryEditor = props =>{
         setEntry((prev) => ({
           ...prev,
           userId: id,
-          [name]: value
+          [name]: value,
+          location: cityName,
+          weatherIcon: weatherIcon
         }));   
 
         if(title.length  >=  30){
