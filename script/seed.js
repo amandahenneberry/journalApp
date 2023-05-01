@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Entry} } = require('../server/db')
+const {db, models: {User, Entry, ToDos} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -31,6 +31,13 @@ async function seed() {
 
   ])
 
+  const  todos = await Promise.all([
+    ToDos.create({ taskName: 'walk dog', details: '20 min',  userId: 1}),
+    ToDos.create({ taskName: 'walk cat', details: '5  min',  userId: 1}),
+    ToDos.create({ taskName: 'call  doctor', details: 'make appointment...',  userId: 2}),
+    ToDos.create({ taskName: 'do the dishes', details: '20 min',  userId: 2}),
+  ])
+
   return {
     users: {
       cody: users[0],
@@ -40,6 +47,12 @@ async function seed() {
       murphy1: entries[1],
       cody2: entries[2],
       murphy2: entries[3]
+    },
+    todos : {
+      cody1: todos[0],
+      murphy1: todos[1],
+      cody2: todos[2],
+      murphy2: todos[3]
     }
   }
 }

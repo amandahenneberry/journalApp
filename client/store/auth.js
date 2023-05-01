@@ -45,6 +45,7 @@ export const fetchEntry = (entryId) => async dispatch => {
   }
 }
 
+
 export const deleteEntry = (entryId) => async dispatch => {
   try{
     const { data: entry } = await axios.delete(`/auth/me/entries/${entryId}`);

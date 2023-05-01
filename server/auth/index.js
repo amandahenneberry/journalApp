@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: {User, Entry}} = require('../db')
+const { models: {User, Entry, ToDos}} = require('../db')
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
@@ -43,6 +43,16 @@ router.get('/me/entries/:entryId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/me/todos/:todoId', async (req, res, next) => {
+  try {
+    const todo = await ToDos.findByPk(req.params.entryId)
+    res.send(todo)
+  } catch (err) {
+    next(err)
+  }
+})
+
 
 router.delete('/me/entries/:entryId', async (req, res, next) => {
   try {
