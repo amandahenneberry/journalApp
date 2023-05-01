@@ -21,7 +21,11 @@ export const EntryMap = ({ entries, onEntryClick }) => {
     return (
         <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
         {
-          entries.map(entry => (
+          entries
+          .sort((a,b) => {
+            return new Date(a.date) - new Date(b.date)
+          })
+          .map(entry => (
             <div key={entry.id} >
               <Row>
                     <small>{entry.date}</small>
