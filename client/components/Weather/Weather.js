@@ -23,7 +23,7 @@ const Weather = (props) => {
         <h1>{temperature}ºF</h1>
         {/* <h2>{weather}</h2> */}
         <h5>
-          
+        <img width="50px" height="auto" src ={`https://openweathermap.org/img/wn/${icon}@2x.png`}/>
           <em>{description}</em>
         </h5>
         <h5>H:{high}º L:{low}º</h5>
