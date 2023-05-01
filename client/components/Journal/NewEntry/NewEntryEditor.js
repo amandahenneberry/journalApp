@@ -14,7 +14,7 @@ const moment = require('moment');
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
     const [submitted, setSubmitted] = useState(false)
-    const {username, id, cityName, weatherIcon} = props
+    const {id} = props
     //alerts
     const [showTitleAlert, setTitleAlert] = useState(false);
 
