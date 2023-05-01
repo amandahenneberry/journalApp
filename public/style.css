@@ -170,7 +170,7 @@ form div {
   margin-top: 325px;
   border-top: 3px solid;
   border-left: 2px solid;
-  border-image: linear-gradient(to bottom right,  #8f8e8ec3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
+  border-image: linear-gradient(to bottom right,  #ffffffc3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
   display: flex;
   width: 20%;
   position: static;
