@@ -4,6 +4,8 @@ import { NewEntryEditor  } from './Journal/NewEntry/NewEntryEditor';
 import Journal from './Journal/Journal';
 import { ToDos } from './ToDoList/ToDos';
 import { logout } from '../store';
+import axios from "axios";
+
 //bootstrap
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -17,14 +19,21 @@ import Tabs from 'react-bootstrap/Tabs';
 import { DateTime } from './DateTime';
 import  Weather  from './Weather/Weather'
 
+const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
+
 
 const Home = (props) =>{
   const {username, entries, handleClick} = props;
-  const [date,  setDate] = useState(new Date());
-  const [active, setActive] = useState(props.active || 'journal')
 
-  
-  
+//journal or 'to do'
+  const [active, setActive] = useState(props.active || 'journal');
+  const handleSelect = (tab) =>{
+    setActive(tab)
+  };
+
+  //date & time
+  const [date,  setDate] = useState(new Date());
+
   useEffect(() =>{
     const timer = setInterval(()=>setDate(new Date()), 1000)
     return function cleanup(){
@@ -32,9 +41,110 @@ const Home = (props) =>{
     }
 });
 
-const handleSelect = (tab) =>{
-  setActive(tab)
-}
+//weather
+const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  // const [weather, setWeather] = useState(" ");
+  const [temperature, setTemperature] = useState(0);
+  const [cityName, setCityName] = useState(" ");
+  const [description, setDescription] = useState(" ");
+  const [icon, setIcon] = useState(" ");
+  const [loadingWeather, setLoadingWeather]  = useState(true);
+  const [high, setHigh] = useState(0);
+  const [low, setLow] = useState(0);
+
+
+  const savePositionToState = (position) => {
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  };
+
+  const error =()=>{
+    console.log('error  retrieving location')
+  }
+
+  const options = {
+    enableHighAccuracy: true,
+    timeout: Infinity,
+    maximumAge: 0,
+  };
+
+  const fetchLocation = async () => {
+    try {
+      await window.navigator.geolocation.getCurrentPosition(
+        savePositionToState, error, options);
+        if(latitude && longitude){
+            const res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${apiKey}
+        `);
+        setCityName(res.data[0].local_names.en);
+        console.log(res.data)
+        }
+        
+    } catch (err) {
+      console.error('error fetching loaction');
+    }
+  };
+
+  const fetchWeather = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+      );
+      setTemperature(res.data.main.temp);
+      // setWeather(res.data.weather[0].main);
+      setDescription(res.data.weather[0].description);
+      setIcon(res.data.weather[0].icon);
+      setHigh(res.data.main.temp_max)
+      setLow(res.data.main.temp_min)
+      console.log(res.data);
+    } catch (err) {
+      console.error('error fetching weather data');
+    }
+  };
+
+  
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    try{
+      fetchLocation(), {
+        signal: controller.signal
+      }
+     
+    }  catch(err){
+      console.log('error fetching location')
+    };
+
+    return () => controller?.abort();
+
+ 
+  }, [latitude, longitude]);
+
+  useEffect(()=>{
+    const controller = new AbortController();
+    try{
+      fetchWeather(), {
+        
+      }
+    } catch(err){
+      console.log('error fetching weather data')
+    };
+
+    return () => controller?.abort();
+   
+  },[cityName])
+
+  useEffect(()=>{
+    
+    if(cityName !== " " && description !== " "  && icon  !== " "){
+      setLoadingWeather(false)
+    }
+
+  },[cityName])
+
+
+
 return (
   <Container fluid className="vertical-center">
     <Row>
@@ -75,7 +185,7 @@ return (
     </Col>
     <Col>
     <div className="weatherContainer">
-      <Weather />
+      <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
     </div>
     </Col>
     </Row>

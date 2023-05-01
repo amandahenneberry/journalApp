@@ -29,6 +29,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
           {sortBy === false ? (
             <div>
             <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by newest</Button>
+            <Dropdown.Divider />
              {
               entries
               .sort((a,b) => {
@@ -40,7 +41,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
                         <small>{entry.date}</small>
                         <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
                         <div className="vr"></div>
-                        {entry.title.slice(0, 12)}...
+                        {entry.title.slice(0, 20)}...
                       </Button>
                     </Row>
                     <Dropdown.Divider />
@@ -51,6 +52,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
           ) : (
             <div>
             <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by oldest</Button>
+            <Dropdown.Divider />
             {
               entries
               .sort((a,b) => {
@@ -63,7 +65,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
                         <small>{entry.date}</small>
                         <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
                         <div className="vr"></div>
-                        {entry.title.slice(0, 12)}...
+                        {entry.title.slice(0, 20)}...
                       </Button>
                     </Row>
                     <Dropdown.Divider />

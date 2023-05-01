@@ -15,6 +15,7 @@ class SingleEntry extends Component{
        this.props.loadEntry(this.props.entryId);
 
     }
+    
 
     render(){
         const entry = this.props.entry || [];
@@ -27,9 +28,11 @@ class SingleEntry extends Component{
         return(
             <div>
             <Modal.Header closeButton>
-                <span> 
-                <div>{entry.title}</div>
-                </span>
+                <span>
+                    <h3>{entry.title}</h3>
+                    <p><small>{date}</small></p>
+                    </span>
+                
             </Modal.Header>
             <Modal.Body>
                 <p>{content}</p>
@@ -39,7 +42,6 @@ class SingleEntry extends Component{
                  <Button variant="primary" type='button' onClick={handleDelete}>
                Delete Entry
              </Button>
-             <p>{date}</p>
            </Modal.Footer>
            </div>
         )
