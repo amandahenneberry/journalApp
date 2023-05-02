@@ -52,7 +52,7 @@ export const fetchTodo = (todoId) => async dispatch  =>{
   try{
     const res = await axios.get(`/auth/me/todos/${todoId}`);
     dispatch(setTodo(res.data));
-    return history.push('/');
+    // return history.push('/');
   }catch(error){
     console.log('error fetching single todo')
   }
@@ -110,7 +110,7 @@ export default function(state ={}, action) {
     case SET_TODO:
       return {...state, todo: action.todo}
     case POST_TODO:
-     return {...state, todos: action.todo}
+     return {...state, todos: [...state.todos, action.todo]}
     // case POST_ENTRY:
     //   return [...state, action.newEntry]
     case DELETE_ENTRY:
