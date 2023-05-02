@@ -143,6 +143,32 @@ const [latitude, setLatitude] = useState(0);
 
   },[cityName])
 
+  //To Dos
+  const [newTask, setNewTask] = useState({});
+   
+    const handleChangeTask = ({ target }) => {
+        const { name, value } = target;
+        setNewTask((prev) => ({ ...prev, id: Date.now(), [name]: value }));
+    };
+
+    const [allTasks, setAllTasks] = useState([]);
+    useEffect(()=>{
+      setAllTasks(todos)
+    }, [])
+    
+    const handleSubmitTasks = (event) => {
+    event.preventDefault();
+    if (!newTask.taskName) return;
+    setAllTasks((prev) => [newTask, ...prev]);
+    setNewTask({});
+    };
+
+  const handleDeleteTask = (taskIdToRemove) => {
+    setAllTasks((prev) => prev.filter(
+      (task) => task.id !== taskIdToRemove
+    ));
+  };
+
 
 
 return (
@@ -176,7 +202,7 @@ return (
       
       <Tab eventKey="toDos" title="To-Do List">
       <div className='ToDoBg'> 
-      <ToDos todos={todos}/>
+      <ToDos todos={todos} handleChange={handleChangeTask} handleDelete={handleDeleteTask} handleSubmit={handleSubmitTasks} newTask={newTask} allTasks={allTasks}/>
       </div>
       </Tab>  
       
