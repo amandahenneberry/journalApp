@@ -2,30 +2,28 @@ import React, { useState, useEffect } from "react";
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
-import { fetchTodo, postTodoThunk } from "../../store";
-import {connect} from 'react-redux'
+// import { fetchTodo, postTodoThunk } from "../../store";
+// import {connect} from 'react-redux'
 
-export const ToDos = ({ createTodo, todos }) =>{
+export const ToDos = ({ todos }) =>{
 
     const [newTask, setNewTask] = useState({});
    
     const handleChange = ({ target }) => {
         const { name, value } = target;
-        setNewTask((prev) => ({ ...prev, [name]: value }));
+        setNewTask((prev) => ({ ...prev, id: Date.now(), [name]: value }));
     };
 
     const [allTasks, setAllTasks] = useState([]);
     useEffect(()=>{
       setAllTasks(todos)
-    })
+    }, [])
     
     const handleSubmit = (event) => {
-      const {createTodo} = props
 
     event.preventDefault();
     if (!newTask.taskName) return;
-    // setAllTasks((prev) => [newTask, ...prev]);
-    createTodo(newTask)
+    setAllTasks((prev) => [newTask, ...prev]);
     setNewTask({});
     };
 
@@ -48,11 +46,11 @@ export const ToDos = ({ createTodo, todos }) =>{
     )
 }
 
-const mapDispatch = (dispatch) =>{
-  return{
-    createTodo: (todo) => dispatch(postTodoThunk(todo))
+// const mapDispatch = (dispatch) =>{
+//   return{
+//     createTodo: (todo) => dispatch(postTodoThunk(todo))
 
-  }
-}
+//   }
+// }
 
-export default connect(null, mapDispatch)(ToDos)
+// export default connect(null, mapDispatch)(ToDos)
