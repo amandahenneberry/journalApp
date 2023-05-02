@@ -8,13 +8,13 @@ import Stack from 'react-bootstrap/Stack';
 export default function AllTasks({ allTasks, handleDelete }) {
   return (
     <ul>
-      {allTasks.map(({ title, description, id }) => (
-        <li key={id}>
+      {allTasks.map((todo) => (
+        <li key={todo.id}>
           <Stack gap={0}>
           <Row>
-            <p>{title} <Button size='sm' variant='outline-primary' style={{fontSize: '10px'}} onClick={() => handleDelete(id)}>x</Button></p>
+            <p>{todo.taskName} <Button size='sm' variant='outline-primary' style={{fontSize: '10px'}} onClick={() => handleDelete(todo.id)}>x</Button></p>
           
-          <small>{!description ? null : <p style={{color: 'gray'}}>{description}</p>}</small>
+          <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
           </Row>
           </Stack>
           

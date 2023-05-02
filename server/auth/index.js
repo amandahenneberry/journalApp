@@ -53,6 +53,15 @@ router.get('/me/todos/:todoId', async (req, res, next) => {
   }
 })
 
+router.post('/me/todos', async (req, res, next) => {
+  try {
+    const todo = await ToDos.create(req.body)
+    res.status(201).send(todo)
+  } catch (err) {
+    next(err)
+  }
+})
+
 
 router.delete('/me/entries/:entryId', async (req, res, next) => {
   try {

@@ -6,10 +6,12 @@ const TOKEN = 'token'
 /**
  * ACTION TYPES
  */
-const SET_AUTH = 'SET_AUTH'
-const SET_ENTRY = 'SET_ENTRY'
+const SET_AUTH = 'SET_AUTH';
+const SET_ENTRY = 'SET_ENTRY';
 // const POST_ENTRY = 'POST_ENTRY'
-const DELETE_ENTRY = 'DELETE_ENTRY'
+const DELETE_ENTRY = 'DELETE_ENTRY';
+const SET_TODO = 'SET_TODO';
+const POST_TODO = 'POST_TODO';
 
 
 /**
@@ -18,8 +20,9 @@ const DELETE_ENTRY = 'DELETE_ENTRY'
 const setAuth = auth => ({type: SET_AUTH, auth})
 const setEntry = entry => ({type: SET_ENTRY, entry})
 // const postNewEntry = newEntry =>({type: POST_ENTRY, newEntry})
-const removeEntry = entryId => ({type: DELETE_ENTRY, entryId})
-
+const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
+const setTodo = todoId => ({type: SET_TODO, todoId});
+const postTodo = todo => ({type: POST_TODO, todo})
 /**
  * THUNK CREATORS
  */
@@ -42,6 +45,25 @@ export const fetchEntry = (entryId) => async dispatch => {
     return dispatch(setEntry(res.data))
   } catch (error) {
     console.log('error getting entry')
+  }
+}
+
+export const fetchTodo = (todoId) => async dispatch  =>{
+  try{
+    const res = await axios.get(`/auth/me/todos/${todoId}`);
+    dispatch(setTodo(res.data));
+    return history.push('/');
+  }catch(error){
+    console.log('error fetching single todo')
+  }
+}
+
+export const postTodoThunk = (todo) => async dispatch =>{
+  try{
+    const { data: created } = await axios.post(`auth/me/todos`, todo)
+    dispatch(postTodo(created));
+  }catch(error){
+    console.log('error posting todo')
   }
 }
 
@@ -85,6 +107,10 @@ export default function(state ={}, action) {
       return action.auth
     case SET_ENTRY:
       return {...state, entry: action.entry}
+    case SET_TODO:
+      return {...state, todo: action.todo}
+    case POST_TODO:
+     return {...state, todos: action.todo}
     // case POST_ENTRY:
     //   return [...state, action.newEntry]
     case DELETE_ENTRY:

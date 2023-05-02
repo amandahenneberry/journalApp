@@ -23,7 +23,7 @@ const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
 
 
 const Home = (props) =>{
-  const {username, entries, handleClick} = props;
+  const {username, entries, todos, handleClick} = props;
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active || 'journal');
@@ -176,7 +176,7 @@ return (
       
       <Tab eventKey="toDos" title="To-Do List">
       <div className='ToDoBg'> 
-      <ToDos />
+      <ToDos todos={todos}/>
       </div>
       </Tab>  
       
@@ -201,7 +201,8 @@ const mapState = state => {
     username: state.auth.username,
     id: state.auth.id,
     entries: state.auth.entries,
-    toDoList: state.auth.toDoList
+    toDoList: state.auth.toDoList,
+    todos: state.auth.todos
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
@@ -6,15 +6,18 @@ import Form from 'react-bootstrap/Form';
 
 
 
-export const ToDos = () =>{
+export const ToDos = ({todos}) =>{
     const [newTask, setNewTask] = useState({});
-
+   
     const handleChange = ({ target }) => {
         const { name, value } = target;
         setNewTask((prev) => ({ ...prev, id: Date.now(), [name]: value }));
     };
 
     const [allTasks, setAllTasks] = useState([]);
+    useEffect(()=>{
+      setAllTasks(todos)
+    })
     
     const handleSubmit = (event) => {
     event.preventDefault();
