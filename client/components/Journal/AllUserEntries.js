@@ -31,9 +31,9 @@ export const AllUserEntries = (props) => {
   useEffect(()=>console.log(`entry state: ${entry}`, [entry]), [entry])
 
 
-  let entries = props.entries;
-
+  const entries = props.entries;
   const username = props.username;
+  
     return (
       <div>   
         {entry.length <= 0? (

@@ -5,6 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { FloatingLabel, Modal } from 'react-bootstrap';
+import { postEntryThunk } from '../../../store/auth';
+import { useDispatch } from 'react-redux';
+
 const moment = require('moment');
 
 
@@ -14,6 +17,7 @@ const moment = require('moment');
 const NewEntryEditor = props =>{
     const [entry, setEntry] = useState({})
     const [submitted, setSubmitted] = useState(false)
+    const dispatch = useDispatch();
     const {id} = props
     //alerts
     const [showTitleAlert, setTitleAlert] = useState(false);
@@ -54,7 +58,8 @@ const NewEntryEditor = props =>{
 
     const submitEntry = () =>{
         // axios.post(`/api/entries`, entry)
-        axios.post(`/auth/me/entries`, entry)
+        // axios.post(`/auth/me/entries`, entry)
+        dispatch(postEntryThunk(entry))
 
     }
 

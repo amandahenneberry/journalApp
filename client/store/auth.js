@@ -71,6 +71,8 @@ export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
     dispatch(postNewEntry(created));
+    dispatch(me());
+    return history.push('/')
   }catch(error){
     console.log('error posting todo')
   }
@@ -121,7 +123,7 @@ export default function(state ={}, action) {
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
     case POST_ENTRY:
-      return {...state, entries:[...state.entries, action.newEntry]}
+      return {...state, entries: [...state.entries, action.newEntry]}
     case DELETE_ENTRY:
       return { entries: state.entries.filter((entry) => entry !== action.entry)}
     default:
