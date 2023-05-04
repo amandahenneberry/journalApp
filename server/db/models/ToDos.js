@@ -13,6 +13,10 @@ const ToDos = db.define('todos', {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
+    },
+    completed: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
   });
   
