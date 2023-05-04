@@ -8,7 +8,7 @@ const TOKEN = 'token'
  */
 const SET_AUTH = 'SET_AUTH';
 const SET_ENTRY = 'SET_ENTRY';
-// const POST_ENTRY = 'POST_ENTRY'
+const POST_ENTRY = 'POST_ENTRY'
 const DELETE_ENTRY = 'DELETE_ENTRY';
 const SET_TODO = 'SET_TODO';
 const POST_TODO = 'POST_TODO';
@@ -19,14 +19,14 @@ const POST_TODO = 'POST_TODO';
  */
 const setAuth = auth => ({type: SET_AUTH, auth})
 const setEntry = entry => ({type: SET_ENTRY, entry})
-// const postNewEntry = newEntry =>({type: POST_ENTRY, newEntry})
+const postNewEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
 const setTodo = todoId => ({type: SET_TODO, todoId});
 const postTodo = todo => ({type: POST_TODO, todo})
+
 /**
  * THUNK CREATORS
  */
-
 export const me = () => async dispatch => {
   const token = window.localStorage.getItem(TOKEN)
   if (token) {
@@ -62,6 +62,15 @@ export const postTodoThunk = (todo) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/todos`, todo)
     dispatch(postTodo(created));
+  }catch(error){
+    console.log('error posting todo')
+  }
+}
+
+export const postEntryThunk = (entry) => async dispatch =>{
+  try{
+    const { data: created } = await axios.post(`auth/me/entries`, entry)
+    dispatch(postNewEntry(created));
   }catch(error){
     console.log('error posting todo')
   }
@@ -111,8 +120,8 @@ export default function(state ={}, action) {
       return {...state, todo: action.todo}
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
-    // case POST_ENTRY:
-    //   return [...state, action.newEntry]
+    case POST_ENTRY:
+      return {...state, entries:[...state.entries, action.newEntry]}
     case DELETE_ENTRY:
       return { entries: state.entries.filter((entry) => entry !== action.entry)}
     default:

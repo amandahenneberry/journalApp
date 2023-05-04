@@ -53,7 +53,9 @@ const NewEntryEditor = props =>{
     };
 
     const submitEntry = () =>{
-        axios.post(`/api/entries`, entry)
+        // axios.post(`/api/entries`, entry)
+        axios.post(`/auth/me/entries`, entry)
+
     }
 
     const handleSubmit = (evt) =>{
