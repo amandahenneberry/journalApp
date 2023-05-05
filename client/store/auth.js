@@ -62,7 +62,6 @@ export const postTodoThunk = (todo) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/todos`, todo)
     dispatch(postTodo(created));
-    window.location.reload();
   }catch(error){
     console.log('error posting todo')
   }
@@ -73,9 +72,11 @@ export const postEntryThunk = (entry) => async dispatch =>{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
     dispatch(postEntry(created));
     dispatch(me());
+    window.location.reload();
+
     // return history.push('/')
   }catch(error){
-    console.log('error posting todo')
+    console.log('error posting new entry')
   }
 }
 
