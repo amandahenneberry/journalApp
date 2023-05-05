@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import  NewEntryEditor   from './NewEntry/NewEntryEditor';
 import { AllUserEntries } from './AllUserEntries';
@@ -18,6 +18,11 @@ import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
   const [toggle, setToggle] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [allEntries, setEntries] = useState([])
+
+  useEffect(()=>{
+    setEntries(entries)
+  })
 
     return (
       <div>
@@ -51,7 +56,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
           <div className='newEntry'>
             <Nav>
             <Stack direction='horizontal'>
-            <AllUserEntries username={username} entries = {entries} />
+            <AllUserEntries username={username} entries = {allEntries} />
               <Alert_NewEntry show={showAlert} variant='link'>
                 Home
               </Alert_NewEntry>
@@ -60,7 +65,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
           </Button> 
           </Stack>
             </Nav>
-            <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon}/>
+            <NewEntryEditor username = {username} entries = {allEntries} cityName={cityName} weatherIcon={weatherIcon}/>
             <br/>
           </div>
         )}

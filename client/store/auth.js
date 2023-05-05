@@ -19,7 +19,7 @@ const POST_TODO = 'POST_TODO';
  */
 const setAuth = auth => ({type: SET_AUTH, auth})
 const setEntry = entry => ({type: SET_ENTRY, entry})
-const postNewEntry = entry =>({type: POST_ENTRY, entry})
+const postEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
 const setTodo = todoId => ({type: SET_TODO, todoId});
 const postTodo = todo => ({type: POST_TODO, todo})
@@ -70,9 +70,9 @@ export const postTodoThunk = (todo) => async dispatch =>{
 export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
-    dispatch(postNewEntry(created));
+    dispatch(postEntry(created));
     dispatch(me());
-    return history.push('/')
+    // return history.push('/')
   }catch(error){
     console.log('error posting todo')
   }
