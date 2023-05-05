@@ -62,6 +62,7 @@ export const postTodoThunk = (todo) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/todos`, todo)
     dispatch(postTodo(created));
+    window.location.reload();
   }catch(error){
     console.log('error posting todo')
   }
