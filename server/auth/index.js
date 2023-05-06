@@ -83,3 +83,13 @@ router.post('/me/entries', async (req, res, next) => {
   }
 })
 
+router.delete('/me/todos/:todoId', async (req, res, next) => {
+  try {
+    const todo = await ToDos.findByPk(req.params.todoId)
+    await todo.destroy();
+    res.json(todo)
+  } catch (err) {
+    next(err)
+  }
+})
+

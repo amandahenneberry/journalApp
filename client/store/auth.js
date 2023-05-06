@@ -12,6 +12,7 @@ const POST_ENTRY = 'POST_ENTRY'
 const DELETE_ENTRY = 'DELETE_ENTRY';
 const SET_TODO = 'SET_TODO';
 const POST_TODO = 'POST_TODO';
+const DELETE_TODO = 'DELETE_TODO'
 
 
 /**
@@ -23,6 +24,7 @@ const postEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
 const setTodo = todoId => ({type: SET_TODO, todoId});
 const postTodo = todo => ({type: POST_TODO, todo})
+const removeTodo = todoId => ({type: DELETE_TODO, todoId})
 
 /**
  * THUNK CREATORS
@@ -87,7 +89,17 @@ export const deleteEntry = (entryId) => async dispatch => {
     dispatch(removeEntry(entry));
     dispatch(me());
   } catch (err){
-    console.log('error in deleteThunk')
+    console.log('error in entry deleteThunk')
+  } 
+}
+
+export const deleteTodo = (todoId) => async dispatch => {
+  try{
+    const { data: todo } = await axios.delete(`/auth/me/todos/${todoId}`);
+    dispatch(removeTodo(todo));
+    dispatch(me());
+  } catch (err){
+    console.log('error in todo deleteThunk')
   } 
 }
 
@@ -128,6 +140,8 @@ export default function(state ={}, action) {
       return {...state, entries: [...state.entries, action.newEntry]}
     case DELETE_ENTRY:
       return { entries: state.entries.filter((entry) => entry !== action.entry)}
+    case DELETE_TODO:
+      return { todos: state.todos.filter((todo) => todo !== action.todo)}
     default:
       return state
   }
