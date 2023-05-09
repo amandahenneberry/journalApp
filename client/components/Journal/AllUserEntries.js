@@ -18,7 +18,6 @@ export const AllUserEntries = (props) => {
     dispatch(deleteEntry([entry]));
   }
 
-
   const onEntryClick = (entry) =>{
    setEntry(() => {
     return [entry]
@@ -28,7 +27,7 @@ export const AllUserEntries = (props) => {
   })
   }
 
-  useEffect(()=>console.log(`entry state: ${entry}`, [entry]), [entry])
+  useEffect(()=>console.log(`SINGLE entry state: ${entry}`, [entry]), [entry])
 
 
   const entries = props.entries;

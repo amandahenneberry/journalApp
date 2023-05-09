@@ -41,10 +41,29 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
-    return dispatch (setAuth(res.data))
+    // return dispatch (setAuth(res.data))
     // dispatch (setEntries(res.data.entries))
+    dispatch (setAuth(res.data));
+    // dispatch(setEntries(res.data.entries));
+    return 
   }
 }
+
+// export const fetchEntries = () => async dispatch =>{
+//   try{
+//     const token = window.localStorage.getItem(TOKEN)
+//     if (token) {
+//       const res = await axios.get('/auth/me', {
+//         headers: {
+//           authorization: token
+//         }
+//       })
+//    return dispatch(setEntries(res.data.entries))
+//     }
+//   }catch(err){
+//     console.log('error fetching entries')
+//   }
+// }
 
 export const fetchEntry = (entryId) => async dispatch => {
   try {
@@ -78,6 +97,8 @@ export const postTodoThunk = (todo) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/todos`, todo)
     dispatch(postTodo(created));
+    dispatch(me());
+    return
   }catch(error){
     console.log('error posting todo')
   }
@@ -87,8 +108,9 @@ export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
     dispatch(postEntry(created));
-    dispatch(me());
-    window.location.reload();
+    return dispatch(me())
+    // return fetchEntries();
+    // window.location.reload();
 
     // return history.push('/')
   }catch(error){
