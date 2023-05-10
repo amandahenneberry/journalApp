@@ -13,7 +13,6 @@ import Row from 'react-bootstrap/Row';
 
 export const EntryMap = ({ entries, onEntryClick }) => {
   const [sortBy, setSortBy] = useState(false)
-  const allEntries = [...useSelector(state => state.auth.entries)]
 
     const handleClick = ({ target }) => {
         const entry = target.value;
@@ -33,7 +32,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
             <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by newest</Button>
             <Dropdown.Divider />
              {
-              allEntries
+              entries
               .sort((a,b) => {
                 return new Date(a.date) - new Date(b.date)
               })
@@ -56,7 +55,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
             <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by oldest</Button>
             <Dropdown.Divider />
             {
-              allEntries
+              entries
               .sort((a,b) => {
                 return new Date(a.date) - new Date(b.date)
               })

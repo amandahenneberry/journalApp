@@ -89,7 +89,7 @@ const mapState = state => {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
     id: state.auth.id,
-    entries: state.auth.entries,
+    // entries: state.auth.entries,
   }
 }
 

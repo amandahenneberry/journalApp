@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
+import {connect, useSelector} from 'react-redux'
 import { NewEntryEditor  } from './Journal/NewEntry/NewEntryEditor';
 import Journal from './Journal/Journal';
 import { ToDos } from './ToDoList/ToDos';
@@ -23,7 +23,9 @@ const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
 
 
 const Home = (props) =>{
-  const {username, entries, todos, handleClick} = props;
+  const {username, todos, handleClick} = props;
+  const entries = useSelector(state => state.auth.entries);
+
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active || 'journal');
@@ -226,7 +228,7 @@ const mapState = state => {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
     id: state.auth.id,
-    entries: state.auth.entries,
+    // entries: state.auth.entries,
     toDoList: state.auth.toDoList,
     todos: state.auth.todos
   }

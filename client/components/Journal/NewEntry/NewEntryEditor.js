@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { FloatingLabel, Modal } from 'react-bootstrap';
 import { postEntryThunk } from '../../../store/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 const moment = require('moment');
 
@@ -15,7 +15,7 @@ const moment = require('moment');
 //for 'upload photo'
 
 const NewEntryEditor = props =>{
-    const [entry, setEntry] = useState({})
+    const [newEntry, setNewEntry] = useState({});
     const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch();
     const {id} = props
@@ -31,16 +31,16 @@ const NewEntryEditor = props =>{
     const handleChange = ({ target }) => {
         const {id, cityName, weatherIcon} = props;
         const { name, value } = target;
-        const title= entry.title;
+        const title= newEntry.title;
         const today = moment().format("YYYY-MM-DD")
-        if(!entry.date){
-            setEntry((prev) => ({
+        if(!newEntry.date){
+            setNewEntry((prev) => ({
                 ...prev,
                 date: today.toString()
               }));   
         }
         
-        setEntry((prev) => ({
+        setNewEntry((prev) => ({
           ...prev,
           userId: id,
           [name]: value,
@@ -59,15 +59,16 @@ const NewEntryEditor = props =>{
     const submitEntry = () =>{
         // axios.post(`/api/entries`, entry)
         // axios.post(`/auth/me/entries`, entry)
-        dispatch(postEntryThunk(entry))
+        dispatch(postEntryThunk(newEntry))
 
     }
 
     const handleSubmit = (evt) =>{
         evt.preventDefault();
         setSubmitted(true);
-        console.log('new entry: '+entry.content)
+        console.log('new entry: '+newEntry.content)
         submitEntry();
+        setNewEntry({});
     }
 
     //image
@@ -85,7 +86,7 @@ const NewEntryEditor = props =>{
     const handleRemovePhoto=()=>{
         setSelectedImage(null);
         // handleChange(entry.photo = '')
-        setEntry((prev) =>({
+        setNewEntry((prev) =>({
             ...prev,
             photo: ''
         }));
@@ -101,15 +102,15 @@ const NewEntryEditor = props =>{
                 <Stack gap={1}>
                 <Stack direction='horizontal' className='d-flex align-items-center justify-content-center text-center not-found-container'>
                     <Form.Group className="mb-3" controlId="date">
-                        <Form.Control type="date" name="date" value={entry.date || moment().format("YYYY-MM-DD")} onChange={handleChange} />
+                        <Form.Control type="date" name="date" value={newEntry.date || moment().format("YYYY-MM-DD")} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="title">
-                        <Form.Control type="text" name="title" value={entry.title || ' '} onChange={handleChange} placeholder='Title'/>
+                        <Form.Control type="text" name="title" value={newEntry.title || ' '} onChange={handleChange} placeholder='Title'/>
                      {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')}
                     </Form.Group>
                 </Stack>
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={12} name="content" value={entry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
+                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
                 </Form.Group>
                 <div>
                     {photoAdded ? (
@@ -120,7 +121,7 @@ const NewEntryEditor = props =>{
                         </Stack>
                         ) : (
                         <Form.Group controlId="formFileSm">
-                            <Form.Control type="file" name="photo" value={entry.photo || ''}  onChange={handlePhoto} />
+                            <Form.Control type="file" name="photo" value={newEntry.photo || ''}  onChange={handlePhoto} />
                                 {selectedImage && (
                                     <div>
                                         <Stack direction='horizontal'>
