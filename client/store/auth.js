@@ -42,7 +42,7 @@ export const me = () => async dispatch => {
       }
     })
     // return dispatch (setAuth(res.data))
-    // dispatch (setEntries(res.data.entries))
+    dispatch (setEntries(res.data.entries))
     dispatch (setAuth(res.data));
     // dispatch(setEntries(res.data.entries));
     return 
@@ -108,7 +108,8 @@ export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
     dispatch(postEntry(created));
-    return dispatch(me())
+    // dispatch(setEntries(entry));
+    dispatch(me());    // dispatch(me());
     // return fetchEntries();
     // window.location.reload();
 
