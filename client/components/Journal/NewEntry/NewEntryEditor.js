@@ -18,7 +18,7 @@ const NewEntryEditor = props =>{
     const [newEntry, setNewEntry] = useState({});
     const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch();
-    const {id} = props
+    const {id, setToggle, toggle} = props
     //alerts
     const [showTitleAlert, setTitleAlert] = useState(false);
 
@@ -154,7 +154,7 @@ const NewEntryEditor = props =>{
             <div>
                 New Entry Submitted!
                 <div>
-                <Button variant="outline-secondary"  onClick={()=>window.location.reload()}>Return Home</Button>
+                <Button variant="outline-secondary"  onClick={()=> setToggle(!toggle)}>Return Home</Button>
 
                 </div>
             </div>

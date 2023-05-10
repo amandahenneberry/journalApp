@@ -65,7 +65,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
           </Button> 
           </Stack>
             </Nav>
-            <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon}/>
+            <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon} toggle={toggle} setToggle={setToggle}/>
             <br/>
           </div>
         )}
