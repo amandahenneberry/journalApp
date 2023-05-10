@@ -107,10 +107,11 @@ export const postTodoThunk = (todo) => async dispatch =>{
 export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
-    dispatch(postEntry(created));
-    // dispatch(setEntries(entry));
-    dispatch(me());    // dispatch(me());
-    // return fetchEntries();
+    // const newEntry = created.data;
+    const action = postEntry(created);
+    dispatch(action)
+
+    // dispatch(me()); 
     // window.location.reload();
 
     // return history.push('/')
@@ -177,7 +178,7 @@ export default function(state ={ entries : []}, action) {
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
     case POST_ENTRY:
-      return {...state, entries: [...state.entries, action.newEntry]}
+      return {...state, entries: [...state.entries, action.entry]}
     case DELETE_ENTRY:
       return { entries: state.entries.filter((entry) => entry !== action.entry)}
     case DELETE_TODO:
