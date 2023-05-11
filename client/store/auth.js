@@ -8,10 +8,11 @@ const TOKEN = 'token'
  */
 const SET_AUTH = 'SET_AUTH';
 const SET_ENTRY = 'SET_ENTRY';
-const SET_ENTRIES = 'SET_ENTRIES'
+// const SET_ENTRIES = 'SET_ENTRIES'
 const POST_ENTRY = 'POST_ENTRY'
 const DELETE_ENTRY = 'DELETE_ENTRY';
-const SET_TODO = 'SET_TODO';
+// const SET_TODO = 'SET_TODO';
+// const SET_TODOS = 'SET_TODOS';
 const POST_TODO = 'POST_TODO';
 const DELETE_TODO = 'DELETE_TODO'
 
@@ -21,10 +22,11 @@ const DELETE_TODO = 'DELETE_TODO'
  */
 const setAuth = auth => ({type: SET_AUTH, auth})
 const setEntry = entry => ({type: SET_ENTRY, entry})
-const setEntries = entries =>({type: SET_ENTRIES, entries})
+// const setEntries = entries =>({type: SET_ENTRIES, entries})
 const postEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
-const setTodo = todoId => ({type: SET_TODO, todoId});
+// const setTodo = todoId => ({type: SET_TODO, todoId});
+// const setTodos = todos => ({type: SET_TODOS, todos});
 const postTodo = todo => ({type: POST_TODO, todo})
 const removeTodo = todoId => ({type: DELETE_TODO, todoId})
 
@@ -41,29 +43,11 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
-    // return dispatch (setAuth(res.data))
-    dispatch (setEntries(res.data.entries))
     dispatch (setAuth(res.data));
-    // dispatch(setEntries(res.data.entries));
-    return 
+
+    // return 
   }
 }
-
-// export const fetchEntries = () => async dispatch =>{
-//   try{
-//     const token = window.localStorage.getItem(TOKEN)
-//     if (token) {
-//       const res = await axios.get('/auth/me', {
-//         headers: {
-//           authorization: token
-//         }
-//       })
-//    return dispatch(setEntries(res.data.entries))
-//     }
-//   }catch(err){
-//     console.log('error fetching entries')
-//   }
-// }
 
 export const fetchEntry = (entryId) => async dispatch => {
   try {
@@ -74,31 +58,11 @@ export const fetchEntry = (entryId) => async dispatch => {
   }
 }
 
-// export const fetchEntries = (userId) => async dispatch  => {
-//   try{
-//     const res = await axios.get(`/auth/${userId}/entries`);
-//     return dispatch({setEntries(res.data)})
-//   }catch(error){
-//     console.log('error fetching  entries')
-//   }
-// }
-
-export const fetchTodo = (todoId) => async dispatch  =>{
-  try{
-    const res = await axios.get(`/auth/me/todos/${todoId}`);
-    dispatch(setTodo(res.data));
-    // return history.push('/');
-  }catch(error){
-    console.log('error fetching single todo')
-  }
-}
-
 export const postTodoThunk = (todo) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/todos`, todo)
-    dispatch(postTodo(created));
-    dispatch(me());
-    return
+    const action = postTodo(created);
+    dispatch(action);
   }catch(error){
     console.log('error posting todo')
   }
@@ -107,14 +71,8 @@ export const postTodoThunk = (todo) => async dispatch =>{
 export const postEntryThunk = (entry) => async dispatch =>{
   try{
     const { data: created } = await axios.post(`auth/me/entries`, entry)
-    // const newEntry = created.data;
     const action = postEntry(created);
     dispatch(action)
-
-    // dispatch(me()); 
-    // window.location.reload();
-
-    // return history.push('/')
   }catch(error){
     console.log('error posting new entry')
   }
@@ -164,17 +122,18 @@ export const logout = () => {
 /**
  * REDUCER
  */
-export default function(state ={ entries : []}, action) {
+export default function(state ={ entries : [], todos: []}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth
     case SET_ENTRY:
       return {...state, entry: action.entry}
-    case SET_ENTRIES:{
-      return {...state, entries: [...state.entries, action.entries]}
-    }
-    case SET_TODO:
-      return {...state, todo: action.todo}
+    // case SET_ENTRIES:
+    //   return {...state, entries: [...state.entries, action.entries]}
+    // case SET_TODO:
+    // case SET_TODOS:
+    //   return {...state, todos: [...state.todos, action.todos]}
+    //   return {...state, todo: action.todo}
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
     case POST_ENTRY:

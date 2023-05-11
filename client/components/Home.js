@@ -5,6 +5,8 @@ import Journal from './Journal/Journal';
 import { ToDos } from './ToDoList/ToDos';
 import { logout } from '../store';
 import axios from "axios";
+import { useDispatch} from 'react-redux';
+
 
 //bootstrap
 import Container from 'react-bootstrap/Container';
@@ -23,9 +25,9 @@ const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
 
 
 const Home = (props) =>{
-  const {username, todos, handleClick} = props;
+  const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
-
+  const todos = useSelector(state => state.auth.todos);
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active || 'journal');
@@ -145,34 +147,6 @@ const [latitude, setLatitude] = useState(0);
 
   },[cityName])
 
-  //To Dos
-  const [newTask, setNewTask] = useState({});
-   
-    const handleChangeTask = ({ target }) => {
-        const { name, value } = target;
-        setNewTask((prev) => ({ ...prev, id: Date.now(), [name]: value }));
-    };
-
-    const [allTasks, setAllTasks] = useState([]);
-    useEffect(()=>{
-      setAllTasks(todos)
-    }, [])
-    
-    const handleSubmitTasks = (event) => {
-    event.preventDefault();
-    if (!newTask.taskName) return;
-    setAllTasks((prev) => [newTask, ...prev]);
-    setNewTask({});
-    };
-
-  const handleDeleteTask = (taskIdToRemove) => {
-    setAllTasks((prev) => prev.filter(
-      (task) => task.id !== taskIdToRemove
-    ));
-  };
-
-
-
 return (
   <Container fluid className="vertical-center">
     <Row>
@@ -204,7 +178,7 @@ return (
       
       <Tab eventKey="toDos" title="To-Do List">
       <div className='ToDoBg'> 
-      <ToDos todos={todos} handleChange={handleChangeTask} handleDelete={handleDeleteTask} handleSubmit={handleSubmitTasks} newTask={newTask} allTasks={allTasks}/>
+      <ToDos todos={todos} userId={id}/>
       </div>
       </Tab>  
       
@@ -229,8 +203,7 @@ const mapState = state => {
     username: state.auth.username,
     id: state.auth.id,
     // entries: state.auth.entries,
-    toDoList: state.auth.toDoList,
-    todos: state.auth.todos
+    // todos: state.auth.todos
   }
 }
 

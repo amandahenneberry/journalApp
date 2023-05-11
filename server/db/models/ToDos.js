@@ -10,7 +10,7 @@ const ToDos = db.define('todos', {
       type: Sequelize.STRING
     },
     id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     primaryKey: true,
     autoIncrement: true
     },

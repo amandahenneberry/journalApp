@@ -5,10 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 
 
-export default function AllTasks({ allTasks, handleDelete }) {
+export default function AllTasks({ todos, handleDelete }) {
   return (
     <ul>
-      {allTasks.map((todo) => (
+      {todos.map((todo) => (
         <li key={todo.id}>
           <Stack gap={0}>
           <Row>
