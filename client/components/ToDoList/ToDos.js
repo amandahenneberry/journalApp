@@ -7,10 +7,10 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
 import { postTodoThunk, deleteTodo } from "../../store";
 
-export const ToDos = ({ todos, userId }) =>{
+export const ToDos = ({ todos, userId, setActive }) =>{
   const [newTask, setNewTask] = useState({});
   const dispatch = useDispatch();
-
+  const [deleted, setDeleted] = useState(false)
    
   const handleChange = ({ target }) => {
       const { name, value } = target;
@@ -21,11 +21,6 @@ export const ToDos = ({ todos, userId }) =>{
       }));
   };
 
-  // const [allTasks, setAllTasks] = useState([]);
-  // useEffect(()=>{
-  //   setAllTasks(todos)
-  // }, [])
-  
   const handleSubmit= (event) => {
   event.preventDefault();
   if (!newTask.taskName) return;
@@ -35,11 +30,14 @@ export const ToDos = ({ todos, userId }) =>{
   };
 
 const handleDeleteTask = (taskIdToRemove) => {
-  // setAllTasks((prev) => prev.filter(
-  //   (task) => task.id !== taskIdToRemove
-  // ));
-  dispatch(deleteTodo(taskIdToRemove))
+  dispatch(deleteTodo(taskIdToRemove));
+  setDeleted(true)
+
 };
+
+useEffect(()=>{
+  setActive('toDos')
+}, [deleted])
     
 
     return(
