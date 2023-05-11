@@ -57,7 +57,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
             <Nav>
             <Stack direction='horizontal'>
             <AllUserEntries username={username} entries = {entries} />
-              <Alert_NewEntry show={showAlert} variant='link'>
+              <Alert_NewEntry show={showAlert} toggle={toggle} setToggle={setToggle} variant='link'>
                 Home
               </Alert_NewEntry>
             <Button type='button' variant='link' onClick={handleClick}>
