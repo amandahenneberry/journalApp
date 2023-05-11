@@ -83,7 +83,6 @@ export const deleteEntry = (entryId) => async dispatch => {
   try{
     const { data: entry } = await axios.delete(`/auth/me/entries/${entryId}`);
     dispatch(removeEntry(entry));
-    dispatch(me());
   } catch (err){
     console.log('error in entry deleteThunk')
   } 
@@ -93,7 +92,7 @@ export const deleteTodo = (todoId) => async dispatch => {
   try{
     const { data: todo } = await axios.delete(`/auth/me/todos/${todoId}`);
     dispatch(removeTodo(todo));
-    dispatch(me());
+    dispatch(me())
   } catch (err){
     console.log('error in todo deleteThunk')
   } 
