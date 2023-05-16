@@ -164,7 +164,6 @@ return (
       className="tabBar"
       activeKey={active}
       onSelect={handleSelect}
-
     >
       <Tab eventKey="journal" title="Journal">
       <center>

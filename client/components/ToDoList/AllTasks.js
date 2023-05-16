@@ -12,7 +12,7 @@ export default function AllTasks({ todos, handleDelete }) {
         <li key={todo.id}>
           <Stack gap={0}>
           <Row>
-            <p>{todo.taskName} <Button size='sm' variant='outline-primary' style={{fontSize: '10px'}} onClick={() => handleDelete(todo.id)}>x</Button></p>
+            <p>{todo.taskName} <Button size='sm' variant='outline-primary' style={{fontSize: '10px'}} onClick={(e) => handleDelete(todo.id, e)}>x</Button></p>
           
           <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
           </Row>

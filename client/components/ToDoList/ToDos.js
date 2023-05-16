@@ -29,16 +29,17 @@ export const ToDos = ({ todos, userId, setActive }) =>{
   setNewTask({});
   };
 
-const handleDeleteTask = (taskIdToRemove) => {
+const handleDeleteTask = (taskIdToRemove, event) => {
+  event.preventDefault();
   dispatch(deleteTodo(taskIdToRemove));
   setDeleted(true)
 
 };
 
-useEffect(()=>{
-  setActive('toDos')
-}, [deleted])
-    
+// useEffect(()=>{
+//   setActive('toDos')
+// }, [deleted]);
+
 
     return(
         <Form onSubmit={handleSubmit}>

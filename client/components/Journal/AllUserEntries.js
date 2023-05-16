@@ -3,7 +3,7 @@ import  { EntryMap } from './EntryMap'
 import  SingleEntry  from './SingleEntry'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { deleteEntry } from '../../store';
+import { me, deleteEntry } from '../../store';
 import { useDispatch } from 'react-redux';
 import history from '../../history';
 
@@ -15,7 +15,9 @@ export const AllUserEntries = (props) => {
 
   const handleClose = () => setShow(false);
   const handleDelete = () =>{
+    // event.preventDefault();
     dispatch(deleteEntry([entry]));
+    dispatch(me());
   }
 
   const onEntryClick = (entry) =>{

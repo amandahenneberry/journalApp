@@ -1,4 +1,9 @@
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
 module.exports = {
+  plugins: [
+		new NodePolyfillPlugin()
+	],
   entry: [
     './client/index.js'
   ],
@@ -24,5 +29,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ]
+  },
+  resolve: {
+    // ...
+    fallback: {
+      // 👇️👇️👇️ add this 👇️👇️👇️
+      "fs": false,
+      "os": false,
+      "path": false,
+    }
   }
 }

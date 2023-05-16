@@ -83,6 +83,7 @@ export const deleteEntry = (entryId) => async dispatch => {
   try{
     const { data: entry } = await axios.delete(`/auth/me/entries/${entryId}`);
     dispatch(removeEntry(entry));
+    dispatch(me())
   } catch (err){
     console.log('error in entry deleteThunk')
   } 
@@ -140,7 +141,7 @@ export default function(state ={ entries : [], todos: []}, action) {
     case DELETE_ENTRY:
       return { entries: state.entries.filter((entry) => entry !== action.entry)}
     case DELETE_TODO:
-      return { todos: state.todos.filter((todo) => todo !== action.todo)}
+      return { ...state, todos: state.todos = state.todos.filter((todo) => todo !== action.todo)}
     default:
       return state
   }
