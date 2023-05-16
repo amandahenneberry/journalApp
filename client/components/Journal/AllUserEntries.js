@@ -17,7 +17,7 @@ export const AllUserEntries = (props) => {
   const handleDelete = () =>{
     // event.preventDefault();
     dispatch(deleteEntry([entry]));
-    dispatch(me());
+    handleClose();
   }
 
   const onEntryClick = (entry) =>{

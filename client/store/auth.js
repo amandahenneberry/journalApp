@@ -139,7 +139,7 @@ export default function(state ={ entries : [], todos: []}, action) {
     case POST_ENTRY:
       return {...state, entries: [...state.entries, action.entry]}
     case DELETE_ENTRY:
-      return { entries: state.entries.filter((entry) => entry !== action.entry)}
+      return { ...state, entries: state.entries = state.entries.filter((entry) => entry !== action.entry)}
     case DELETE_TODO:
       return { ...state, todos: state.todos = state.todos.filter((todo) => todo !== action.todo)}
     default:
