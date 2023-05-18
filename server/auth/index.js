@@ -71,6 +71,15 @@ router.put('/me/todos/:todoId', async (req, res, next) => {
   }
 })
 
+router.put('/me/entries/:entryId', async (req, res, next) => {
+  try {
+    const entry = await Entry.findByPk(req.params.entryId);
+    res.send(await entry.update(req.body))
+  } catch(err) {
+    next(err)
+  }
+})
+
 
 router.delete('/me/entries/:entryId', async (req, res, next) => {
   try {

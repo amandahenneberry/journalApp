@@ -11,6 +11,8 @@ const SET_ENTRY = 'SET_ENTRY';
 // const SET_ENTRIES = 'SET_ENTRIES'
 const POST_ENTRY = 'POST_ENTRY'
 const DELETE_ENTRY = 'DELETE_ENTRY';
+const UPDATE_ENTRY = 'UPDATE_ENTRY';
+
 const SET_TODO = 'SET_TODO';
 // const SET_TODOS = 'SET_TODOS';
 const POST_TODO = 'POST_TODO';
@@ -26,6 +28,8 @@ const setEntry = entry => ({type: SET_ENTRY, entry})
 // const setEntries = entries =>({type: SET_ENTRIES, entries})
 const postEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
+const updateEntry = (entry) => ({type: UPDATE_TODO, entry})
+
 const setTodo = todo => ({type: SET_TODO, todo});
 // const setTodos = todos => ({type: SET_TODOS, todos});
 const postTodo = todo => ({type: POST_TODO, todo})
@@ -90,6 +94,16 @@ export const postEntryThunk = (entry) => async dispatch =>{
   }
 }
 
+export const updateEntryThunk = (entry) => async dispatch =>{
+  try{
+    const { data: updated } = await axios.put(`/auth/me/entries/${entry.id}`, entry);
+    dispatch(updateEntry(updated));
+    dispatch(me())
+  }catch(err){
+    console.log('error in editEntry thunk')
+  }
+}
+
 
 export const deleteEntry = (entryId) => async dispatch => {
   try{
@@ -150,6 +164,8 @@ export default function(state ={ entries : [], todos: []}, action) {
       return action.auth
     case SET_ENTRY:
       return {...state, entry: action.entry}
+      case UPDATE_ENTRY:
+        return {...state, entries: state.entries = state.entries.map(entry => entry.id === action.entry.id ? action.entry : entry)}
     case SET_TODO:
       return {...state, todo: action.todo}
     // case SET_ENTRIES:

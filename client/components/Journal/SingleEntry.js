@@ -1,6 +1,6 @@
 import React, {Component}  from 'react'
 import {connect} from 'react-redux'
-import { fetchEntry, updateEntry } from '../../store/auth';
+import { fetchEntry, updateEntryThunk } from '../../store/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import history from '../../history';
@@ -11,9 +11,11 @@ class SingleEntry extends Component{
         super(props)
         this.state = {
             edit: false,
-            title: ''
+            title: '',
+            content: ''
         }
-        this.handleChange=this.handleChange.bind(this)
+        this.handleChange=this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -44,6 +46,7 @@ class SingleEntry extends Component{
         evt.preventDefault();
         this.props.editEntry({...this.props.entry, ...this.state});
     }
+    
     render(){
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
@@ -59,27 +62,30 @@ class SingleEntry extends Component{
             <div>
                 { this.state.edit ? (
                     <div>
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                     <Modal.Header closeButton>
                     <span>
                         <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
                         </span>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <h3>{entry.title}</h3> */}
                     <h3> <Form.Group>
                         <Form.Control className="mb-3" type="text" name="title" value={this.state.title} onChange={this.handleChange} />
                      {/* {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')} */}
                     </Form.Group>
                     </h3>
-                    <p>{content}</p>
+                    <Form.Group className="mb-3" controlId="content">
+                    <Form.Control as="textarea" rows={12} name="content" value={this.state.content} onChange={this.handleChange}/>
+                </Form.Group>
                     <p><img alt='photo?' src={photo}/></p>
                 </Modal.Body>
                 <Modal.Footer>
                      <Button variant="primary" type='button' onClick={handleDelete}>
                    Delete Entry
                  </Button>
-                 <button onClick={()=>{this.setState({edit: false})}}>EDITING...</button>
+                    <Button variant="primary" type="submit">Submit Entry</Button>
+
+                 {/* <button onClick={()=>{}}>EDITING...</button> */}
                </Modal.Footer> 
                </Form>
                     </div>
@@ -127,7 +133,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps=(dispatch)=>{
     return{
         loadEntry: (entryId) => dispatch(fetchEntry(entryId)),
-        editEntry: (entry) => dispatch(updateEntry(entry))
+        editEntry: (entry) => dispatch(updateEntryThunk(entry))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry);
