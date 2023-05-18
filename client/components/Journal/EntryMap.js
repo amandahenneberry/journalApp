@@ -13,6 +13,8 @@ import Row from 'react-bootstrap/Row';
 
 export const EntryMap = ({ entries, onEntryClick }) => {
   const [sortBy, setSortBy] = useState(false)
+  const [hoverSort, onHoverSort] = useState(false)
+
 
     const handleClick = ({ target }) => {
         const entry = target.value;
@@ -29,7 +31,17 @@ export const EntryMap = ({ entries, onEntryClick }) => {
         <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
           {sortBy === false ? (
             <div>
-            <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by newest</Button>
+            <Button 
+            onMouseEnter={()=>{
+              onHoverSort(true);
+            }}
+            onMouseLeave={()=>{
+              onHoverSort(false);
+            }}
+            bsStyle='default'
+            size="sm" 
+            style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
+            onClick={handleSort}> sort by newest</Button>
             <Dropdown.Divider />
              {
               entries
@@ -39,7 +51,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
               .map(entry => (
                 <div key={entry.id} >
                   <Row>
-                        <small>{entry.date}</small>
+                        <small style={{color: 'gray'}}>{entry.date}</small>
                         <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
                         <div className="vr"></div>
                         {entry.title.slice(0, 20)}...
@@ -52,7 +64,17 @@ export const EntryMap = ({ entries, onEntryClick }) => {
             </div>
           ) : (
             <div>
-            <Button size="sm" variant="outline-secondary" onClick={handleSort}> sort by oldest</Button>
+            <Button 
+             onMouseEnter={()=>{
+              onHoverSort(true);
+            }}
+            onMouseLeave={()=>{
+              onHoverSort(false);
+            }}
+            bsStyle='default'
+            size="sm" 
+            style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
+            onClick={handleSort}> sort by oldest</Button>
             <Dropdown.Divider />
             {
               entries
@@ -63,8 +85,8 @@ export const EntryMap = ({ entries, onEntryClick }) => {
               .map(entry => (
                 <div key={entry.id} >
                   <Row>
-                        <small>{entry.date}</small>
-                        <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
+                        <small style={{color: 'gray'}}>{entry.date}</small>
+                        <Button size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
                         <div className="vr"></div>
                         {entry.title.slice(0, 20)}...
                       </Button>
