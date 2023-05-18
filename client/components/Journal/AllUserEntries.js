@@ -34,6 +34,8 @@ export const AllUserEntries = (props) => {
 
   const entries = props.entries;
   const username = props.username;
+  const toggle = props.toggle;
+  const setToggle = props.setToggle
   
     return (
       <div>   
@@ -42,8 +44,8 @@ export const AllUserEntries = (props) => {
 
         ) : (<div>
           <EntryMap entries={entries} onEntryClick ={onEntryClick} />
-          <Modal show={show} onHide={handleClose}>
-            <SingleEntry username={ username } entryId = {[entry]} handleDelete = {handleDelete}/>
+          <Modal size="lg" show={show} onHide={handleClose}>
+            <SingleEntry username={ username } entryId = {[entry]} handleDelete = {handleDelete} handleClose={handleClose}/>
           </Modal>
         </div>)}
       </div>

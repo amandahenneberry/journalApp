@@ -1,8 +1,11 @@
 import React, {Component}  from 'react'
 import {connect} from 'react-redux'
-import { fetchEntry, updateEntryThunk } from '../../store/auth';
+import { fetchEntry, updateEntryThunk, me} from '../../store/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Stack from 'react-bootstrap/Stack';
+import  Row  from 'react-bootstrap/Row';
+import  Col  from 'react-bootstrap/Col';
 import history from '../../history';
 import Form from 'react-bootstrap/Form'
 
@@ -11,6 +14,7 @@ class SingleEntry extends Component{
         super(props)
         this.state = {
             edit: false,
+            submitted: false,
             title: '',
             content: ''
         }
@@ -27,7 +31,7 @@ class SingleEntry extends Component{
     }
 
     componentDidUpdate(prevProps){
-        if (prevProps.entry !== this.props.entry){
+        if (prevProps.entry!== this.props.entry){
             this.setState({
                 title: this.props.entry.title || '',
                 content: this.props.entry.content || ''
@@ -36,7 +40,7 @@ class SingleEntry extends Component{
     }
 
     handleChange(evt){
-        // evt.preventDefault();
+        evt.preventDefault();
         this.setState({
             [evt.target.name]: evt.target.value
         })
@@ -45,6 +49,7 @@ class SingleEntry extends Component{
     handleSubmit(evt){
         evt.preventDefault();
         this.props.editEntry({...this.props.entry, ...this.state});
+        this.setState({ submitted: true})
     }
     
     render(){
@@ -56,12 +61,34 @@ class SingleEntry extends Component{
         const location = entry.location || '';
         const weatherIcon = entry.weatherIcon || '';
         const {handleDelete} = this.props;
+        const {handleClose} = this.props;
 
         console.log(entry)
         return(
             <div>
-                { this.state.edit ? (
-                    <div>
+                {this.state.submitted ? (
+                
+                    <Modal.Body>
+                        <Stack>
+                            <Row>
+                            <center>Entry Updated!</center>
+                            </Row>
+                            <Row>
+                                <Col></Col>
+                                <Col>
+                                <center>
+                                <Button variant="outline-secondary"  onClick={handleClose}>Okay!</Button>
+                                </center>
+                                </Col>
+                                <Col></Col>
+                            </Row>
+                        </Stack>
+                    </Modal.Body>
+                )
+                :
+                (<>
+                    { this.state.edit ? (
+                    <center>
                     <Form onSubmit={this.handleSubmit}>
                     <Modal.Header closeButton>
                     <span>
@@ -75,7 +102,7 @@ class SingleEntry extends Component{
                     </Form.Group>
                     </h3>
                     <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={12} name="content" value={this.state.content} onChange={this.handleChange}/>
+                    <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
                 </Form.Group>
                     <p><img alt='photo?' src={photo}/></p>
                 </Modal.Body>
@@ -88,7 +115,7 @@ class SingleEntry extends Component{
                  {/* <button onClick={()=>{}}>EDITING...</button> */}
                </Modal.Footer> 
                </Form>
-                    </div>
+                    </center>
                 )
                 :
                 (
@@ -113,6 +140,8 @@ class SingleEntry extends Component{
                </Modal.Footer>  
                </div>
                 )}
+                </>)}
+                
            
            </div>
         )
@@ -133,7 +162,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps=(dispatch)=>{
     return{
         loadEntry: (entryId) => dispatch(fetchEntry(entryId)),
-        editEntry: (entry) => dispatch(updateEntryThunk(entry))
+        editEntry: (entry) => dispatch(updateEntryThunk(entry)),
+        me: () => dispatch(me())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry);

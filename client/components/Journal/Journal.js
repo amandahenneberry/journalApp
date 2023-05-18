@@ -33,7 +33,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
             <h3>{username}'s Journal</h3>
             <Row className="justify-content-md-center">
               <Col>
-              <AllUserEntries username={username} entries = {entries} />
+              <AllUserEntries username={username} entries = {entries} toggle={toggle} setToggle={setToggle} />
               </Col>
             </Row>
             
