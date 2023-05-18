@@ -11,8 +11,7 @@ class SingleEntry extends Component{
         super(props)
         this.state = {
             edit: false,
-            title: '',
-            content: '',
+            title: ''
         }
         this.handleChange=this.handleChange.bind(this)
     }
@@ -28,24 +27,27 @@ class SingleEntry extends Component{
     componentDidUpdate(prevProps){
         if (prevProps.entry !== this.props.entry){
             this.setState({
-                title: this.props.title || '',
-                content: this.props.content || ''
+                title: this.props.entry.title || '',
+                content: this.props.entry.content || ''
             })
         }
     }
 
-    //TRY setting the fetched state to this state..
-
     handleChange(evt){
-        evt.preventDefault();
+        // evt.preventDefault();
         this.setState({
             [evt.target.name]: evt.target.value
         })
     }
 
+    handleSubmit(evt){
+        evt.preventDefault();
+        this.props.editEntry({...this.props.entry, ...this.state});
+    }
     render(){
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
+        const title = entry.title || [];
         const photo = entry.photo || 'error loading photo';
         const date = entry.date || '';
         const location = entry.location || '';
@@ -66,7 +68,7 @@ class SingleEntry extends Component{
                 <Modal.Body>
                     {/* <h3>{entry.title}</h3> */}
                     <h3> <Form.Group>
-                        <Form.Control className="mb-3" type="text" name="title" value={entry.title || ''} onChange={this.handleChange} />
+                        <Form.Control className="mb-3" type="text" name="title" value={this.state.title} onChange={this.handleChange} />
                      {/* {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')} */}
                     </Form.Group>
                     </h3>
@@ -87,13 +89,13 @@ class SingleEntry extends Component{
                     <div>
                 <Modal.Header closeButton>
                     <span>
-                        <h3>{entry.title}</h3>
+                        <h3>{title}</h3>
                         <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
                         </span>
                     
                 </Modal.Header>
                 <Modal.Body>
-                    <p>NOT  EDIT MODE{content}</p>
+                    <p>{content}</p>
                     <p><img alt='photo?' src={photo}/></p>
                 </Modal.Body>
                 <Modal.Footer>
