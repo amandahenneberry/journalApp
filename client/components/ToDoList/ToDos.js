@@ -5,12 +5,12 @@ import Form from 'react-bootstrap/Form';
 // import { fetchTodo, postTodoThunk } from "../../store";
 // import {connect} from 'react-redux'
 import { useDispatch } from "react-redux";
-import { postTodoThunk, deleteTodo } from "../../store";
+import { postTodoThunk, deleteTodo, editTodo } from "../../store";
 
 export const ToDos = ({ todos, userId, setActive }) =>{
   const [newTask, setNewTask] = useState({});
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
-  const [deleted, setDeleted] = useState(false)
    
   const handleChange = ({ target }) => {
       const { name, value } = target;
@@ -32,18 +32,17 @@ export const ToDos = ({ todos, userId, setActive }) =>{
 const handleDeleteTask = (taskIdToRemove, event) => {
   event.preventDefault();
   dispatch(deleteTodo(taskIdToRemove));
-  setDeleted(true)
 
 };
+
 
 // useEffect(()=>{
 //   setActive('toDos')
 // }, [deleted]);
 
-
     return(
         <Form onSubmit={handleSubmit}>
-          <AllTasks handleChange={handleChange} handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} />
+          <AllTasks handleChange={handleChange} handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} edit={edit} setEdit={setEdit} />
 
           <NewTask
           todos={todos}

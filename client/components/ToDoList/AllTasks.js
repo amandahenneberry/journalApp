@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
@@ -8,7 +7,7 @@ import { Pen, CheckLg, X } from 'react-bootstrap-icons'
 
 
 
-export default function AllTasks({ todos, handleDelete }) {
+export default function AllTasks({ todos, handleDelete, edit, setEdit}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
@@ -18,12 +17,24 @@ export default function AllTasks({ todos, handleDelete }) {
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <Stack gap={0}>
-          <Row>
-            <p>
-              {todo.taskName}
-
-               <Button 
+              
+              {edit ? (
+                <Stack gap={0}>
+                <Row>
+                <p>
+                  {todo.taskName}
+                  <button onClick={() =>{setEdit(false)}}>edit off</button>
+                </p>
+                <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
+                </Row>
+                </Stack>
+              ) : 
+              (
+                <Stack gap={0}>
+                <Row>
+                  <p>
+                    {todo.taskName}
+                <Button 
                   onMouseEnter={()=>{
                     onHoverCheck(true);
                   }}
@@ -47,7 +58,7 @@ export default function AllTasks({ todos, handleDelete }) {
               bsStyle='default'
               size='sm'
               style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-              onClick={(e) => handleDelete(todo.id, e)}>
+              onClick={() => setEdit(true)}>
               <Pen />
               </Button>
                <Button 
@@ -61,13 +72,13 @@ export default function AllTasks({ todos, handleDelete }) {
                 size='sm' 
                 style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                onClick={(e) => handleDelete(todo.id, e)}><X /></Button>
-            </p>
-          
-          <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
-          </Row>
-          </Stack>
-          
-          
+               </p>
+               <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
+               </Row>
+              </Stack>
+               )
+            }
+         
         </li>
       ))}
     </ul>

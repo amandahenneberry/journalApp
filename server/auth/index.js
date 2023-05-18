@@ -62,6 +62,15 @@ router.post('/me/todos', async (req, res, next) => {
   }
 })
 
+router.put('/me/todos/:todoId', async (req, res, next) => {
+  try {
+    const todo = await ToDos.findByPk(req.params.todoId);
+    res.send(await todo.update(req.body))
+  } catch(err) {
+    next(err)
+  }
+})
+
 
 router.delete('/me/entries/:entryId', async (req, res, next) => {
   try {
