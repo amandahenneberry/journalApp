@@ -42,7 +42,7 @@ const handleDeleteTask = (taskIdToRemove, event) => {
 
     return(
         <Form onSubmit={handleSubmit}>
-          <AllTasks handleChange={handleChange} handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} edit={edit} setEdit={setEdit} />
+          <AllTasks handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} edit={edit} setEdit={setEdit} editTodo={editTodo} />
 
           <NewTask
           todos={todos}

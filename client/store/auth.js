@@ -11,7 +11,7 @@ const SET_ENTRY = 'SET_ENTRY';
 // const SET_ENTRIES = 'SET_ENTRIES'
 const POST_ENTRY = 'POST_ENTRY'
 const DELETE_ENTRY = 'DELETE_ENTRY';
-// const SET_TODO = 'SET_TODO';
+const SET_TODO = 'SET_TODO';
 // const SET_TODOS = 'SET_TODOS';
 const POST_TODO = 'POST_TODO';
 const DELETE_TODO = 'DELETE_TODO'
@@ -26,7 +26,7 @@ const setEntry = entry => ({type: SET_ENTRY, entry})
 // const setEntries = entries =>({type: SET_ENTRIES, entries})
 const postEntry = entry =>({type: POST_ENTRY, entry})
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
-// const setTodo = todoId => ({type: SET_TODO, todoId});
+const setTodo = todo => ({type: SET_TODO, todo});
 // const setTodos = todos => ({type: SET_TODOS, todos});
 const postTodo = todo => ({type: POST_TODO, todo})
 const removeTodo = todoId => ({type: DELETE_TODO, todoId})
@@ -58,6 +58,15 @@ export const fetchEntry = (entryId) => async dispatch => {
     return dispatch(setEntry(res.data))
   } catch (error) {
     console.log('error getting entry')
+  }
+}
+
+export const fetchTodo = (todoId) => async dispatch => {
+  try {
+    const res = await axios.get(`/auth/me/todos/${todoId}`);
+    return dispatch(setTodo(res.data))
+  } catch (error) {
+    console.log('error getting todo')
   }
 }
 
@@ -141,6 +150,8 @@ export default function(state ={ entries : [], todos: []}, action) {
       return action.auth
     case SET_ENTRY:
       return {...state, entry: action.entry}
+    case SET_TODO:
+      return {...state, todo: action.todo}
     // case SET_ENTRIES:
     //   return {...state, entries: [...state.entries, action.entries]}
     // case SET_TODO:
