@@ -167,12 +167,12 @@ export const deleteTodo = (todoId) => async dispatch => {
   try{
     const { data: todo } = await axios.delete(`/auth/me/todos/${todoId}`);
     dispatch(removeTodo(todo));
-    
-    
+    dispatch(me())
   } catch (err){
     console.log('error in todo deleteThunk')
   } 
 }
+
 
 
 /**

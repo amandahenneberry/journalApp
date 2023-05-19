@@ -4,31 +4,15 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { Pen, CheckLg, X } from 'react-bootstrap-icons'
-import Form from 'react-bootstrap/Form';
-import { fetchTodo } from "../../store/auth";
-import { useDispatch } from 'react-redux';
 
-export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, editTodo}) {
+
+
+export default function AllTasks({ todos, handleDelete, edit, setEdit}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
-  const [todoEdit, setTodoEdit] = useState(null)
-  const dispatch = useDispatch();
-  // const todoEdit = useSelector(state => state.auth.todos)
 
-  const handleEdit = (todo) =>{
-    dispatch(fetchTodo(todo));
-    setTodoEdit(todo);
-  }
-
-  const handleChange = ({target}) =>{
-    const {name, value} = target;
-    setTodoEdit((prev) => ({
-      ...prev,
-      [name] : value
-    }))
-  }
-
+  
   return (
     <ul>
       {todos.map((todo) => (
@@ -37,34 +21,14 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
               {edit ? (
                 <Stack gap={0}>
                 <Row>
-                  <div>
-              <p>
-                  {todo === todoEdit ? (
-                    <>
-                    {/* <Form onSubmit={handleSubmit}> */}
-                    <Form>
-                    <Form.Group>
-                      <Row>
-                      <Form.Control className="mb-3" classtype='text' name="taskName"  value={todoEdit.taskName || ''} onChange={handleChange}/>
-                      </Row>
-                    </Form.Group>
-                    </Form>
-                      EDITING: {todoEdit.taskName || ''}
-                      <button onClick={() =>{setEdit(false)}}>edit off</button>
-                      </>
-                  ): (
-                    <>
-                       {todo.taskName}
-                    </>
-                    )}
-              
-                <small>{!todo.details ? null : < p style={{color: 'gray'}}>{todo.details}</p>}</small>
+                <p>
+                  {todo.taskName}
+                  <button onClick={() =>{setEdit(false)}}>edit off</button>
                 </p>
-                </div>
+                <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
                 </Row>
                 </Stack>
-              ) 
-              : 
+              ) : 
               (
                 <Stack gap={0}>
                 <Row>
@@ -77,7 +41,7 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
                   onMouseLeave={()=>{
                     onHoverCheck(false);
                   }}
-                  bsstyle='default'
+                  bsStyle='default'
                   size='sm'
                   style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                   onClick={(e) => handleDelete(todo.id, e)}>
@@ -91,10 +55,10 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
               onMouseLeave={()=>{
                 onHoverEdit(false);
               }}
-              bsstyle='default'
+              bsStyle='default'
               size='sm'
               style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-              onClick={() => {setEdit(true), handleEdit(todo)}}>
+              onClick={() => setEdit(true)}>
               <Pen />
               </Button>
                <Button 
@@ -104,12 +68,12 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
                 onMouseLeave={()=>{
                   onHoverX(false);
                 }}
-                bsstyle='default'
+                bsStyle='default'
                 size='sm' 
                 style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                onClick={(e) => handleDelete(todo.id, e)}><X /></Button>
                </p>
-               <small>{!todo.details ? null : <div style={{color: 'gray'}}>{todo.details}</div>}</small>
+               <small>{!todo.details ? null : <p style={{color: 'gray'}}>{todo.details}</p>}</small>
                </Row>
               </Stack>
                )
