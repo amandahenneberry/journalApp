@@ -24,7 +24,6 @@ const UPDATE_TODO = 'UPDATE_TODO';
 const DELETE_TODO = 'DELETE_TODO'
 
 
-
 /**
  * ACTION CREATORS
  */

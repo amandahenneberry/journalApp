@@ -38,7 +38,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
             onMouseLeave={()=>{
               onHoverSort(false);
             }}
-            bsStyle='default'
+            bsstyle='default'
             size="sm" 
             style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
             onClick={handleSort}> sort by newest</Button>
@@ -71,7 +71,7 @@ export const EntryMap = ({ entries, onEntryClick }) => {
             onMouseLeave={()=>{
               onHoverSort(false);
             }}
-            bsStyle='default'
+            bsstyle='default'
             size="sm" 
             style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
             onClick={handleSort}> sort by oldest</Button>

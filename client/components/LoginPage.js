@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ButtonGroup, Container } from 'react-bootstrap';
 import { Login, Signup } from './AuthForm';
-import { Nav } from 'react-bootstrap';
 import { Stack } from 'react-bootstrap'
 
 

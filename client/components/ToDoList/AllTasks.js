@@ -77,7 +77,7 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
                   onMouseLeave={()=>{
                     onHoverCheck(false);
                   }}
-                  bsStyle='default'
+                  bsstyle='default'
                   size='sm'
                   style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                   onClick={(e) => handleDelete(todo.id, e)}>
@@ -91,7 +91,7 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
               onMouseLeave={()=>{
                 onHoverEdit(false);
               }}
-              bsStyle='default'
+              bsstyle='default'
               size='sm'
               style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
               onClick={() => {setEdit(true), handleEdit(todo)}}>
@@ -104,7 +104,7 @@ export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, edi
                 onMouseLeave={()=>{
                   onHoverX(false);
                 }}
-                bsStyle='default'
+                bsstyle='default'
                 size='sm' 
                 style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                onClick={(e) => handleDelete(todo.id, e)}><X /></Button>
