@@ -14,7 +14,6 @@ class SingleEntry extends Component{
         super(props)
         this.state = {
             edit: false,
-            submitted: false,
             title: '',
             content: ''
         }
@@ -45,17 +44,12 @@ class SingleEntry extends Component{
 
     handleSubmit(evt){
         evt.preventDefault();
-        // this.setState({ submitted: true });
         this.props.editEntry({...this.props.entry, ...this.state});
     }
 
     handleReload(){
         this.props.reload();
     }
-
-    // componentWillUnmount(){
-    //     this.props.clearEntry();
-    // }
     
     render(){
         const entry = this.props.entry || [];
@@ -70,29 +64,7 @@ class SingleEntry extends Component{
 
         console.log(entry)
         return(
-            <div>
-                {this.state.submitted ? 
-                    (
-                        <Modal.Body>
-                            <Stack>
-                                <Row>
-                                    <center>Entry Updated!</center>
-                                </Row>
-                                <Row>
-                                    <Col></Col>
-                                    <Col>
-                                        <center>
-                                            <Button variant="outline-secondary"  onClick={handleClose}>Okay!</Button>
-                                        </center>
-                                    </Col>
-                                    <Col></Col>
-                                </Row>
-                            </Stack>
-                        </Modal.Body>
-                    )
-                    :
-                    (
-                        <>
+            <>
                             { this.state.edit ? (
                                 <center>
                                     <Form onSubmit={this.handleSubmit}>
@@ -142,9 +114,6 @@ class SingleEntry extends Component{
                                 )
                             }
                         </>
-                    )
-                }
-           </div>
         )
     }
 
