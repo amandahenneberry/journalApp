@@ -14,9 +14,11 @@ export const AllUserEntries = (props) => {
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
+  
   const handleDelete = () =>{
     // event.preventDefault();
     dispatch(deleteEntry([entry]));
+    // dispatch(me());
     handleClose();
   }
 
@@ -34,8 +36,6 @@ export const AllUserEntries = (props) => {
 
   const entries = props.entries;
   const username = props.username;
-  const toggle = props.toggle;
-  const setToggle = props.setToggle
   
     return (
       <div>   
