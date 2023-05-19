@@ -1,6 +1,6 @@
 import React, {Component}  from 'react'
 import {connect} from 'react-redux'
-import { fetchEntry, updateEntryThunk, clearEntry } from '../../store/auth';
+import { fetchEntry, updateEntryThunk, clearEntry, me } from '../../store/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/Stack';
@@ -20,6 +20,7 @@ class SingleEntry extends Component{
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleReload = this.handleReload.bind(this)
     }
 
     componentDidMount(){
@@ -44,13 +45,17 @@ class SingleEntry extends Component{
 
     handleSubmit(evt){
         evt.preventDefault();
+        // this.setState({ submitted: true });
         this.props.editEntry({...this.props.entry, ...this.state});
-        this.setState({ submitted: true})
     }
 
-    componentWillUnmount(){
-        this.props.clearEntry();
+    handleReload(){
+        this.props.reload();
     }
+
+    // componentWillUnmount(){
+    //     this.props.clearEntry();
+    // }
     
     render(){
         const entry = this.props.entry || [];
@@ -109,7 +114,7 @@ class SingleEntry extends Component{
                                             <p><img alt='photo?' src={photo}/></p>
                                         </Modal.Body>
                                         <Modal.Footer>
-                                        <Button variant="primary" type="submit">Submit Entry</Button>
+                                            <Button variant="primary" type="submit">Submit Entry</Button>
                                             <Button size="sm" variant="danger" type='button' onClick={handleDelete}>Delete Entry</Button>
                                         </Modal.Footer> 
                                     </Form>
@@ -157,7 +162,8 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         loadEntry: (entryId) => dispatch(fetchEntry(entryId)),
         editEntry: (entry) => dispatch(updateEntryThunk(entry)),
-        clearEntry: () => dispatch(clearEntry())
+        // clearEntry: () => dispatch(clearEntry()),
+        reload: () => dispatch(me())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry);

@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
 import { postTodoThunk, deleteTodo, editTodo } from "../../store";
 
-export const ToDos = ({ todos, userId, setActive }) =>{
+export const ToDos = ({ todos, todo, userId, setActive }) =>{
   const [newTask, setNewTask] = useState({});
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const handleDeleteTask = (taskIdToRemove, event) => {
 
     return(
         <Form onSubmit={handleSubmit}>
-          <AllTasks handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} edit={edit} setEdit={setEdit} editTodo={editTodo} />
+          <AllTasks handleDelete={handleDeleteTask} handleSubmit={handleSubmit} newTask={newTask} todos={todos} todo={todo} edit={edit} setEdit={setEdit} editTodo={editTodo} />
 
           <NewTask
           todos={todos}

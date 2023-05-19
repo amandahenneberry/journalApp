@@ -13,7 +13,9 @@ export const AllUserEntries = (props) => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
-  const handleClose = () => setShow(false);
+  const handleClose = () =>{
+    setShow(false);
+  } 
   
   const handleDelete = () =>{
     // event.preventDefault();

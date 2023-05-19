@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import { fetchTodo } from "../../store/auth";
 import { useDispatch } from 'react-redux';
 
-export default function AllTasks({ todos, handleDelete, edit, setEdit, editTodo}) {
+export default function AllTasks({ todos, todo, handleDelete, edit, setEdit, editTodo}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
@@ -16,8 +16,6 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, editTodo}
   const dispatch = useDispatch();
   // const todoEdit = useSelector(state => state.auth.todos)
 
-
-  
   const handleEdit = (todo) =>{
     dispatch(fetchTodo(todo));
     setTodoEdit(todo);

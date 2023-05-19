@@ -168,7 +168,8 @@ export const deleteTodo = (todoId) => async dispatch => {
   try{
     const { data: todo } = await axios.delete(`/auth/me/todos/${todoId}`);
     dispatch(removeTodo(todo));
-    dispatch(me())
+    
+    
   } catch (err){
     console.log('error in todo deleteThunk')
   } 
@@ -190,16 +191,15 @@ export default function(state ={ entries : [], todos: []}, action) {
     case POST_ENTRY:
       return {...state, entries: [...state.entries, action.entry]}
     case UPDATE_ENTRY:
-        return {...state,  entries: state.entries = state.entries.map(entry => entry.id === action.entry.id ? action.entry : entry)}
+        return {...state.entries.map(entry => entry.id === action.entry.id ? action.entry : entry)}
     case DELETE_ENTRY:
-      return { ...state, entries: state.entries = state.entries.filter((entry) => entry !== action.entry)}
+      return { ...state.entries = state.entries.filter((entry) => entry !== action.entry)}
     
     //TODOS
     case SET_TODO:
       return {...state, todo: action.todo}
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
-    
     case UPDATE_TODO:
       return {...state, todos: state.todos = state.todos.map(todo => todo.id === action.todo.id ? action.todo : todo)}
     case DELETE_TODO:

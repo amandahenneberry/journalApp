@@ -28,6 +28,7 @@ const Home = (props) =>{
   const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
   const todos = useSelector(state => state.auth.todos);
+  const todo = useSelector(state => state.auth.todo);
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active);
@@ -177,7 +178,7 @@ return (
       
       <Tab eventKey="toDos" title="To-Do List">
       <div className='ToDoBg'> 
-      <ToDos todos={todos} userId={id} setActive={setActive} />
+      <ToDos todos={todos} todo={todo} userId={id} setActive={setActive} />
       </div>
       </Tab>  
       
