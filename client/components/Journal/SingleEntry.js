@@ -1,6 +1,6 @@
 import React, {Component}  from 'react'
 import {connect} from 'react-redux'
-import { fetchEntry, updateEntryThunk, clearEntry, me } from '../../store/auth';
+import { fetchEntry, updateEntryThunk, me } from '../../store/auth';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/Stack';
@@ -65,55 +65,56 @@ class SingleEntry extends Component{
         console.log(entry)
         return(
             <>
-                            { this.state.edit ? (
-                                <center>
-                                    <Form onSubmit={this.handleSubmit}>
-                                        <Modal.Header closeButton>
-                                            <span>
-                                                <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
-                                            </span>
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            <h3> 
-                                                <Form.Group>
-                                                    <Form.Control className="mb-3" type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-                                                        {/* {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')} */}
-                                                </Form.Group>
-                                            </h3>
-                                            <Form.Group className="mb-3" controlId="content">
-                                                <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
-                                            </Form.Group>
-                                            <p><img alt='photo?' src={photo}/></p>
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="primary" type="submit">Submit Entry</Button>
-                                            <Button size="sm" variant="danger" type='button' onClick={handleDelete}>Delete Entry</Button>
-                                        </Modal.Footer> 
-                                    </Form>
-                                </center>
-                                )  
-                                :
-                                (
-                                    <div>
-                                        <Modal.Header closeButton>
-                                            <span>
-                                                <h3>{title}</h3>
-                                                <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
-                                            </span>
+                { this.state.edit ? (
+                    <center>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Modal.Header closeButton>
+                                <span>
+                                    <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
+                                </span>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <h3> 
+                                    <Form.Group>
+                                        <Form.Control className="mb-3" type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+                                            {/* {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')} */}
+                                    </Form.Group>
+                                </h3>
+                                <Form.Group className="mb-3" controlId="content">
+                                    <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
+                                 </Form.Group>
+                                    <p><img alt='photo?' src={photo}/></p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="primary" type="submit">Submit Changes</Button>
+                                {/* <Button variant="primary" type="submit">S</Button> */}
+                                {/* <Button size="sm" variant="danger" type='button' onClick={handleDelete}>Delete Entry</Button> */}
+                            </Modal.Footer> 
+                        </Form>
+                    </center>
+                    )  
+                    :
+                    (
+                        <div>
+                            <Modal.Header closeButton>
+                                <span>
+                                    <h3>{title}</h3>
+                                    <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
+                                </span>
                     
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            <p>{content}</p>
-                                            <p><img alt='photo?' src={photo}/></p>
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="outline-primary"onClick={()=>{this.setState({ edit: true})}}>Edit</Button>
-                                            <Button size='sm' variant="danger" type='button' onClick={handleDelete}> Delete Entry</Button>
-                                        </Modal.Footer>  
-                                    </div>
-                                )
-                            }
-                        </>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <p>{content}</p>
+                                <p><img alt='photo?' src={photo}/></p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="outline-primary"onClick={()=>{this.setState({ edit: true})}}>Edit</Button>
+                                <Button size='sm' variant="danger" type='button' onClick={handleDelete}> Delete Entry</Button>
+                            </Modal.Footer>  
+                        </div>
+                    )
+                }
+            </>
         )
     }
 
@@ -122,8 +123,6 @@ class SingleEntry extends Component{
 const mapStateToProps = (state) =>{
     return{
         entry: state.auth.entry,
-        // id: state.auth.id,
-        // entries: state.auth.entries
     }
 }
 
@@ -131,7 +130,6 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         loadEntry: (entryId) => dispatch(fetchEntry(entryId)),
         editEntry: (entry) => dispatch(updateEntryThunk(entry)),
-        // clearEntry: () => dispatch(clearEntry()),
         reload: () => dispatch(me())
     }
 }

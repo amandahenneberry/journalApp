@@ -124,14 +124,6 @@ export const deleteEntry = (entryId) => async dispatch => {
   } 
 }
 
-export const clearEntry = ()  =>{
-  return {
-    type: SET_ENTRY,
-    entry: {}
-  }
-}
-
-
 //TODOS
 
 export const fetchTodo = (todoId) => async dispatch => {
