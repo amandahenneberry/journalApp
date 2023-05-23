@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
+import {connect} from 'react-redux'
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { postTodoThunk, deleteTodo, editTodo } from "../../store";
+import { postTodoThunk, deleteTodo, editTodo, fetchTodo } from "../../store";
 
 export const ToDos = ({ todos, userId }) =>{
   const [newTask, setNewTask] = useState({});
   const [edit, setEdit] = useState(false);
+  const [selectTask, setSelectTask] = useState('')
   const dispatch = useDispatch();
    
+ 
   const handleChange = ({ target }) => {
       const { name, value } = target;
       setNewTask((prev) =>({ 
@@ -26,12 +29,18 @@ export const ToDos = ({ todos, userId }) =>{
   setNewTask({});
   };
 
-const handleDeleteTask = (taskIdToRemove, event) => {
+  const handleSelect = (task) =>{
+    setSelectTask(task);
+    setEdit(true)
+  }
+
+  useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask]
+  )
+
+  const handleDeleteTask = (taskIdToRemove, event) => {
   event.preventDefault();
   dispatch(deleteTodo(taskIdToRemove));
 };
-
-
 
   return(
     <Form onSubmit={handleSubmit}>
@@ -43,6 +52,9 @@ const handleDeleteTask = (taskIdToRemove, event) => {
         todos={todos} 
         edit={edit} 
         setEdit={setEdit} 
+        selectTask={selectTask}
+        setSelectTask={setSelectTask}
+        handleSelect={handleSelect}
       />
       <NewTask
         todos={todos}
@@ -53,3 +65,11 @@ const handleDeleteTask = (taskIdToRemove, event) => {
     </Form>
   )
 }
+
+const mapStateToProps = (state) =>{
+  return{
+      todo: state.auth.todo,
+  }
+}
+
+export default connect(mapStateToProps)(ToDos);

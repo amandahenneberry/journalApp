@@ -7,7 +7,7 @@ import { Pen, CheckLg, X } from 'react-bootstrap-icons'
 
 
 
-export default function AllTasks({ todos, handleDelete, edit, setEdit}) {
+export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
@@ -58,7 +58,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit}) {
               bsstyle='default'
               size='sm'
               style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-              onClick={() => setEdit(true)}>
+              onClick={()=>handleSelect(todo)}>
               <Pen />
               </Button>
                <Button 
