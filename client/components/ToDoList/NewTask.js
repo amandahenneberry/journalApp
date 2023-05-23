@@ -7,7 +7,15 @@ export default function NewTask({ newTask, handleChange, handleSubmit }) {
   return (
     <Form.Group>
       <Row>
-      <Form.Control className="mb-3" classtype='text' name="taskName" placeholder= "Enter new task..." value={newTask.taskName || ''}  onSubmit={handleSubmit} onChange={handleChange}/>
+      <Form.Control 
+        className="mb-3" 
+        classtype='text' 
+        name="taskName" 
+        placeholder= "Enter new task..." 
+        value={newTask.taskName || ''}  
+        onSubmit={handleSubmit} 
+        onChange={handleChange}
+      />
       {!newTask.taskName ? null : (
         <>
         <Form.Control 
