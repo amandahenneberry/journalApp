@@ -22,12 +22,12 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
           {edit ? (
             <Stack gap={0}>
               <Row>
-                <p>
+                <div>
                   {todo.id === selectTask.id? 
                     (
-
-                      <Form>
-                        <table>
+                      <>
+                      <table>
+                        <tbody>
                           <tr>
                             <th>
                             <Form.Control
@@ -43,6 +43,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                               <button onClick={() =>{setEdit(false)}}>edit off</button>
                             </th>  
                           </tr>
+                          </tbody>
                         </table>
                         
                         {!selectTask.details ? (null): 
@@ -57,7 +58,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                             />
                           )
                         }
-                      </Form>
+                      </>
                     )
                     :
                     (
@@ -66,7 +67,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       </div>
                     )
                   }
-                </p>
+                </div>
               </Row>
             </Stack>
             ) 
