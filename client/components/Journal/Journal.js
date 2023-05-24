@@ -18,11 +18,7 @@ import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
   const [toggle, setToggle] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  // const [allEntries, setEntries] = useState([])
 
-  // useEffect(()=>{
-  //   setEntries(entries)
-  // })
 
     return (
       <div>
@@ -33,7 +29,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
             <h3>{username}'s Journal</h3>
             <Row className="justify-content-md-center">
               <Col>
-              <AllUserEntries username={username} entries = {entries} toggle={toggle} setToggle={setToggle} />
+              <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} />
               </Col>
             </Row>
             
@@ -56,7 +52,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon}) => {
           <div className='newEntry'>
             <Nav>
             <Stack direction='horizontal'>
-            <AllUserEntries username={username} entries = {entries} />
+            <AllUserEntries username={username} entries={entries} />
               <Alert_NewEntry show={showAlert} toggle={toggle} setToggle={setToggle} variant='link'>
                 Home
               </Alert_NewEntry>
@@ -88,8 +84,6 @@ const mapState = state => {
   return {
     isLoggedIn: !!state.auth.id,
     username: state.auth.username,
-    id: state.auth.id,
-    // entries: state.auth.entries,
   }
 }
 

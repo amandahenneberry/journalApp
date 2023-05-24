@@ -187,8 +187,8 @@ export default function(state ={ entries : [], todos: []}, action) {
       return { ...state.entries = state.entries.filter((entry) => entry !== action.entry)}
     
     //TODOS
-    // case SET_TODO:
-    //   return {...state, todo: action.todo}
+    case SET_TODO:
+      return {...state, todo: action.todo}
     case POST_TODO:
      return {...state, todos: [...state.todos, action.todo]}
     case UPDATE_TODO:

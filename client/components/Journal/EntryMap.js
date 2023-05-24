@@ -16,34 +16,35 @@ export const EntryMap = ({ entries, onEntryClick }) => {
   const [hoverSort, onHoverSort] = useState(false)
 
 
-    const handleClick = ({ target }) => {
-        const entry = target.value;
-        onEntryClick(entry);
-    };
+  const handleClick = ({ target }) => {
+      const entry = target.value;
+      onEntryClick(entry);
+  };
 
-    const handleSort = () =>{
-      sortBy === false ? setSortBy(true) : setSortBy(false)
-    } 
+  const handleSort = () =>{
+    sortBy === false ? setSortBy(true) : setSortBy(false)
+  } 
     
     
 
-    return (
-        <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
-          {sortBy === false ? (
-            <div>
-            <Button 
+  return (
+    <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
+      {sortBy === false ? (
+        <div>
+          <Button 
             onMouseEnter={()=>{
-              onHoverSort(true);
+            onHoverSort(true);
             }}
-            onMouseLeave={()=>{
+              onMouseLeave={()=>{
               onHoverSort(false);
             }}
             bsstyle='default'
             size="sm" 
             style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
-            onClick={handleSort}> sort by newest</Button>
-            <Dropdown.Divider />
-             {
+            onClick={handleSort}> sort by newest
+          </Button>
+          <Dropdown.Divider />
+            {
               entries
               .sort((a,b) => {
                 return new Date(a.date) - new Date(b.date)
@@ -62,19 +63,20 @@ export const EntryMap = ({ entries, onEntryClick }) => {
               ))
             }
             </div>
-          ) : (
+            ) : (
             <div>
             <Button 
-             onMouseEnter={()=>{
+              onMouseEnter={()=>{
               onHoverSort(true);
-            }}
-            onMouseLeave={()=>{
+              }}
+              onMouseLeave={()=>{
               onHoverSort(false);
-            }}
-            bsstyle='default'
-            size="sm" 
-            style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
-            onClick={handleSort}> sort by oldest</Button>
+              }}
+              bsstyle='default'
+              size="sm" 
+              style={{borderColor:'transparent' , color:'black', backgroundColor: hoverSort ? 'rgba(0, 0, 0, 0.1)' : 'transparent', outline: 'none'}} 
+              onClick={handleSort}> sort by oldest
+            </Button>
             <Dropdown.Divider />
             {
               entries
@@ -95,11 +97,8 @@ export const EntryMap = ({ entries, onEntryClick }) => {
                 </div>
               ))
             }
-            </div>
-
-          )}
-       
+        </div>
+      )}
       </DropdownButton >
-      
-    )
-  }
+  )
+}

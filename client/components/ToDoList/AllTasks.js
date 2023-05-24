@@ -8,7 +8,7 @@ import { Pen, CheckLg, X } from 'react-bootstrap-icons'
 
 
 
-export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect}) {
+export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect, handleEditChange}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
@@ -36,6 +36,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                               name="taskName"
                               placeholder= "Enter a task..."
                               value={selectTask.taskName || ""}
+                              onChange={handleEditChange}
                             // onChange={handleChange}
                             />
                             </th>
@@ -53,6 +54,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                             name="details"
                             value={selectTask.details || ""}
                             placeholder="Details..."
+                            onChange={(e)=>handleEditChange(e)}
                             // onChange={handleChange}
                             size="sm"
                             />
