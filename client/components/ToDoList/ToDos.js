@@ -32,8 +32,8 @@ export const ToDos = ({ todos, userId }) =>{
 
   const handleSelect = (task) =>{
     setSelectTask(task);
-    const res = dispatch(fetchTodo([todo.id]));
-    setTodo(res)
+    const todo = dispatch(fetchTodo([task.id]));
+    setTodo(todo)
     setEdit(true)
   }
 
