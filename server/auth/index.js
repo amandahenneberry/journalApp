@@ -46,7 +46,7 @@ router.get('/me/entries/:entryId', async (req, res, next) => {
 
 router.get('/me/todos/:todoId', async (req, res, next) => {
   try {
-    const todo = await ToDos.findByPk(req.params.entryId)
+    const todo = await ToDos.findByPk(req.params.todoId)
     res.send(todo)
   } catch (err) {
     next(err)

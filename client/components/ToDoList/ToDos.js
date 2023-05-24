@@ -10,7 +10,7 @@ export const ToDos = ({ todos, userId }) =>{
   const [newTask, setNewTask] = useState({});
   const [edit, setEdit] = useState(false);
   const [selectTask, setSelectTask] = useState('')
-  const [todo, setTodo] = useState([])
+  // const [todo, setTodo] = useState([])
   const dispatch = useDispatch();
    
  
@@ -32,9 +32,8 @@ export const ToDos = ({ todos, userId }) =>{
 
   const handleSelect = (task) =>{
     setSelectTask(task);
-    const todo = dispatch(fetchTodo([task.id]));
-    setTodo(todo)
-    setEdit(true)
+    dispatch(fetchTodo(task.id));
+    setEdit(true);
   }
 
   const handleEditChange=(evt)=>{

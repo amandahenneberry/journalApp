@@ -88,7 +88,7 @@ export const logout = () => {
 export const fetchEntry = (entryId) => async dispatch => {
   try {
     const res = await axios.get(`/auth/me/entries/${entryId}`);
-    return dispatch(setEntry(res.data))
+    return dispatch(setEntry(res.data));
   } catch (error) {
     console.log('error getting entry')
   }
