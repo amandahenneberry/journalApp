@@ -35,11 +35,9 @@ setNewTask({});
 //  EDIT A TASK
   const [edit, setEdit] = useState(false);
   const [selectTask, setSelectTask] = useState('')
-  const [todo, setTodo] = useState({})
 
   const handleSelect = (task) =>{
     setSelectTask(task);
-    dispatch(fetchTodo(task.id));
     setEdit(true);
     }
 
@@ -49,6 +47,12 @@ setNewTask({});
         [evt.target.name]: evt.target.value
     })
   }
+
+  useEffect(()=>{
+    const todoItem = dispatch(fetchTodo(selectTask.id));
+    // dispatch(editTodo(todoItem))
+    todoItem.taskName = selectTask.taskName || '';
+  }, [selectTask])
 
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
