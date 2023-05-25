@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
@@ -35,10 +35,13 @@ setNewTask({});
 //  EDIT A TASK
   const [edit, setEdit] = useState(false);
   const [selectTask, setSelectTask] = useState('')
+  const [prev, setPrev] =  useState('')
 
   const handleSelect = (task) =>{
-    setSelectTask(task);
+    
     setEdit(true);
+    const todoItem = todos.find(item => item.id === task.id);
+    setPrev(todoItem)
     }
 
   const handleEditChange=(evt)=>{
@@ -49,10 +52,12 @@ setNewTask({});
   }
 
   useEffect(()=>{
-    const todoItem = dispatch(fetchTodo(selectTask.id));
+    // const todoItem = dispatch(fetchTodo(selectTask.id));
     // dispatch(editTodo(todoItem))
-    todoItem.taskName = selectTask.taskName || '';
-  }, [selectTask])
+    // todoItem.taskName = selectTask.taskName || '';
+    setSelectTask(prev);
+    console.log('todoItem: '+prev.taskName)
+  }, [prev])
 
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
@@ -87,11 +92,3 @@ setNewTask({});
     </Form>
   )
 }
-
-const mapStateToProps = (state) =>{
-  return{
-      todo: state.auth.todo
-  }
-}
-
-export default connect(mapStateToProps)(ToDos);
