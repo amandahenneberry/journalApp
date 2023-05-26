@@ -170,7 +170,7 @@ export const deleteTodo = (todoId) => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state ={ entries : [], todos: []}, action) {
+export default function(state ={ entries : [], todos: [] }, action) {
   switch (action.type) {
     //AUTH
     case SET_AUTH:

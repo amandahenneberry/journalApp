@@ -4,7 +4,7 @@ import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { postTodoThunk, deleteTodo, editTodo, fetchTodo } from "../../store";
+import { postTodoThunk, deleteTodo, editTodo, fetchTodo, useSelector } from "../../store";
 
 export const ToDos = ({ todos, userId }) =>{
  
@@ -34,14 +34,15 @@ setNewTask({});
 
 //  EDIT A TASK
   const [edit, setEdit] = useState(false);
-  const [selectTask, setSelectTask] = useState('')
-  const [prev, setPrev] =  useState('')
+  const [selectTask, setSelectTask] = useState({ taskName: '', details: ''})
+  // const [prev, setPrev] = useState({ taskName: '', details: ''})
 
   const handleSelect = (task) =>{
     
     setEdit(true);
     const todoItem = todos.find(item => item.id === task.id);
-    setPrev(todoItem)
+    setSelectTask(todoItem)
+    dispatch(fetchTodo(task.id));
     }
 
   const handleEditChange=(evt)=>{
@@ -51,13 +52,6 @@ setNewTask({});
     })
   }
 
-  useEffect(()=>{
-    // const todoItem = dispatch(fetchTodo(selectTask.id));
-    // dispatch(editTodo(todoItem))
-    // todoItem.taskName = selectTask.taskName || '';
-    setSelectTask(prev);
-    console.log('todoItem: '+prev.taskName)
-  }, [prev])
 
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
