@@ -11,7 +11,7 @@ import { fetchTodo, editTodo } from "../../store";
 function EditTodo(props) {
     // const {todo, todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect, handleEditChange} = props
     const{todo} = props;
-    const {selectTask, setSelectTask,  handleEditChange setEdit} = props
+    const {selectTask, setEdit={setEdit}, handleEditChange={handleEditChange}} = props
     //useSelector...
     // const todo = useSelector(state=>state.auth.todo);
     useEffect(()=>{
@@ -30,45 +30,41 @@ function EditTodo(props) {
  
     return(
         <>
-        {selectTask.editing === true? (
-            <>
-            <table>
-            <tbody>
-                <tr>
-                    <th>
-                        <Form.Control
-                          className="mb-3" 
-                          classtype='text' 
-                          name="taskName"
-                          placeholder= "Enter a task..."
-                          value={selectTask.taskName || ''}
-                          onChange={handleEditChange}
-                        // onChange={handleChange}
-                        />
-                    </th>
-                    <th>
-                        <button onClick={() =>{setEdit(false)}}>edit off</button>
-                    </th>  
-                </tr>
-            </tbody>
-        </table>
-                    
-        {!selectTask.details ? (null): 
-            (
-                <Form.Control 
-                    type='textarea'
-                    name="details"
-                    value={selectTask.details}
-                    placeholder="Details..."
-                    onChange={handleEditChange}
-                    // onChange={handleChange}
-                    size="sm"
-                />
-            )
-        }
-        </>
-        ):(null)}
-            
+        <table>
+                        <tbody>
+                          <tr>
+                            <th>
+                            <Form.Control
+                              className="mb-3" 
+                              classtype='text' 
+                              name="taskName"
+                              placeholder= "Enter a task..."
+                              value={selectTask.taskName || ""}
+                              onChange={handleEditChange}
+                            // onChange={handleChange}
+                            />
+                            </th>
+                            <th>
+                              <button onClick={() =>{setEdit(false)}}>edit off</button>
+                            </th>  
+                          </tr>
+                          </tbody>
+                        </table>
+                        
+                        {!selectTask.details ? (null): 
+                         (
+                            <Form.Control 
+                            type='textarea'
+                            name="details"
+                            value={selectTask.details || ""}
+                            placeholder="Details..."
+                            onChange={(e)=>handleEditChange(e)}
+                            // onChange={handleChange}
+                            size="sm"
+                            />
+                          )
+                        }
+       
         </>
     )
 }

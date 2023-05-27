@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import { Pen, CheckLg, X } from 'react-bootstrap-icons'
+import EditTodo from "./EditTodo";
 
 
 
@@ -25,42 +26,8 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                 <div>
                   {todo.id === selectTask.id? 
                     (
-                      <>
-                      <table>
-                        <tbody>
-                          <tr>
-                            <th>
-                            <Form.Control
-                              className="mb-3" 
-                              classtype='text' 
-                              name="taskName"
-                              placeholder= "Enter a task..."
-                              value={selectTask.taskName || ""}
-                              onChange={handleEditChange}
-                            // onChange={handleChange}
-                            />
-                            </th>
-                            <th>
-                              <button onClick={() =>{setEdit(false)}}>edit off</button>
-                            </th>  
-                          </tr>
-                          </tbody>
-                        </table>
-                        
-                        {!selectTask.details ? (null): 
-                         (
-                            <Form.Control 
-                            type='textarea'
-                            name="details"
-                            value={selectTask.details || ""}
-                            placeholder="Details..."
-                            onChange={(e)=>handleEditChange(e)}
-                            // onChange={handleChange}
-                            size="sm"
-                            />
-                          )
-                        }
-                      </>
+                      <EditTodo selectTask={selectTask} handleEditChange={handleEditChange} setEdit={setEdit}/>
+                      
                     )
                     :
                     (
