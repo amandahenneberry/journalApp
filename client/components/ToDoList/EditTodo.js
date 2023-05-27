@@ -60,8 +60,8 @@ function EditTodo(props) {
                           </tbody>
                         </table>
                         
-                        {!selectTask.details ? (null): 
-                         (
+                        
+                         
                             <Form.Control 
                             type='textarea'
                             name="details"
@@ -71,8 +71,8 @@ function EditTodo(props) {
                             // onChange={handleChange}
                             size="sm"
                             />
-                          )
-                        }
+                          
+                        
        
         </>
     )
