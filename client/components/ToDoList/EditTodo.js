@@ -6,11 +6,13 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import { fetchTodo, editTodo } from "../../store";
-
+import { useDispatch } from "react-redux";
 
 function EditTodo(props) {
     // const {todo, todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect, handleEditChange} = props
     const{todo} = props;
+    const dispatch = useDispatch();
+
     const {selectTask, setEdit={setEdit}, handleEditChange={handleEditChange}} = props
     //useSelector...
     // const todo = useSelector(state=>state.auth.todo);
@@ -21,6 +23,12 @@ function EditTodo(props) {
         console.log('select state: '+{selectTask})
     }, [])
 
+    const  handleSubmitEdit =(evt)=>{
+      evt.preventDefault();
+      dispatch(editTodo({...todo, ...selectTask}))
+      setEdit(false)
+      
+    }
     // const handleEditChange=(evt)=>{
     //     evt.preventDefault();
     //     setSelectTask({
@@ -45,7 +53,8 @@ function EditTodo(props) {
                             />
                             </th>
                             <th>
-                              <button onClick={() =>{setEdit(false)}}>edit off</button>
+                              <button onClick={() =>{setEdit(false)}}>Cancel</button>
+                              <button  onClick={handleSubmitEdit}>Submit</button>
                             </th>  
                           </tr>
                           </tbody>
