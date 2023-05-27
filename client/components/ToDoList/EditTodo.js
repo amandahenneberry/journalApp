@@ -42,7 +42,7 @@ function EditTodo(props) {
                           name="taskName"
                           placeholder= "Enter a task..."
                           value={selectTask.taskName || ''}
-                          onChange={(e)=>handleEditChange(e)}
+                          onChange={handleEditChange}
                         // onChange={handleChange}
                         />
                     </th>
@@ -60,7 +60,7 @@ function EditTodo(props) {
                     name="details"
                     value={selectTask.details}
                     placeholder="Details..."
-                    onChange={(e)=>handleEditChange(e)}
+                    onChange={handleEditChange}
                     // onChange={handleChange}
                     size="sm"
                 />

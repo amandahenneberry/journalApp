@@ -46,11 +46,11 @@ setNewTask({});
   }
 
 
-  const handleEditChange=(evt)=>{
-    evt.preventDefault();
+  const handleEditChange=({ target })=>{
+    const { name, value } = target;    
     setSelectTask((prev)=>({
       ...prev,
-        [evt.target.name]: evt.target.value
+        [name]: value
     }))
   }
 
