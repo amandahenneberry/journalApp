@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import {connect} from 'react-redux'
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { postTodoThunk, deleteTodo, editTodo, setTodo, fetchTodo, useSelector } from "../../store";
+import { postTodoThunk, deleteTodo, fetchTodo} from "../../store";
 
 export const ToDos = ({ todos, userId }) =>{
  
@@ -30,12 +29,9 @@ setNewTask({});
   };
 
 
-
-
 //  EDIT A TASK
   const [edit, setEdit] = useState(false);
   const [selectTask, setSelectTask] = useState({ taskName: '', details: ''})
-  // const [prev, setPrev] = useState({ taskName: '', details: ''})
 
   const handleSelect = (task) =>{
     

@@ -9,7 +9,7 @@ import EditTodo from "./EditTodo";
 
 
 
-export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, setSelectTask, handleSelect, handleEditChange}) {
+export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, handleSelect, handleEditChange}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)

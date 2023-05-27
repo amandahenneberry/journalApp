@@ -32,7 +32,7 @@ const setAuth = auth => ({type: SET_AUTH, auth})
 
 
 //ENTRIES
-export const setEntry = entry => ({type: SET_ENTRY, entry});
+const setEntry = entry => ({type: SET_ENTRY, entry});
 const postEntry = entry =>({type: POST_ENTRY, entry});
 const updateEntry = (entry) => ({type: UPDATE_ENTRY, entry});
 const removeEntry = entryId => ({type: DELETE_ENTRY, entryId});
