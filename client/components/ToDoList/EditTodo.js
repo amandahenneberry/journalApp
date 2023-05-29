@@ -11,7 +11,7 @@ function EditTodo(props) {
   const{todo} = props;
   const dispatch = useDispatch();
 
-  const {selectTask, setEdit={setEdit}, handleEditChange={handleEditChange}} = props
+  const {selectTask, setEdit, handleEditChange} = props
  
 
   const  handleSubmitEdit =(evt)=>{
