@@ -3,7 +3,7 @@ import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from "react-redux";
-import { postTodoThunk, deleteTodo, fetchTodo} from "../../store";
+import { postTodoThunk, deleteTodo, fetchTodo,  editTodo } from "../../store";
 
 export const ToDos = ({ todos, userId }) =>{
  
@@ -34,8 +34,6 @@ setNewTask({});
   const [selectTask, setSelectTask] = useState({ taskName: '', details: ''})
 
   const handleSelect = (task) =>{
-    
-    setEdit(true);
     const todoItem = todos.find(item => item.id === task.id);
     setSelectTask(todoItem)
     dispatch(fetchTodo(task.id));
@@ -51,6 +49,19 @@ setNewTask({});
   }
 
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
+
+  //MARK TASK COMPLETE
+  const markComplete = (task, event) => {
+    event.preventDefault();
+    handleSelect(task);
+    setSelectTask((prev) => ({
+      ...prev,
+      completed: true
+    }));
+    dispatch(editTodo(selectTask))
+    console.log('completed: '+selectTask.completed)
+  }
+
 
   
   //DELETE A TASK
@@ -73,6 +84,7 @@ setNewTask({});
         setSelectTask={setSelectTask}
         handleSelect={handleSelect}
         handleEditChange={handleEditChange}
+        markComplete={markComplete}
       />
       <NewTask
         todos={todos}

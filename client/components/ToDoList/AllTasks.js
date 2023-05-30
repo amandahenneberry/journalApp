@@ -9,7 +9,7 @@ import EditTodo from "./EditTodo";
 
 
 
-export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, handleSelect, handleEditChange}) {
+export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTask, handleSelect, handleEditChange, markComplete}) {
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
@@ -58,7 +58,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       bsstyle='default'
                       size='sm'
                       style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-                      onClick={(e) => handleDelete(todo.id, e)}>
+                      onClick={(e) => markComplete(todo, e)}>
                       <CheckLg />
                     </Button>
                
@@ -73,7 +73,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       bsstyle='default'
                       size='sm'
                       style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-                      onClick={()=>handleSelect(todo)}>
+                      onClick={()=>{handleSelect(todo); setEdit(true)}}>
                       <Pen />
                     </Button>
 
