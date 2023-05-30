@@ -53,13 +53,16 @@ setNewTask({});
   //MARK TASK COMPLETE
   const markComplete = (task, event) => {
     event.preventDefault();
-    handleSelect(task);
-    setSelectTask((prev) => ({
+    const promise1 = new Promise ((res, rej) =>res(handleSelect(task)));
+    const promise2  = new Promise((res, rej)=>res( 
+      setSelectTask((prev) => ({
       ...prev,
       completed: true
-    }));
+    }))
+    ));
+    promise1.then(() =>promise2.then(()=>console.log('completed: '+selectTask.completed)
+    ))
     // dispatch(editTodo(selectTask))
-    console.log('completed: '+selectTask.completed)
   }
 
 
