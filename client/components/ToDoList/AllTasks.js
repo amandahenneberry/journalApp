@@ -58,7 +58,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       bsstyle='default'
                       size='sm'
                       style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-                      onClick={(e) => markComplete(todo, e)}>
+                      onClick={() => markComplete(todo)}>
                       <CheckLg />
                     </Button>
                

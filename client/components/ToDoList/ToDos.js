@@ -51,18 +51,15 @@ setNewTask({});
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
   //MARK TASK COMPLETE
-  const markComplete = (task, event) => {
-    event.preventDefault();
-    const promise1 = new Promise ((res, rej) =>res(handleSelect(task)));
-    const promise2  = new Promise((res, rej)=>res( 
-      setSelectTask((prev) => ({
+
+  async function markComplete(task){
+    const todoItem = todos.find(item => item.id === task.id);
+    await setSelectTask(todoItem);
+    await setSelectTask((prev) =>({
       ...prev,
-      completed: true
-    }))
-    ));
-    promise1.then(() =>promise2.then(()=>console.log('completed: '+selectTask.completed)
-    ))
-    // dispatch(editTodo(selectTask))
+      completed:true
+    }));
+    await console.log('completed: '+selectTask.completed)
   }
 
 
