@@ -58,7 +58,7 @@ setNewTask({});
       ...prev,
       completed: true
     }));
-    dispatch(editTodo(selectTask))
+    // dispatch(editTodo(selectTask))
     console.log('completed: '+selectTask.completed)
   }
 
