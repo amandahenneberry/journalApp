@@ -53,6 +53,7 @@ setNewTask({});
   //MARK TASK COMPLETE
   const [complete, setComplete] = useState({})
   const [completeToggle, setCompleteToggle] = useState(false)
+  const [sendComplete, setSendComplete] = useState(false);
  
 
   async function markComplete(task){
@@ -69,10 +70,15 @@ setNewTask({});
     setComplete((prev) => ({
       ...prev,
       completed: true
-    }))
+    }));
+    setSendComplete(!sendComplete)
   }, [completeToggle])
 
-  useEffect(()=> console.log('task selected: '+ complete.taskName + ' completed?: ' + complete.completed), [complete])
+  useEffect(() => {
+   console.log('sent: '+complete.taskName+ ' completed when sent?: '+complete.completed) 
+  }, [sendComplete])
+
+  // useEffect(()=> console.log('task selected: '+ complete.taskName + ' completed?: ' + complete.completed), [complete])
 
  
   //DELETE A TASK
