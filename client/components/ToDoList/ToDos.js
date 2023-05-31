@@ -51,19 +51,30 @@ setNewTask({});
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
   //MARK TASK COMPLETE
+  const [complete, setComplete] = useState({})
+  const [completeToggle, setCompleteToggle] = useState(false)
+ 
 
   async function markComplete(task){
     const todoItem = todos.find(item => item.id === task.id);
-    await setSelectTask(todoItem);
-    await setSelectTask((prev) =>({
-      ...prev,
-      completed:true
-    }));
-    await console.log('completed: '+selectTask.completed)
+    await setComplete(todoItem);
+    // await setComplete((prev) =>({
+    //   ...prev,
+    //   completed:true
+    // }));
+    setCompleteToggle(!completeToggle)
   }
 
+  useEffect(() => {
+    setComplete((prev) => ({
+      ...prev,
+      completed: true
+    }))
+  }, [completeToggle])
 
-  
+  useEffect(()=> console.log('task selected: '+ complete.taskName + ' completed?: ' + complete.completed), [complete])
+
+ 
   //DELETE A TASK
   const handleDeleteTask = (taskIdToRemove, event) => {
     event.preventDefault();
