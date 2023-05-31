@@ -59,7 +59,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       }}
                       bsstyle='default'
                       size='sm'
-                      style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
+                      style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.05)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                       onClick={() => markComplete(todo)}>
                       <CheckLg />
                     </Button>
@@ -74,7 +74,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       }}
                       bsstyle='default'
                       size='sm'
-                      style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
+                      style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverEdit ? 'rgba(0, 0, 0, 0.05)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                       onClick={()=>{handleSelect(todo); setEdit(true)}}>
                       <Pen />
                     </Button>
@@ -89,7 +89,7 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
                       }}
                       bsstyle='default'
                       size='sm' 
-                      style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
+                      style={{borderColor:'transparent' ,color:'red', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.05)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                       onClick={(e) => handleDelete(todo.id, e)}>
                       <X />
                     </Button>

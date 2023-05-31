@@ -4,16 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
-import { Pen, CheckLg, X } from 'react-bootstrap-icons'
-import EditTodo from "./EditTodo";
+import { X } from 'react-bootstrap-icons'
 
 
 
 export default function CompletedTasks({ todos, handleDelete}) {
-  const [hoverCheck, onHoverCheck] = useState(false)
-  const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
-
   
   return (
     <ul>
@@ -35,7 +31,7 @@ export default function CompletedTasks({ todos, handleDelete}) {
                       }}
                       bsstyle='default'
                       size='sm' 
-                      style={{borderColor:'transparent' ,color:'gray', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.2)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
+                      style={{borderColor:'transparent' ,color:'red', backgroundColor: hoverX ? 'rgba(0, 0, 0, 0.05)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
                       onClick={(e) => handleDelete(todo.id, e)}>
                       <X />
                     </Button>
