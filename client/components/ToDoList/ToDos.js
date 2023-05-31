@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import AllTasks from "./AllTasks";
 import NewTask from "./NewTask";
+import CompletedTasks from "./CompletedTasks";
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
+import Row from "react-bootstrap/Row";
 import { useDispatch } from "react-redux";
 import { postTodoThunk, deleteTodo, fetchTodo,  editTodo } from "../../store";
 
 export const ToDos = ({ todos, userId }) =>{
- 
+  const [viewToggle, setViewToggle] = useState(false)
   const dispatch = useDispatch();
-   
+ 
  //ADD TASKS
  const [newTask, setNewTask] = useState({});
 
@@ -59,10 +63,6 @@ setNewTask({});
   async function markComplete(task){
     const todoItem = todos.find(item => item.id === task.id);
     await setComplete(todoItem);
-    // await setComplete((prev) =>({
-    //   ...prev,
-    //   completed:true
-    // }));
     setCompleteToggle(!completeToggle)
   }
 
@@ -89,7 +89,11 @@ setNewTask({});
   };
 
   return(
-    <Form onSubmit={handleSubmit}>
+    <>
+    {viewToggle === false ? (
+      <>
+      <Stack>
+      <Form onSubmit={handleSubmit}>
       <AllTasks 
         handleChange={handleChange} 
         handleDelete={handleDeleteTask} 
@@ -110,6 +114,21 @@ setNewTask({});
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
+      <Row>
+    <Button variant='link' onClick={()=>setViewToggle(!viewToggle)}>view completed tasks</Button>
+    </Row>
     </Form>
+    </Stack>
+    
+    </>
+    ) :(
+      <Stack>
+        <Row>
+        <Button variant='link' onClick={()=>setViewToggle(!viewToggle)}>view 'to do' list</Button>
+        </Row>
+        <CompletedTasks todos={todos} handleDelete={handleDeleteTask}/>
+      </Stack>
+    )}
+  </>
   )
 }

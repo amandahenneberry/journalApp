@@ -17,7 +17,9 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
   
   return (
     <ul>
-      {todos.map((todo) => (
+      {todos
+      .filter((todo) => todo.completed === false)
+      .map((todo) => (
         <li key={todo.id}>
               
           {edit ? (
