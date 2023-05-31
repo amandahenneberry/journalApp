@@ -75,6 +75,7 @@ setNewTask({});
   }, [completeToggle])
 
   useEffect(() => {
+    dispatch(editTodo({...complete}))
    console.log('sent: '+complete.taskName+ ' completed when sent?: '+complete.completed) 
   }, [sendComplete])
 
