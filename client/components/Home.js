@@ -6,8 +6,6 @@ import { ToDos } from './ToDoList/ToDos';
 import { logout } from '../store';
 import axios from "axios";
 import { useDispatch} from 'react-redux';
-
-
 //bootstrap
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +14,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-
 //
 import { DateTime } from './DateTime';
 import  Weather  from './Weather/Weather'
@@ -25,7 +22,7 @@ const Home = (props) =>{
   const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
   const todos = useSelector(state => state.auth.todos);
-  // const todo = useSelector(state => state.auth.todo);
+
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active);

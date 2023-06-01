@@ -79,8 +79,6 @@ setNewTask({});
    console.log('sent: '+complete.taskName+ ' completed when sent?: '+complete.completed) 
   }, [sendComplete])
 
-  // useEffect(()=> console.log('task selected: '+ complete.taskName + ' completed?: ' + complete.completed), [complete])
-
  
   //DELETE A TASK
   const handleDeleteTask = (taskIdToRemove, event) => {

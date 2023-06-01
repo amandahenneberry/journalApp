@@ -3,9 +3,8 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
-// import { ListReducer, ListItemReducer } from './toDos'
 
-// const reducer = combineReducers({ auth, ListReducer, ListItemReducer })
+
 const reducer = combineReducers({ auth })
 
 const middleware = composeWithDevTools(
