@@ -2,6 +2,8 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+const cors = require("cors")
+require("dotenv").config();
 module.exports = app
 
 // require shh
@@ -14,9 +16,14 @@ app.use(morgan('dev'))
 // body parsing middleware
 app.use(express.json())
 
+app.use(cors())
+
 // auth and api routes
 app.use('/auth', require('./auth'))
 app.use('/api', require('./api'))
+
+const weather= require("./weather")
+app.use("/weather", weather)
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
 
