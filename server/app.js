@@ -22,8 +22,7 @@ app.use(cors())
 app.use('/auth', require('./auth'))
 app.use('/api', require('./api'))
 
-const weather= require("./weather")
-app.use("/weather", weather)
+app.use('/weather', require('./weather'))
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
 

@@ -21,9 +21,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import { DateTime } from './DateTime';
 import  Weather  from './Weather/Weather'
 
-const apiKey = `ecc22e13d2f6b0f1baf1d1b90561a03b`
-
-
 const Home = (props) =>{
   const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
@@ -79,7 +76,8 @@ const [latitude, setLatitude] = useState(0);
       await window.navigator.geolocation.getCurrentPosition(
         savePositionToState, error, options);
         if(latitude && longitude){
-            const res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${apiKey}
+            const apiKey = await axios.get('/weather');
+            const res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${apiKey.data}
         `);
         setCityName(res.data[0].local_names.en);
         console.log(res.data)
@@ -92,8 +90,9 @@ const [latitude, setLatitude] = useState(0);
 
   const fetchWeather = async () => {
     try {
+      const apiKey = await axios.get('/weather');
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey.data}`
       );
       setTemperature(res.data.main.temp);
       // setWeather(res.data.weather[0].main);
