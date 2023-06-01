@@ -55,7 +55,7 @@ setNewTask({});
   useEffect(()=> console.log('task selected: '+ selectTask.taskName), [selectTask])
 
   //MARK TASK COMPLETE
-  const [complete, setComplete] = useState({})
+  const [complete, setComplete] = useState('')
   const [completeToggle, setCompleteToggle] = useState(false)
   const [sendComplete, setSendComplete] = useState(false);
  
