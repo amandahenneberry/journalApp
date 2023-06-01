@@ -18,11 +18,7 @@ const Routes =(props)=>{
     dispatch(me())
   }, [])
 
-  // useEffect(()=>{
-  //   dispatch(fetchEntries())
-  // }, [])
- 
-    return (
+  return (
       <div>
         {isLoggedIn ? (
           <Switch>
