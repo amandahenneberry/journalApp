@@ -21,6 +21,7 @@ app.use(cors())
 // auth and api routes
 app.use('/auth', require('./auth'))
 app.use('/weather', require('./weather'))
+app.use('/cloudinaryLoader', require('./cloudinaryLoader'))
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '..', 'public/index.html')));
 
