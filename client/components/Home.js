@@ -73,9 +73,7 @@ const [latitude, setLatitude] = useState(0);
       await window.navigator.geolocation.getCurrentPosition(
         savePositionToState, error, options);
         if(latitude && longitude){
-            const apiKey = await axios.get('/weather');
-            const res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${apiKey.data}
-        `);
+        const res = await axios.get(`/weather/${latitude}/${longitude}`);
         setCityName(res.data[0].local_names.en);
         console.log(res.data)
         }
@@ -87,10 +85,7 @@ const [latitude, setLatitude] = useState(0);
 
   const fetchWeather = async () => {
     try {
-      const apiKey = await axios.get('/weather');
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey.data}`
-      );
+      const res = await axios.get(`/weather/data/${latitude}/${longitude}`)
       setTemperature(res.data.main.temp);
       // setWeather(res.data.weather[0].main);
       setDescription(res.data.weather[0].description);
