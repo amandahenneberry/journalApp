@@ -20,10 +20,10 @@ router.get("/", (request, response) => {
 });
 
 // image upload API
-router.post("/image-upload", (request, response) => {
+router.post("/:image-upload", (request, response) => {
     // collected image from a user
     const data = {
-      image: request.body.image,
+      image: request.body.selectedImage
     }
 
     // upload image here

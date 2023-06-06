@@ -78,8 +78,9 @@ const NewEntryEditor = props =>{
        
     }
 
-    const addPhoto = () =>{
+    const addPhoto = async () =>{
         //**convert photo? figure out... */
+        await axios.post(`/cloudinaryLoader/${selectedImage}`);
         setPhotoAdded(true)
     }
 
