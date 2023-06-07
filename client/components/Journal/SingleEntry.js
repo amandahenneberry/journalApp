@@ -55,7 +55,7 @@ class SingleEntry extends Component{
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
         const title = entry.title || [];
-        const photo = entry.photo || 'error loading photo';
+        const photo = entry.photo || null;
         const date = entry.date || '';
         const location = entry.location || '';
         const weatherIcon = entry.weatherIcon || '';
@@ -83,7 +83,17 @@ class SingleEntry extends Component{
                                 <Form.Group className="mb-3" controlId="content">
                                     <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
                                  </Form.Group>
-                                    <p><img alt='photo?' src={photo}/></p>
+                                    {photo ? (
+                                        <p><center><img alt='photo?' width={"250px"} src={photo}/></center></p>
+                                    ) 
+                                    :
+                                    (
+                                        <>
+                                        ''
+                                        </>
+                                    )
+                                    }
+                                    
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="primary" type="submit">Submit Changes</Button>
@@ -105,7 +115,15 @@ class SingleEntry extends Component{
                             </Modal.Header>
                             <Modal.Body>
                                 <p>{content}</p>
-                                <p><img alt='photo?' src={photo}/></p>
+                                {photo ? (
+                                        <p><center><img alt='photo?' width={"250px"} src={photo}/></center></p>
+                                    ) 
+                                    :
+                                    (
+                                        <>
+                                        </>
+                                    )
+                                    }
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="outline-primary"onClick={()=>{this.setState({ edit: true})}}>Edit</Button>
