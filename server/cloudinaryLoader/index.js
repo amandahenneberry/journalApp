@@ -8,9 +8,6 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // cloudinary configuration
-// console.log(cloudinary.config().cloud_name);
-// console.log(cloudinary.config().api_key);
-// console.log(cloudinary.config().api_secret);
 cloudinary.config().cloud_name;
 cloudinary.config().api_key;
 cloudinary.config().api_secret;

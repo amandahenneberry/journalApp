@@ -24,7 +24,7 @@ const NewEntryEditor = props =>{
 
     //image  and upload image pop-up
     const [image, setImage] = useState('');
-    const [ url, setUrl ] = useState("");
+    const [url, setUrl ] = useState("");
     const [photoAdded, setPhotoAdded] = useState(false)
     
   
@@ -84,25 +84,30 @@ const NewEntryEditor = props =>{
         data.append("file", image);
         data.append("upload_preset", "weblogapp");
         data.append("cloud_name","dl9ypspru");
-        fetch("  https://api.cloudinary.com/v1_1/weblogapp/image/upload",{
+        fetch("https://api.cloudinary.com/v1_1/dl9ypspru/image/upload",{
             method:"post",
             body: data
         })
         .then(resp => resp.json())
         .then(data => {
-        setUrl(data.url)
-    })
-    .catch(err => console.log(err))
+        setUrl(data.url);
+        // console.log('URL: '+url)
+        })
+        .catch(err => console.log(err))
     }
 
     const addPhoto = async () =>{
-        //**convert photo? figure out... */
-        // await axios.post(`/cloudinaryLoader/${image}`);
-        // console.log('IMAGE INFO: '+image);
         await uploadPhoto();
-        setPhotoAdded(true)
+        // console.log('URL: '+url);
+        setPhotoAdded(true);
+        
     }
 
+    useEffect(()=>{setNewEntry((prev)=>({
+        ...prev,
+        photo: url
+    }))}, [url])
+    
     const handleRemovePhoto=()=>{
         setImage(null);
         // handleChange(entry.photo = '')
