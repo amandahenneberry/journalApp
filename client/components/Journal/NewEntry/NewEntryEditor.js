@@ -23,7 +23,8 @@ const NewEntryEditor = props =>{
     const [showTitleAlert, setTitleAlert] = useState(false);
 
     //image  and upload image pop-up
-    const [selectedImage, setSelectedImage] = useState('');
+    const [image, setImage] = useState('');
+    const [ url, setUrl ] = useState("");
     const [photoAdded, setPhotoAdded] = useState(false)
     
   
@@ -73,19 +74,37 @@ const NewEntryEditor = props =>{
 
     //image
     const handlePhoto = (e) =>{
-       setSelectedImage(e.target.files[0]);
+       setImage(e.target.files[0]);
        handleChange(e);
        
     }
 
+    const uploadPhoto = () =>{
+        const data = new FormData();
+        data.append("file", image);
+        data.append("upload_preset", "weblogapp");
+        data.append("cloud_name","dl9ypspru");
+        fetch("  https://api.cloudinary.com/v1_1/weblogapp/image/upload",{
+            method:"post",
+            body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        setUrl(data.url)
+    })
+    .catch(err => console.log(err))
+    }
+
     const addPhoto = async () =>{
         //**convert photo? figure out... */
-        await axios.post(`/cloudinaryLoader/${selectedImage}`);
+        // await axios.post(`/cloudinaryLoader/${image}`);
+        // console.log('IMAGE INFO: '+image);
+        await uploadPhoto();
         setPhotoAdded(true)
     }
 
     const handleRemovePhoto=()=>{
-        setSelectedImage(null);
+        setImage(null);
         // handleChange(entry.photo = '')
         setNewEntry((prev) =>({
             ...prev,
@@ -123,10 +142,10 @@ const NewEntryEditor = props =>{
                         ) : (
                         <Form.Group controlId="formFileSm">
                             <Form.Control type="file" name="photo" value={newEntry.photo || ''}  onChange={handlePhoto} />
-                                {selectedImage && (
+                                {image && (
                                     <div>
                                         <Stack direction='horizontal'>
-                                        <img alt="not found" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                                        <img alt="not found" width={"250px"} src={URL.createObjectURL(image)} />
                                         <div className="vr" />
                                         <Stack gap={3}>
                                             <br/>
