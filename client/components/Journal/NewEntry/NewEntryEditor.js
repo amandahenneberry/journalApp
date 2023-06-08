@@ -90,8 +90,8 @@ const NewEntryEditor = props =>{
     }
 
     const addPhoto = async () =>{
-        await uploadPhoto();        setPhotoAdded(true);
-        
+        await uploadPhoto();        
+        setPhotoAdded(true);
     }
 
     useEffect(()=>{setNewEntry((prev)=>({

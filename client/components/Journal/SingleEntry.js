@@ -17,12 +17,18 @@ class SingleEntry extends Component{
             title: '',
             content: '',
             photo: '',
-            photoDeleted: false
+            photoDeleted: false,
+            photoAdded: false,
+            url: ""
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReload = this.handleReload.bind(this)
         this.deletePhoto = this.deletePhoto.bind(this)
+        this.uploadPhoto = this.uploadPhoto.bind(this);
+        this.addPhoto = this.addPhoto.bind(this);
+        this.handleAddPhoto = this.handleAddPhoto.bind(this);
+        this.handleRemovePhoto = this.handleRemovePhoto.bind(this);
     }
 
     componentDidMount(){
@@ -55,11 +61,48 @@ class SingleEntry extends Component{
         this.props.reload();
     }
 
+    //edit photo
+
     deletePhoto(){
         this.setState({
             photo: '',
             photoDeleted: true
         });
+    }
+
+    handleAddPhoto(e){
+        e.preventDefault();
+        this.setState({photo: e.target.files[0]});
+    }
+
+    handleRemovePhoto(){
+        this.setState({photo: '', photoAdded:false})
+    }
+
+    uploadPhoto(){
+        const data = new FormData();
+        data.append("file", this.state.photo);
+        data.append("upload_preset", "weblogapp");
+        data.append("cloud_name","dl9ypspru");
+        fetch("https://api.cloudinary.com/v1_1/dl9ypspru/image/upload",{
+            method:"post",
+            body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        this.setState({url: data.url});
+        })
+        .catch(err => console.log(err))
+    }
+
+    addPhoto(){
+        this.uploadPhoto()
+        
+            this.setState({
+                photoAdded:true,
+                photo: this.state.url
+            })
+          
     }
     
     render(){
@@ -105,9 +148,36 @@ class SingleEntry extends Component{
                                     :
                                     (
                                         <>
+                                            {this.state.photoAdded ? (
+                                                <Stack direction="horizontal" className='d-flex align-items-center justify-content-center text-center not-found-container'>
+                                                    <img alt='Photo added!' width={"40px"} src='./images/photo_icon.png'/>
+                                                    <Button variant="link" onClick={this.handleRemovePhoto}>RemovePhoto</Button>
+                            
+                                                </Stack>
+                                            ):(
+                                        
+                                                <>
+                                                <Form.Group controlId="formFileSm">
+                                                <Form.Control type="file" name="photo" onChange={this.handleAddPhoto} />
+                                                    {this.state.photo && (
+                                                        <div>
+                                                            <Stack direction='horizontal'>
+                                                                <img alt="not found" width={"250px"} src={URL.createObjectURL(this.state.photo)} />
+                                                                <div className="vr" />
+                                                                <Stack gap={3}>
+                                                                    <br/>
+                                                                    <Button size="sm" variant="outline-primary" onClick={this.handleRemovePhoto}>Remove photo</Button>
+                                                                    <Button size="sm" variant="outline-primary" onClick={this.addPhoto}>Add photo</Button>
+                                                                </Stack>
+                                                            </Stack>
+                                                        </div>   
+                                                    )} 
+                                                </Form.Group>      
+                                                </>
+                                            )}
                                         </>
-                                    )
-                                    }
+                                    )}
+                                
                                     
                             </Modal.Body>
                             <Modal.Footer>
