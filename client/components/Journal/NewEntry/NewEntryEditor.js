@@ -15,7 +15,7 @@ const moment = require('moment');
 //for 'upload photo'
 
 const NewEntryEditor = props =>{
-    const [newEntry, setNewEntry] = useState({});
+    const [newEntry, setNewEntry] = useState({content: '', title: ''});
     const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch();
     const {id, setToggle, toggle} = props
@@ -130,12 +130,12 @@ const NewEntryEditor = props =>{
                         <Form.Control type="date" name="date" value={newEntry.date || moment().format("YYYY-MM-DD")} onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="title">
-                        <Form.Control type="text" name="title" value={newEntry.title || ' '} onChange={handleChange} placeholder='Title'/>
+                        <Form.Control type="text" name="title" value={newEntry.title || ''} onChange={handleChange} placeholder='Title'/>
                      {showTitleAlert? (<div style={{color:'red'}}><small>Title must be 30 characters or less</small></div>):('')}
                     </Form.Group>
                 </Stack>
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} onChange={handleChange} placeholder='Write an entry...' />
+                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} onChange={handleChange} placeholder='Write your entry...'/>
                 </Form.Group>
                 <div>
                     {photoAdded ? (
@@ -168,9 +168,15 @@ const NewEntryEditor = props =>{
                     }
                 </div>
                 
+                {newEntry.content === '' ? (
+                    <>
+                    <Button variant="secondary" type="submit" disabled>Submit Entry</Button>
+                    <small style={{color:'red'}}>type an entry ... </small>
+                    </>
+                ) : (
+                    <Button variant="primary" type="submit">Submit Entry</Button>
+                )}
                 
-
-                <Button variant="primary" type="submit">Submit Entry</Button>
                 </Stack>
             </Form>
                
