@@ -16,7 +16,8 @@ class SingleEntry extends Component{
             edit: false,
             title: '',
             content: '',
-            photo: ''
+            photo: '',
+            photoDeleted: false
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,8 +57,9 @@ class SingleEntry extends Component{
 
     deletePhoto(){
         this.setState({
-            photo: ''
-        })
+            photo: '',
+            photoDeleted: true
+        });
     }
     
     render(){
@@ -92,7 +94,7 @@ class SingleEntry extends Component{
                                 <Form.Group className="mb-3" controlId="content">
                                     <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
                                  </Form.Group>
-                                    {photo !=='' ? (
+                                    {photo !=='' && !this.state.photoDeleted ? (
                                         <center>
                                             <img alt='photo?' width={"250px"} src={photo}/>
                                             <Button size = 'sm' onClick={this.deletePhoto}>
