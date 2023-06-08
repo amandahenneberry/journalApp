@@ -111,6 +111,16 @@ const NewEntryEditor = props =>{
         setPhotoAdded(false)
     }
 
+    const onKeyDown=(e)=>{
+        // 'event.key' will return the key as a string: 'Tab'
+        // 'event.keyCode' will return the key code as a number: Tab = '9'
+        // You can use either of them
+        if (e.keyCode === 9) {
+          // Prevent the default action to not lose focus when tab
+          e.preventDefault();
+        }
+    }
+
     return(
         <div>
             {!submitted ? (
@@ -126,7 +136,7 @@ const NewEntryEditor = props =>{
                     </Form.Group>
                 </Stack>
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} style={{whiteSpace:'pre-wrap'}} onChange={handleChange} placeholder='Write your entry...'/>
+                    <Form.Control as="textarea" onKeyDown={onKeyDown} rows={12} name="content" value={newEntry.content || ''} style={{whiteSpace:'pre-wrap'}} onChange={handleChange} placeholder='Write your entry...'/>
                 </Form.Group>
                 <div>
                     {photoAdded ? (
