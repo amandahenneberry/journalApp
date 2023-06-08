@@ -92,17 +92,17 @@ class SingleEntry extends Component{
         .then(data => {
         this.setState({url: data.url});
         })
-        .catch(err => console.log(err))
-    }
-
-    addPhoto(){
-        this.uploadPhoto()
-        
+        .finally(()=>{
             this.setState({
                 photoAdded:true,
                 photo: this.state.url
             })
-          
+        })
+        .catch(err => console.log(err))
+    }
+
+    addPhoto(){
+        this.uploadPhoto()   
     }
     
     render(){
