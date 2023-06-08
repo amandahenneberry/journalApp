@@ -26,7 +26,7 @@ const NewEntryEditor = props =>{
   
    
     const handleChange = ({ target }) => {
-        const {id, cityName, weatherIcon} = props;
+        const {id, cityName, weatherIcon, description, high, low} = props;
         const { name, value } = target;
         const title= newEntry.title;
         const today = moment().format("YYYY-MM-DD")
@@ -42,7 +42,10 @@ const NewEntryEditor = props =>{
           userId: id,
           [name]: value,
           location: cityName,
-          weatherIcon: weatherIcon
+          weatherIcon: weatherIcon,
+          weatherDescription: description,
+          high: high,
+          low: low 
         }));   
 
         if(title.length  >=  30){

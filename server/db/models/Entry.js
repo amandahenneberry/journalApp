@@ -25,6 +25,15 @@ const Entry = db.define('entry', {
   },
   weatherIcon: {
     type: Sequelize.STRING
+  },
+  weatherDescription:{
+    type: Sequelize.STRING
+  },
+  high: {
+    type: Sequelize.STRING
+  },
+  low: {
+    type: Sequelize.STRING
   }
 })
 

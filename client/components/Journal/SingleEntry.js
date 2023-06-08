@@ -127,6 +127,9 @@ class SingleEntry extends Component{
         const date = entry.date || '';
         const location = entry.location || '';
         const weatherIcon = entry.weatherIcon || '';
+        const weatherDescription = entry.weatherDescription || '';
+        const high = entry.high || '';
+        const low = entry.low || '';
         const {handleDelete} = this.props;
         const {handleClose} = this.props;
 
@@ -208,7 +211,30 @@ class SingleEntry extends Component{
                             <Modal.Header closeButton>
                                 <span>
                                     <h3>{title}</h3>
-                                    <p><small>{date}<img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/>{location}</small></p>
+                                    <table>
+
+                                            <tr>
+                                                <th style={{color:'gray'}}>{date}</th>
+                                            </tr>
+                                            <small>
+                                            
+                                            <tr>
+                                               
+                                                <td>
+                                                <b>{location}</b>
+                                                 <img width="25px" height="auto" src ={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}/> <em>{weatherDescription}</em>
+                                                 </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                              
+                                                <small style={{fontSize: 'smaller'}}>
+                                                <td><b>H:</b>{high}ºF &nbsp; <b>L:</b>{low}ºF</td>                                                
+                                                </small>
+                                                
+                                            </tr>
+                                            </small>
+                                    </table>
                                 </span>
                     
                             </Modal.Header>
