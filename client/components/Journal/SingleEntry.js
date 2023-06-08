@@ -6,8 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/Stack';
 import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
-// import history from '../../history';
 import Form from 'react-bootstrap/Form'
+
 
 class SingleEntry extends Component{
     constructor(props){
@@ -15,11 +15,13 @@ class SingleEntry extends Component{
         this.state = {
             edit: false,
             title: '',
-            content: ''
+            content: '',
+            photo: ''
         }
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReload = this.handleReload.bind(this)
+        this.deletePhoto = this.deletePhoto.bind(this)
     }
 
     componentDidMount(){
@@ -30,7 +32,8 @@ class SingleEntry extends Component{
         if (prevProps.entry!== this.props.entry){
             this.setState({
                 title: this.props.entry.title || '',
-                content: this.props.entry.content || ''
+                content: this.props.entry.content || '',
+                photo: this.props.entry.photo || ''
             })
         }
     }
@@ -50,12 +53,18 @@ class SingleEntry extends Component{
     handleReload(){
         this.props.reload();
     }
+
+    deletePhoto(){
+        this.setState({
+            photo: ''
+        })
+    }
     
     render(){
         const entry = this.props.entry || [];
         const content = entry.content || 'content fail';
         const title = entry.title || [];
-        const photo = entry.photo || null;
+        const photo = entry.photo || '';
         const date = entry.date || '';
         const location = entry.location || '';
         const weatherIcon = entry.weatherIcon || '';
@@ -83,13 +92,17 @@ class SingleEntry extends Component{
                                 <Form.Group className="mb-3" controlId="content">
                                     <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
                                  </Form.Group>
-                                    {photo ? (
-                                        <p><center><img alt='photo?' width={"250px"} src={photo}/></center></p>
+                                    {photo !=='' ? (
+                                        <center>
+                                            <img alt='photo?' width={"250px"} src={photo}/>
+                                            <Button size = 'sm' onClick={this.deletePhoto}>
+                                                remove photo
+                                            </Button>
+                                        </center>
                                     ) 
                                     :
                                     (
                                         <>
-                                        ''
                                         </>
                                     )
                                     }
@@ -115,15 +128,22 @@ class SingleEntry extends Component{
                             </Modal.Header>
                             <Modal.Body>
                                 <p>{content}</p>
+                                    
                                 {photo ? (
-                                        <p><center><img alt='photo?' width={"250px"} src={photo}/></center></p>
+                                    <div>
+                                        <center>
+                                        <img alt='photo?' width={"250px"} src={photo}/>
+                                        </center>
+                                        
+                                    </div>
                                     ) 
                                     :
                                     (
                                         <>
                                         </>
                                     )
-                                    }
+                                }
+                                    
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="outline-primary"onClick={()=>{this.setState({ edit: true})}}>Edit</Button>

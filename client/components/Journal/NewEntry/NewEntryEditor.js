@@ -10,10 +10,6 @@ import { useDispatch} from 'react-redux';
 
 const moment = require('moment');
 
-
-//alerts
-//for 'upload photo'
-
 const NewEntryEditor = props =>{
     const [newEntry, setNewEntry] = useState({content: '', title: ''});
     const [submitted, setSubmitted] = useState(false)
@@ -58,8 +54,6 @@ const NewEntryEditor = props =>{
     };
 
     const submitEntry = () =>{
-        // axios.post(`/api/entries`, entry)
-        // axios.post(`/auth/me/entries`, entry)
         dispatch(postEntryThunk(newEntry))
 
     }
@@ -91,15 +85,12 @@ const NewEntryEditor = props =>{
         .then(resp => resp.json())
         .then(data => {
         setUrl(data.url);
-        // console.log('URL: '+url)
         })
         .catch(err => console.log(err))
     }
 
     const addPhoto = async () =>{
-        await uploadPhoto();
-        // console.log('URL: '+url);
-        setPhotoAdded(true);
+        await uploadPhoto();        setPhotoAdded(true);
         
     }
 
@@ -110,7 +101,6 @@ const NewEntryEditor = props =>{
     
     const handleRemovePhoto=()=>{
         setImage(null);
-        // handleChange(entry.photo = '')
         setNewEntry((prev) =>({
             ...prev,
             photo: ''
@@ -122,8 +112,6 @@ const NewEntryEditor = props =>{
         <div>
             {!submitted ? (
             <Form onSubmit={handleSubmit} userid={id}>
-                 {/* <div>{showTitleAlert? (<div style={{color:'red'}}>hi</div>):('')}</div> */}
-
                 <Stack gap={1}>
                 <Stack direction='horizontal' className='d-flex align-items-center justify-content-center text-center not-found-container'>
                     <Form.Group className="mb-3" controlId="date">
