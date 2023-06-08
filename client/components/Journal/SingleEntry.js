@@ -7,6 +7,7 @@ import Stack from 'react-bootstrap/Stack';
 import  Row  from 'react-bootstrap/Row';
 import  Col  from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form'
+import axios from 'axios';
 
 
 class SingleEntry extends Component{
@@ -29,6 +30,7 @@ class SingleEntry extends Component{
         this.addPhoto = this.addPhoto.bind(this);
         this.handleAddPhoto = this.handleAddPhoto.bind(this);
         this.handleRemovePhoto = this.handleRemovePhoto.bind(this);
+        this.deleteFromCloudinary = this.deleteFromCloudinary.bind(this);
     }
 
     componentDidMount(){
@@ -68,6 +70,7 @@ class SingleEntry extends Component{
             photo: '',
             photoDeleted: true
         });
+        this.deleteFromCloudinary();
     }
 
     handleAddPhoto(e){
@@ -103,6 +106,17 @@ class SingleEntry extends Component{
 
     addPhoto(){
         this.uploadPhoto()   
+    }
+
+    deleteFromCloudinary(){
+        const data = new FormData();
+        data.append("file", this.props.entry.photo);
+        data.append("upload_preset", "weblogapp");
+        data.append("cloud_name","dl9ypspru");
+        fetch("https://api.cloudinary.com/v1_1/dl9ypspru/image/destroy/",{
+            method:"post",
+            body: data
+        })
     }
     
     render(){
