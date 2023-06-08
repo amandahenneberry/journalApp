@@ -149,7 +149,7 @@ class SingleEntry extends Component{
                                     </Form.Group>
                                 </h3>
                                 <Form.Group className="mb-3" controlId="content">
-                                    <Form.Control as="textarea" rows={12} cols={100} name="content" value={this.state.content} onChange={this.handleChange}/>
+                                    <Form.Control as="textarea" rows={12} cols={100} name="content" style={{whiteSpace:'pre-wrap'}} value={this.state.content} onChange={this.handleChange}/>
                                  </Form.Group>
                                     {photo !=='' && !this.state.photoDeleted ? (
                                         <center>
@@ -212,7 +212,7 @@ class SingleEntry extends Component{
                                 </span>
                     
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{whiteSpace:'pre-wrap'}}>
                                 <p>{content}</p>
                                     
                                 {photo ? (

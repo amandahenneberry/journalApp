@@ -123,7 +123,7 @@ const NewEntryEditor = props =>{
                     </Form.Group>
                 </Stack>
                 <Form.Group className="mb-3" controlId="content">
-                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} onChange={handleChange} placeholder='Write your entry...'/>
+                    <Form.Control as="textarea" rows={12} name="content" value={newEntry.content || ''} style={{whiteSpace:'pre-wrap'}} onChange={handleChange} placeholder='Write your entry...'/>
                 </Form.Group>
                 <div>
                     {photoAdded ? (
