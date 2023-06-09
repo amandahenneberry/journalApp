@@ -22,7 +22,7 @@ export default function SingleTodo({ id, taskName, todo, details, handleDelete, 
   const soundPlay = () => {
     const sound = new Howl({
       src:['https://res.cloudinary.com/dl9ypspru/video/upload/v1686338576/181056__jakobhandersen__pencil_check_mark_2_hfoala.wav'],
-      volume: 0.5
+      volume: 0.15
     })
     sound.play();
   }

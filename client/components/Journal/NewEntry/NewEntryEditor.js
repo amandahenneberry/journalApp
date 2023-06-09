@@ -7,6 +7,8 @@ import Stack from 'react-bootstrap/Stack';
 import { FloatingLabel, Modal } from 'react-bootstrap';
 import { postEntryThunk } from '../../../store/auth';
 import { useDispatch} from 'react-redux';
+import {Howl} from 'howler'
+
 
 const moment = require('moment');
 
@@ -63,10 +65,19 @@ const NewEntryEditor = props =>{
 
     const handleSubmit = (evt) =>{
         evt.preventDefault();
+        soundPlay();
         setSubmitted(true);
         console.log('new entry: '+newEntry.content)
         submitEntry();
         setNewEntry({});
+    }
+
+    const soundPlay = () => {
+        const sound = new Howl({
+          src:['https://res.cloudinary.com/dl9ypspru/video/upload/v1686340170/63318__flag2__page-turn-please-turn-over-pto-paper_turn_over_rf069t.wav'],
+          volume: 0.8
+        })
+        sound.play();
     }
 
     //image
