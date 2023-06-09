@@ -19,7 +19,7 @@ export const LoginPage = () =>{
                 <Row>
                     <Col></Col>
                     <Col>
-                    <h1><br></br><center>WebLog</center></h1><br></br><center><em><p>A Journaling App</p></em></center></Col>
+                    <h1><br></br><center>WebLog</center></h1><br></br><center><em><p>Daily Journal + "To Do" List</p></em></center></Col>
                     <Col></Col>
                     </Row>
                 {!toggle? (
