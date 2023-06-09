@@ -6,6 +6,11 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import { Pen, CheckLg, X } from 'react-bootstrap-icons'
 import EditTodo from "./EditTodo";
+import {Howl} from 'howler'
+
+// const audioClip = {
+//   sound: 'https://res.cloudinary.com/dl9ypspru/video/upload/v1686338576/181056__jakobhandersen__pencil_check_mark_2_hfoala.wav'
+// }
 
 
 
@@ -13,6 +18,14 @@ export default function SingleTodo({ id, taskName, todo, details, handleDelete, 
   const [hoverCheck, onHoverCheck] = useState(false)
   const [hoverEdit, onHoverEdit] = useState(false)
   const [hoverX, onHoverX] = useState(false)
+
+  const soundPlay = () => {
+    const sound = new Howl({
+      src:['https://res.cloudinary.com/dl9ypspru/video/upload/v1686338576/181056__jakobhandersen__pencil_check_mark_2_hfoala.wav'],
+      volume: 0.5
+    })
+    sound.play();
+  }
 
   
   return (
@@ -56,7 +69,7 @@ export default function SingleTodo({ id, taskName, todo, details, handleDelete, 
                       bsstyle='default'
                       size='sm'
                       style={{borderColor:'transparent' ,color:'green', backgroundColor: hoverCheck ? 'rgba(0, 0, 0, 0.05)' : 'transparent', borderRadius: '50%', outline: 'none'}} 
-                      onClick={() => markComplete(todo)}>
+                      onClick={() => {markComplete(todo); soundPlay()}}>
                       <CheckLg />
                     </Button>
                
