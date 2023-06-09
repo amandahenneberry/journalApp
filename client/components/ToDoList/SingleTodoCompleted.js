@@ -17,7 +17,7 @@ export default function SingleTodoCompleted({ id, taskName, details, handleDelet
         <Stack gap={0}>
             <Row>
                 <p>
-                    {taskName}
+                    <span style={{color: 'gray', textDecoration:'line-through'}}>{taskName}</span>
                     {/* DELETE */}
                     <Button 
                       onMouseEnter={()=>{
