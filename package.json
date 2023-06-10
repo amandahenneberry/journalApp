@@ -4,7 +4,7 @@
   "description": "A password protected journal, with 'to do' list",
   "main": "index.js",
   "engines": {
-    "node": "20.3.0",
+    "node": "20.x",
     "npm": "9.7.1"
   },
   "scripts": {
