@@ -4,7 +4,7 @@
   "description": "A password protected journal, with 'to do' list",
   "main": "index.js",
   "enines": {
-    "node": "9.7.1"
+    "npm": "9.7.1"
   },
   "scripts": {
     "build": "webpack",
