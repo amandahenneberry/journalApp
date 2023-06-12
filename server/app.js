@@ -9,6 +9,11 @@ module.exports = app
 // require shh
 if (process.env.NODE_ENV !== "production") require("../.shh.js");
 const JWT = process.env.JWT;
+const NODE_ENV = process.env.NODE_ENV;
+const DATABASE_URL = process.env.DATABASE_URL;
+const REACT_WEATHER_API_KEY = process.env.REACT_WEATHER_API_KEY;
+const CLOUDINARY_URL= process.env.CLOUDINARY_URL;
+const NPM_CONFIG_LEGACY_PEER_DEPS = process.env.NPM_CONFIG_LEGACY_PEER_DEPS;
 
 // logging middleware
 app.use(morgan('dev'))
