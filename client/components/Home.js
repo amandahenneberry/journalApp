@@ -157,7 +157,7 @@ return (
       activeKey={active}
       onSelect={handleSelect}
     >
-      <Tab eventKey="journal" title="Journal"  style={{zIndex:'150'}}>
+      <Tab eventKey="journal" title="Journal">
       <center>
         <div className='journalBg'> 
           <div className='paperBg'>
