@@ -7,7 +7,7 @@ require("dotenv").config();
 module.exports = app
 
 // require shh
-if (process.env.NODE_ENV !== "production") require("../.shh");
+if (process.env.NODE_ENV !== "production") require("../.shh.js");
 const JWT = process.env.JWT;
 
 // logging middleware
