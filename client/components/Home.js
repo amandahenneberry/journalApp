@@ -147,7 +147,7 @@ return (
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
-    <Col xs={6} style={{display: 'flex', zIndex:'150'}}>  
+    <Col xs={6} style={{display: 'flex'}}>  
     <Row>
       <Tabs
       defaultActiveKey="journal"
@@ -157,7 +157,7 @@ return (
       activeKey={active}
       onSelect={handleSelect}
     >
-      <Tab eventKey="journal" title="Journal">
+      <Tab eventKey="journal" title="Journal"  style={{zIndex:'150'}}>
       <center>
         <div className='journalBg'> 
           <div className='paperBg'>
