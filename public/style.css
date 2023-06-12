@@ -148,10 +148,9 @@ form div {
 }
 
 .weatherContainer {
-  position: absolute;
+  position: relative;
   text-align: center;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.25));  border-radius: 25px;
-  width: 50%;
   color:aliceblue;
 
   text-shadow: 2px 2px 4px #00000025;
