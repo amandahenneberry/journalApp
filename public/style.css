@@ -152,7 +152,7 @@ form div {
   text-align: center;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.25));  border-radius: 25px;
   color:aliceblue;
-
+  float: right;
   text-shadow: 2px 2px 4px #00000025;
 
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
