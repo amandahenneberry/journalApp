@@ -34,7 +34,7 @@ export const LoginPage = () =>{
                             <Col xs={2}>
                                 <Stack direction='horizontal'>
                                     <div>New Here?</div>
-                                    <div><Button type='button' variant='link' onClick={()=>setToggle(!toggle)}>Sign Up</Button></div>
+                                    <div><Button variant='link' onClick={()=>setToggle(!toggle)}>Sign Up</Button></div>
                                 </Stack>
                             </Col>
                             <Col></Col>
@@ -53,7 +53,7 @@ export const LoginPage = () =>{
                             <Col xs={3}>
                                 <Stack direction='horizontal'>
                                     <div>Have an account?</div>
-                                    <div><Button type='button' variant='link' onClick={()=>setToggle(!toggle)}>Log in</Button></div>
+                                    <div><Button variant='link' onClick={()=>setToggle(!toggle)}>Log in</Button></div>
                             
                                 </Stack>
                             </Col>
