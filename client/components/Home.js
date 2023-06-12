@@ -147,7 +147,7 @@ return (
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
-    <Col xs={6} style={{display: 'flex'}}>  
+    <Col xs={6} style={{display: 'flex', zIndex:'150'}}>  
     <Row>
       <Tabs
       defaultActiveKey="journal"
@@ -176,7 +176,7 @@ return (
       </Tabs>
       </Row>
     </Col>
-    <Col>
+    <Col >
     <div className="weatherContainer">
       <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
     </div>
