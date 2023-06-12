@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import { Howl } from "howler";
+// import { Howl } from "howler";
 
 
 
@@ -16,19 +16,19 @@ export const EntryMap = ({ entries, onEntryClick }) => {
   const [sortBy, setSortBy] = useState(false)
   const [hoverSort, onHoverSort] = useState(false)
 
-  const soundPlay = () => {
-    const sound = new Howl({
-      src:['https://res.cloudinary.com/dl9ypspru/video/upload/v1686342279/416179__inspectorj__book-flipping-through-pages-a_vtupqk.wav'],
-      volume: 0.9
-    })
-    sound.play();
-}
+//   const soundPlay = () => {
+//     const sound = new Howl({
+//       src:['https://res.cloudinary.com/dl9ypspru/video/upload/v1686342279/416179__inspectorj__book-flipping-through-pages-a_vtupqk.wav'],
+//       volume: 0.9
+//     })
+//     sound.play();
+// }
 
 
   const handleClick = ({ target }) => {
       const entry = target.value;
       onEntryClick(entry);
-      soundPlay()
+      // soundPlay()
   };
 
   const handleSort = () =>{
