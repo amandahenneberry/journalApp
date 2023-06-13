@@ -143,13 +143,13 @@ return (
   <Container fluid className="vertical-center">
     <Row><br></br><br></br><br></br><br></br></Row>
     <Row>
-    <Col style={{padding: '10px'}}> 
+    <Col style={{padding:'50px 85px 10px 10px'}}> 
     <Row><br></br><br></br><br></br><br></br></Row>
       <div className= "dateContainer">
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
-    <Col xs={6} style={{display: 'flex', paddingLeft: '60px', paddingRight: '60px'}}>  
+    <Col xs={6} style={{display: 'flex', padding:'10px 50px 10px 50px'}}>  
     <Row>
       <Tabs
       defaultActiveKey="journal"
@@ -178,7 +178,7 @@ return (
       </Tabs>
       </Row>
     </Col>
-    <Col style={{paddingLeft: '150px'}}>
+    <Col style={{padding:'25px 10px 10px 85px'}}>
     <Row><br></br><br></br><br></br></Row>
     <div className="weatherContainer">
       <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
