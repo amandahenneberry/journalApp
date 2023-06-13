@@ -50,6 +50,7 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon, descrip
           </Container>
         ) : (
           <div className='newEntry'>
+            <div style={{padding: '0px 10px 0px 10px'}}>
             <Nav>
             <Stack direction='horizontal'>
             <AllUserEntries username={username} entries={entries} />
@@ -61,7 +62,9 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon, descrip
           </Button> 
           </Stack>
             </Nav>
+            
             <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon} description={description} high={high} low={low} toggle={toggle} setToggle={setToggle}/>
+            </div>
             <br/>
           </div>
         )}
