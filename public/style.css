@@ -2,19 +2,22 @@ body {
   font-family: sans-serif;
   background: url(./images/blurrBg.jpeg);
   /* background-attachment: scroll, local;   */
-  margin: 0%;
+  /* margin: 10%; */
   height: 100%;
   width: 100%;
   background-attachment: fixed;
   overflow-y: scroll;
-  overflow-x: auto;
+  overflow-x: scroll;
   background-size: cover;
-
   background-repeat: no-repeat;
-
   max-height: 100%;
 }
 
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
 
 form div {
   margin: 1em;
@@ -23,6 +26,8 @@ form div {
 }
 
 .vertical-center {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -134,12 +139,16 @@ form div {
   padding-top: 5%;  
   margin-top: auto;
   background: url(./images/JournalApp_Paper.jpeg);
-  height: 700px;
+  height:750px;
   width: 650px;  
   border-radius: 25px;
   background-size: cover;
   background-repeat: repeat-y;
   max-height: auto;
+  max-width: auto;
+  position:relative;
+  z-index: 1;
+  padding: 8%
 }
 
 .weatherContainer {
@@ -148,7 +157,7 @@ form div {
   width:auto;
   background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(151, 126, 68, 0.25));  border-radius: 25px;
   color:aliceblue;
-
+  /* margin: ; */
   text-shadow: 2px 2px 4px #00000025;
 
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
@@ -178,3 +187,9 @@ form div {
   position: static;
   margin-left:100px;
 }
+
+/* .newEntryContainer {
+display: flex;
+z-index: 4;
+position: relative;
+} */

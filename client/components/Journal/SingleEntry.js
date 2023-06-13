@@ -159,7 +159,7 @@ class SingleEntry extends Component{
 
         console.log(entry)
         return(
-            <>
+            <div style={{overflow: 'auto'}}>
                 { this.state.edit ? (
                     <center>
                         <Form onSubmit={this.handleSubmit}>
@@ -288,7 +288,7 @@ class SingleEntry extends Component{
                         </div>
                     )
                 }
-            </>
+            </div>
         )
     }
 
