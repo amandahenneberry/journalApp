@@ -178,7 +178,7 @@ return (
       </Tabs>
       </Row>
     </Col>
-    <Col style={{padding:'25px 10px 10px 85px'}}>
+    <Col style={{padding:'25px 20px 10px 85px'}}>
     <Row><br></br><br></br><br></br></Row>
     <div className="weatherContainer">
       <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
