@@ -87,7 +87,7 @@ const NewEntryEditor = props =>{
        
     }
 
-    const uploadPhoto = () =>{
+    const uploadPhoto = async () =>{
         const data = new FormData();
         data.append("file", image);
         data.append("upload_preset", "weblogapp");
@@ -96,10 +96,11 @@ const NewEntryEditor = props =>{
             method:"post",
             body: data
         })
-        .then(resp => resp.json())
+        .then(resp => resp.json()
         .then(data => {
-        setUrl(data.url);
-        })
+            setUrl(data.url);
+            }))
+        
         .catch(err => console.log(err))
     }
 
