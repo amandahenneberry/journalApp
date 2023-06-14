@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import { ButtonGroup, Container } from 'react-bootstrap';
 import { Login, Signup } from './AuthForm';
 import { Stack } from 'react-bootstrap'
+import { Journals } from 'react-bootstrap-icons'
+
 
 
 export const LoginPage = () =>{
@@ -19,7 +21,11 @@ export const LoginPage = () =>{
                 <Row>
                     <Col></Col>
                     <Col>
-                    <h1><br></br><center>WebLog</center></h1><br></br><center><em><p>Daily Journal + "To Do" List</p></em></center></Col>
+                    <h1><br></br><center>WebLog <Journals /></center></h1>
+                    <h3><h3><center> <Journals /></center></h3></h3>
+                    <center><em><p>Daily Journal + "To Do" List</p></em></center>
+                    </Col>
+                    
                     <Col></Col>
                     </Row>
                 {!toggle? (

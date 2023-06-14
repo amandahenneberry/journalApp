@@ -118,18 +118,16 @@ form div {
 }
 
 .loginBg {
-  background: url(./images/JournalApp_DESK.png);
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
   /* background-size: 600px 500px; */
   border-radius: 25px;
-
+  position: absolute;
   background-position: center center;
   /* background-size: cover;  */
   background-size: cover;
   /* height: auto; */
-  opacity: 0.8;
 }
 
 
