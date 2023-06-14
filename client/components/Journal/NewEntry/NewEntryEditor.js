@@ -92,7 +92,7 @@ const NewEntryEditor = props =>{
         data.append("file", image);
         data.append("upload_preset", "weblogapp");
         data.append("cloud_name","dl9ypspru");
-        fetch("https://api.cloudinary.com/v1_1/dl9ypspru/image/upload",{
+        await fetch("https://api.cloudinary.com/v1_1/dl9ypspru/image/upload",{
             method:"post",
             body: data
         })
