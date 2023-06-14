@@ -3,31 +3,51 @@ import {connect} from 'react-redux'
 import {authenticate} from '../store'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Row } from 'react-bootstrap';
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error, toggle} = props
 
   return (
     <div>
       <Form onSubmit={handleSubmit} name={name}>
+        <Row>
         <Form.Group>
           <Form.Label>
-            <small>Username</small>
+            {toggle === 'Login' ?
+            (
+              <small>Username</small>
+            )
+            :
+            (
+              <small>New Username</small>
+            )
+            }
           </Form.Label>
           <Form.Control name="username" type="text" />
         </Form.Group>
         <Form.Group>
           <Form.Label>
-            <small>Password</small>
+          {toggle === 'Login' ?
+            (
+              <small>Password</small>
+            )
+            :
+            (
+              <small>New Password</small>
+            )
+            }
           </Form.Label>
           <Form.Control name="password" type="password" />
         </Form.Group>
+        
         <div>
-          <Button type="submit">{displayName}</Button>
+          <Button type="submit" variant="outline-dark">{displayName}</Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
+        </Row>
       </Form>
     </div>
   )

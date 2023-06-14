@@ -5,13 +5,13 @@ import Col from 'react-bootstrap/Col';
 import { ButtonGroup, Container } from 'react-bootstrap';
 import { Login, Signup } from './AuthForm';
 import { Stack } from 'react-bootstrap'
-import { Journals } from 'react-bootstrap-icons'
+import { Journals, ListCheck } from 'react-bootstrap-icons'
 
 
 
 export const LoginPage = () =>{
-    const [toggle, setToggle] = useState(false);
-
+    const [toggle, setToggle] = useState('Login');
+    const [hoverX, onHoverX] = useState(false)
     
 
     return(
@@ -21,26 +21,42 @@ export const LoginPage = () =>{
                 <Row>
                     <Col></Col>
                     <Col>
-                    <h1><br></br><center>WebLog <Journals /></center></h1>
-                    <h3><h3><center> <Journals /></center></h3></h3>
+                    <h1><br></br><center>WebLog <Journals style={{color: 'cadetBlue', fontSize: '45px'}}/></center></h1>
+                    {/* <h3><h3><center> <Journals /></center></h3></h3> */}
                     <center><em><p>Daily Journal + "To Do" List</p></em></center>
                     </Col>
                     
                     <Col></Col>
                     </Row>
-                {!toggle? (
+                {toggle === 'Login' ? (
                     <Container>
-                        <Row>
+                        <Row >
                             <Col></Col>
-                            <Col xs={6}><center><Login /></center></Col>
+                            <Col><center><Login toggle={toggle}/></center></Col>
                             <Col></Col>
                         </Row>
                         <Row>
                             <Col></Col>
-                            <Col xs={2}>
+                            <Col>
                                 <Stack direction='horizontal'>
-                                    <div>New Here?</div>
-                                    <div><Button variant='link' onClick={()=>setToggle(!toggle)}>Sign Up</Button></div>
+                                   <div>New Here?</div>
+                                    <div>
+                                    <Button 
+                                    onMouseEnter={()=>{
+                                        onHoverX(true);
+                                      }}
+                                      onMouseLeave={()=>{
+                                        onHoverX(false);
+                                      }}
+                                    bsstyle='default'
+                                    size='sm' 
+                                    style={{borderColor:'transparent' , textDecoration:'underline', color: hoverX ? 'white' :'cadetBlue', backgroundColor: 'transparent', outline: 'none'}} 
+                                    onClick={()=>setToggle('Signup')}
+                                    >
+                                        <em><b>Create Account</b></em>
+                                    </Button>
+                                        </div>
+                                        
                                 </Stack>
                             </Col>
                             <Col></Col>
@@ -51,15 +67,30 @@ export const LoginPage = () =>{
                         <Container>
                         <Row>
                             <Col></Col>
-                            <Col xs={6}><center><Signup /></center></Col>
+                            <Col><center><Signup toggle={toggle}/></center></Col>
                             <Col></Col>
                         </Row>
                         <Row>
                             <Col></Col>
-                            <Col xs={3}>
-                                <Stack direction='horizontal'>
+                            <Col>
+                                <Stack direction='horizontal' >
                                     <div>Have an account?</div>
-                                    <div><Button variant='link' onClick={()=>setToggle(!toggle)}>Log in</Button></div>
+                                    <div>
+                                    <Button 
+                                    onMouseEnter={()=>{
+                                        onHoverX(true);
+                                      }}
+                                      onMouseLeave={()=>{
+                                        onHoverX(false);
+                                      }}
+                                    bsstyle='default'
+                                    size='sm' 
+                                    style={{borderColor:'transparent' , textDecoration:'underline', color: hoverX ? 'white' : 'cadetBlue', backgroundColor: 'transparent', outline: 'none'}} 
+                                    onClick={()=>setToggle('Login')}
+                                    >
+                                        <em><b>Log in</b></em>
+                                    </Button>
+                                    </div>
                             
                                 </Stack>
                             </Col>
