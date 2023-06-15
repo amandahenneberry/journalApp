@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import Card from 'react-bootstrap/Card';
+import { XLg } from 'react-bootstrap-icons';
 
 function CustomToggle({ children,  eventKey, toggle, setToggle}) {
     
@@ -39,7 +40,7 @@ const About = () =>{
             <Card bsstyle='default' style={{ borderColor:'transparent', outline: 'none', backgroundColor: 'transparent'}}>
                 <Card.Header>
                     <CustomToggle eventKey="0" toggle={toggle} setToggle={setToggle}>
-                        { !toggle ? (<>about | contact &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</>) : (<>down arrow &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</>) }
+                        { !toggle ? (<>about | contact &nbsp; &nbsp; &nbsp; &nbsp;</>) : (<><XLg/> &nbsp; &nbsp;&nbsp; &nbsp;</>) }
                         </CustomToggle>
                     
 

@@ -157,6 +157,7 @@ form div {
   text-shadow: 2px 2px 4px #00000025;
 
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 
 }
 
@@ -169,6 +170,7 @@ form div {
   color: white;
   text-shadow: 2px 2px 4px #00000025;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 
 
 }

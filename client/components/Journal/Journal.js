@@ -66,6 +66,8 @@ const Journal = ({username, entries, handleClick, cityName, weatherIcon, descrip
             <NewEntryEditor username = {username} entries = {entries} cityName={cityName} weatherIcon={weatherIcon} description={description} high={high} low={low} toggle={toggle} setToggle={setToggle}/>
             </div>
             <br/>
+            <br/>
+            <br/>
           </div>
         )}
         
