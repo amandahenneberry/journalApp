@@ -143,8 +143,8 @@ return (
   <Container fluid className="vertical-center">
     <Row><br></br><br></br><br></br><br></br></Row>
     <Row>
-    <Col style={{padding:'50px 85px 10px 10px', overflow: 'hidden'}}> 
-    <Row><br></br><br></br><br></br><br></br></Row>
+    <Col style={{padding:'50px 85px 10px 10px'}}> 
+    <Row style={{overflow: 'hidden'}}><br></br><br></br><br></br><br></br></Row>
       <div className= "dateContainer">
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
