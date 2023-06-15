@@ -46,7 +46,7 @@ const About = () =>{
 
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
-                <Card.Body style={{backgroundColor: 'white', margin: '10px'}}>
+                <Card.Body style={{backgroundColor: 'white', margin: '10px', borderRadius: '25px'}}>
                     ABOUT ME PAGE 
                         !!!!
                 </Card.Body>
