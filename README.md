@@ -16,18 +16,22 @@ Users can toggle between their 'journal' and 'to-do' list.
     - Add new tasks, include 'details' (optional), edit, mark 'complete', and delete from a personal stored list
     - View a list of 'completed' tasks
 
+## Check the weather
+    - Weather report provided by OpenWeatherMapAPI
+
 ### Additional info (features, libraries, styling, tech, etc...)
-    - JWT
+    - REST API
     - CRUD
+    - JWT
     - React (class components and hooks)
+    - Redux
     - Axios
-    - Bootstrap & React-Bootstrap
+    - React-Bootstrap
     - Express routes
     - Howler (sound)
     - Postgres database
     - Sequelize
     - Cloudinary (for image and sound management)
-    - OpenWeatherMap API (for location and weather)
 
 
 

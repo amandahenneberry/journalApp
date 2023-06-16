@@ -6,8 +6,8 @@ body {
   height: 100%;
   width: 100%;
   background-attachment: fixed;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
   background-size: cover;
   background-position: top right;
   max-height: 100%;
@@ -17,9 +17,6 @@ body {
 @media screen and (max-width: 600px) {
   .row {
     flex-direction: column;
-  }
-  .dateContainer {
-    width: 25%
   }
 }
 
@@ -201,5 +198,10 @@ position: relative;
   bottom: 0;
   width: 100%;
   background-color: rgba(19, 19, 19, 0.097);
+  overflow: scroll;
+  height: auto;
+  max-height: 80%;
   /* color: white; */
 }
+
+
