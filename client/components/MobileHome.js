@@ -25,7 +25,7 @@ const MobileHome = (props) =>{
   const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
   const todos = useSelector(state => state.auth.todos);
-
+  
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active);

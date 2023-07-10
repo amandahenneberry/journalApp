@@ -38,16 +38,23 @@ export const AllUserEntries = (props) => {
   const username = props.username;
   
     return (
-      <div>   
-        {entry.length <= 0? (
-          <EntryMap entries={entries} onEntryClick ={onEntryClick} />
-
-        ) : (<div>
-          <EntryMap entries={entries} onEntryClick ={onEntryClick} />
-          <Modal size="lg" show={show} onHide={handleClose}>
-            <SingleEntry username={ username } entryId = {[entry]} handleDelete = {handleDelete} handleClose={handleClose}/>
-          </Modal>
-        </div>)}
+      <div>
+        {props.mobile ? (
+          <h1>Mobile test..</h1>
+        ) : (
+          <>
+          {entry.length <= 0? (
+            <EntryMap entries={entries} onEntryClick ={onEntryClick} />
+  
+          ) : (<div>
+            <EntryMap entries={entries} onEntryClick ={onEntryClick} />
+            <Modal size="lg" show={show} onHide={handleClose}>
+              <SingleEntry username={ username } entryId = {[entry]} handleDelete = {handleDelete} handleClose={handleClose}/>
+            </Modal>
+          </div>)}
+          </>
+        )}   
+        
       </div>
       
     )

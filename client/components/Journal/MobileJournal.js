@@ -18,6 +18,7 @@ import { Alert_NewEntry } from './NewEntry/Alert_NewEntry';
 const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, description, high, low}) => {
   const [toggle, setToggle] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const mobile = true;
 
 
     return (
@@ -26,11 +27,11 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
         {!toggle ? (
           <Container fluid>
             <h3>{username}'s Journal</h3>
-            {/* <Row >
+            <Row >
               <Col>
-              <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} />
+              <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} mobile={mobile} />
               </Col>
-            </Row> */}
+            </Row>
 {/*             
             <Row >
             <Col>
