@@ -159,7 +159,7 @@ return (
               defaultActiveKey="journal"
               activeKey={active}
               onSelect={handleSelect}
-              // className='tabBarMobile'
+              className='tabBarMobile'
               >
               
               <Nav.Item eventKey="journal" title="Journal">

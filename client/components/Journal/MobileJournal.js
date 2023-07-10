@@ -26,12 +26,12 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
         {!toggle ? (
           <Container fluid>
             <h3>{username}'s Journal</h3>
-            {/* <Row >
+            <Row >
               <Col>
               <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} />
               </Col>
             </Row>
-            
+{/*             
             <Row >
             <Col>
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
