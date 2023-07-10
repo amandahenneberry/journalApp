@@ -140,8 +140,7 @@ const [latitude, setLatitude] = useState(0);
   },[cityName])
 
 return (
-  <Container fluid>
-    <Row><br></br><br></br><br></br><br></br></Row>
+  <Container fluid className='vertical-center'>
     <Row>
     <Col style={{padding:'50px 85px 10px 10px'}}> 
     <Row><br></br><br></br><br></br><br></br></Row>

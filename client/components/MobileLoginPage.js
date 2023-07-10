@@ -16,7 +16,7 @@ export const MobileLoginPage = () =>{
 
     return(
         <div>
-            <Container fluid>
+            <Container fluid className='vertical-center'>
                 <div className='loginBg'>
                 <Row>
                     <Col></Col>
