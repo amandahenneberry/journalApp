@@ -150,27 +150,29 @@ return (
         <Col xs={6} style={{display: 'flex'}}>
            
         <Tabs
-      defaultActiveKey="journal"
-      transition={false}
-      id="noanim-tab-example"
-      className="tabBar"
-      activeKey={active}
-      onSelect={handleSelect}
-    >
+            defaultActiveKey="journal"
+            transition={false}
+            id="noanim-tab-example"
+            className="tabBarMobile"
+            activeKey={active}
+            onSelect={handleSelect}
+        >
       <Tab eventKey="journal" title="Journal">
       <center>
-        <div className='journalBg'> 
+        {/* <div className='journalBg'> 
           <div className='paperBg'>
             <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
           </div>
-        </div>
+        </div> */}
+        <h1>JOURNAL</h1>
       </center>   
       </Tab> 
       
       <Tab eventKey="toDos" title="To-Do List">
-      <div className='ToDoBg'> 
+      {/* <div className='ToDoBg'> 
       <ToDos todos={todos} userId={id} setActive={setActive} />
-      </div>
+      </div> */}
+      <h2>TO TOS</h2>
       </Tab>  
       
       </Tabs>

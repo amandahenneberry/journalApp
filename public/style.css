@@ -171,14 +171,14 @@ form div {
 }
 
 .tabBar {
-  margin-top: 325px;
+  /* margin-top: 325px; */
   border-top: 3px solid;
   border-left: 2px solid;
   border-image: linear-gradient(to bottom right,  #ffffffc3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
   display: flex;
   width: 20vw;
   position: static;
-  margin-left:100px;
+  margin-left:25%;
 }
 
 /* .newEntryContainer {
@@ -243,6 +243,16 @@ position: relative;
       100% {
           transform: rotate(-90deg)
       }
+}
+
+.tabBarMobile {
+  border-top: 3px solid;
+  border-left: 2px solid;
+  border-image: linear-gradient(to bottom right,  #ffffffc3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
+  display: flex;
+  width: 20vw;
+  position: static;
+  margin-left:25%;
 }
 
 .footerMobile {
