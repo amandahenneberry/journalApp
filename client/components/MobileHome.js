@@ -147,7 +147,7 @@ return (
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
         </Col>
-        <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
+        <Col xs={6} style={{display: 'flex'}}>
         <h1>JOURNAL HERE!!</h1>
         </Col>
         <Col>
