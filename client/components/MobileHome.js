@@ -140,7 +140,7 @@ const [latitude, setLatitude] = useState(0);
   },[cityName])
 
 return (
-  <Container fluid className="vertical-center">
+  <Container fluid>
   <h1>TEST mobile home</h1>
   </Container>
 )
