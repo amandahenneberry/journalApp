@@ -171,14 +171,14 @@ return (
             </Nav>
             {active === 'toDos' ? (
               <>
-              <div className='ToDoBg'> 
+              <div > 
                 <ToDos todos={todos} userId={id} setActive={setActive} />
               </div>
               </>
             ):(
               <center>
-              <div className='journalBg'> 
-                <div className='paperBg'>
+              <div > 
+                <div>
                   <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
                 </div>
               </div>
