@@ -93,7 +93,7 @@ const Routes =(props)=>{
           <br></br>
           <br></br>
           <br></br>
-          <div className='footer'>
+          <div className='footerMobile'>
             <About />
           </div>
         </>
@@ -138,7 +138,7 @@ const Routes =(props)=>{
           <br></br>
           <br></br>
           <br></br>
-          <div className='footer'>
+          <div className='footerMobile'>
             <About />
           </div>
         </>

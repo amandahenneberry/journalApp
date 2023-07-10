@@ -147,13 +147,14 @@ return (
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
         </Col>
-        
-
-    <Col>
-    <div className="weatherContainer">
-      <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
-    </div>
-    </Col>
+        <Col xs={6}>
+        <h1>JOURNAL HERE!!</h1>
+        </Col>
+        <Col>
+            <div className="weatherContainer">
+                <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
+            </div>
+        </Col>
     </Row>
   
   </Container>

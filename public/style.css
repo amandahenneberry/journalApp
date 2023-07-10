@@ -199,6 +199,15 @@ position: relative;
   /* color: white; */
 }
 
+
+
+
+
+
+
+/* PHONE */
+
+
 .phoneBg {
   padding: 70px 0;
   border: 1px solid rgb(255, 255, 255);
@@ -208,8 +217,6 @@ position: relative;
 
 }
 
-/* PHONE */
-
 .phone {
     height: 50px;
     width: 100px;
@@ -217,16 +224,16 @@ position: relative;
     border-radius: 10px;
     animation: rotate 1.5s ease-in-out infinite alternate;
     /* display: none; */
-  }
+}
   
-  .message {
+.message {
     color: white;
     font-size: 1em;
     margin-top: 40px;
     /* display: none; */
-  }
+}
   
-  @keyframes rotate {
+@keyframes rotate {
     0% {
           transform: rotate(0deg)
       }
@@ -236,6 +243,18 @@ position: relative;
       100% {
           transform: rotate(-90deg)
       }
-  }
+}
+
+.footerMobile {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background-color: rgba(19, 19, 19, 0.097);
+    overflow: scroll;
+    /* height: 7.5vh; */
+    max-height: 80vh;
+    /* color: white; */
+}
 
 
