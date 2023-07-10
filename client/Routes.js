@@ -9,6 +9,8 @@ import { LoginPage } from './components/LoginPage';
 import { MobileLoginPage } from './components/MobileLoginPage';
 import { useMediaQuery } from 'react-responsive';
 import MediaQuery from 'react-responsive'
+import About from './components/About'
+
 
 const Routes =(props)=>{
   const {isLoggedIn} = props;
@@ -45,6 +47,12 @@ const Routes =(props)=>{
 
           </Switch>
         )}
+          <br></br>
+          <br></br>
+          <br></br>
+    <div className='footer'>
+    <About />
+    </div>
         </MediaQuery>
 
 
@@ -82,6 +90,12 @@ const Routes =(props)=>{
 
           </Switch>
         )}
+          <br></br>
+          <br></br>
+          <br></br>
+          <div className='footer'>
+            <About />
+          </div>
         </>
       )}
       </MediaQuery>
@@ -121,6 +135,12 @@ const Routes =(props)=>{
 
           </Switch>
         )}
+          <br></br>
+          <br></br>
+          <br></br>
+          <div className='footer'>
+            <About />
+          </div>
         </>
       )}
       </MediaQuery>

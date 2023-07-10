@@ -165,7 +165,7 @@ const About = () =>{
                    
                     <br/>
                     <p style={{textAlign: 'right'}}>
-                    contact: <a href = "mailto: amandahenneberry@icloud.com"><EnvelopeAt/></a> <a href ="" target="_blank"><Linkedin/></a>
+                    contact: <a href = "mailto: amandahenneberry@icloud.com" target="_blank"><EnvelopeAt/></a> <a href ="https://www.linkedin.com/in/a-henneberry" target="_blank"><Linkedin/></a>
                     &nbsp; &nbsp; &nbsp; &nbsp;
                     </p>
                 </Card.Body>

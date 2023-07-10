@@ -9,12 +9,11 @@ body {
   overflow-y: auto;
   overflow-x: auto;
   background-size: cover;
-  background-position: top right;
   /* max-height: 100vh;
   min-width: 100vw; */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .row {
     flex-direction: column;
   }
