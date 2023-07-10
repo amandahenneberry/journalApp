@@ -149,33 +149,21 @@ return (
         </Col>
         <Col xs={6} style={{display: 'flex'}}>
            
-        <Tabs
+        <Row>
+            <Tabs
             defaultActiveKey="journal"
             transition={false}
             id="noanim-tab-example"
             // className="tabBarMobile"
             activeKey={active}
             onSelect={handleSelect}
-        >
-      <Tab eventKey="journal" title="Journal">
-      <center>
-        {/* <div className='journalBg'> 
-          <div className='paperBg'>
-            <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
-          </div>
-        </div> */}
-        <h1>JOURNAL</h1>
-      </center>   
-      </Tab> 
-      
-      <Tab eventKey="toDos" title="To-Do List">
-      {/* <div className='ToDoBg'> 
-      <ToDos todos={todos} userId={id} setActive={setActive} />
-      </div> */}
-      <h2>TO DOS</h2>
-      </Tab>  
-      
-      </Tabs>
+            >
+                 <Tab eventKey="journal" title="Journal">
+                    <h1>JOURNAL Tab</h1>
+                 </Tab>
+
+            </Tabs>
+        </Row>
      
         </Col>
         <Col>
