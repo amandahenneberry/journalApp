@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect, useSelector} from 'react-redux'
 import { NewEntryEditor  } from './Journal/NewEntry/NewEntryEditor';
-import MobileJournal from './Journal/Journal';
+import MobileJournal from './Journal/MobileJournal';
 import { ToDos } from './ToDoList/ToDos';
 import { logout } from '../store';
 import axios from "axios";
@@ -159,7 +159,7 @@ return (
               defaultActiveKey="journal"
               activeKey={active}
               onSelect={handleSelect}
-              className='tabBarMobile'
+              // className='tabBarMobile'
               >
               
               <Nav.Item eventKey="journal" title="Journal">
