@@ -4,7 +4,7 @@ body {
   /* background-attachment: scroll, local;   */
   /* margin: 10%; */
   height: 100vh;
-  /* width: 100vw; */
+  width: 100vw;
   background-attachment: fixed;
   overflow-y: auto;
   overflow-x: auto;
@@ -43,7 +43,7 @@ form div {
   display: flex;
   justify-content: space-between;
   margin: 1em auto;
-  width: 50%;
+  width: 50vw;
   /* padding: 70px 0;   */
   text-align: center;
   align-items: center;
@@ -195,8 +195,8 @@ position: relative;
   width: 100vw;
   background-color: rgba(19, 19, 19, 0.097);
   overflow: scroll;
-  height: 7.5vh;
-  /* max-height: 100vh; */
+  /* height: 7.5vh; */
+  max-height: 96vh;
   /* color: white; */
 }
 
