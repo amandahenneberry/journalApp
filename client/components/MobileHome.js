@@ -12,10 +12,11 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+// import Tab from 'react-bootstrap/Tab';
+// import Tabs from 'react-bootstrap/Tabs';
 
-import Nav from 'react-bootstrap/Nav';
+// import Nav from 'react-bootstrap/Nav';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //
 import { DateTime } from './DateTime';
@@ -153,22 +154,19 @@ return (
 
         <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
             <Row>
-           
-            <Nav variant="tabs" defaultActiveKey="home">
-                <Nav.Item>
-                    <Nav.Link eventKey="home">Active</Nav.Link>
-                    
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="second">Option 2</Nav.Link>
-                    
-                </Nav.Item>
-            </Nav>
-            <Tab.Content>
-            <Tab.Pane eventKey="home"><h1>JOURNAL?</h1></Tab.Pane>
-            <Tab.Pane eventKey="second"><h1>TO DOS?</h1></Tab.Pane>
-          </Tab.Content>
-           
+            <Tabs>
+    <TabList>
+      <Tab>Title 1</Tab>
+      <Tab>Title 2</Tab>
+    </TabList>
+
+    <TabPanel>
+      <h2>Any content 1</h2>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
             </Row>
         </Col>
 
