@@ -14,6 +14,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+
+import Nav from 'react-bootstrap/Nav';
+
 //
 import { DateTime } from './DateTime';
 import  Weather  from './Weather/Weather'
@@ -150,8 +153,16 @@ return (
 
         <Col>
             <Row>
-                <h1>journal component here</h1>
-     
+            <Nav variant="tabs" defaultActiveKey="home">
+                <Nav.Item>
+                    <Nav.Link eventKey="home">Active</Nav.Link>
+                    <h1>JOURNAL?</h1>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="link-1">Option 2</Nav.Link>
+                    <h1>TO DOS?</h1>
+                </Nav.Item>
+            </Nav>
             </Row>
         </Col>
 
