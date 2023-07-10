@@ -172,14 +172,16 @@ return (
             {active === 'toDos' ? (
               <>
               <div > 
-                <ToDos todos={todos} userId={id} setActive={setActive} />
+                TO DOS
+                {/* <ToDos todos={todos} userId={id} setActive={setActive} /> */}
               </div>
               </>
             ):(
               <center>
               <div > 
                 <div>
-                  <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
+                  JOURNAL
+                  {/* <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>   */}
                 </div>
               </div>
             </center>   
