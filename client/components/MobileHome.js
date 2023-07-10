@@ -151,16 +151,17 @@ return (
             </div>
         </Col>
 
-        <Col xs={6} style={{display: 'flex'}}>
+        <Col xs={6} className='center'>
             <Row>
-             
+             <center>
               <Nav 
               variant="tabs" 
               defaultActiveKey="journal"
               activeKey={active}
               onSelect={handleSelect}
-              // className='tabBarMobile'
+              className='tabBarMobile'
               >
+              
               <Nav.Item eventKey="journal" title="Journal">
                 <Nav.Link eventKey="journal">Journal</Nav.Link>             
               </Nav.Item>
@@ -189,7 +190,7 @@ return (
             )}
            
             
-          
+           </center>
             </Row>
         </Col>
 
