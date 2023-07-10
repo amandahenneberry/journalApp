@@ -10,8 +10,8 @@ body {
   overflow-x: auto;
   background-size: cover;
   background-position: top right;
-  max-height: 100vh;
-  min-width: 100vw;
+  /* max-height: 100vh;
+  min-width: 100vw; */
 }
 
 @media screen and (max-width: 600px) {
