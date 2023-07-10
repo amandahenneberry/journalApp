@@ -151,18 +151,24 @@ return (
             </div>
         </Col>
 
-        <Col>
+        <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
             <Row>
+            <Tab.Container>
             <Nav variant="tabs" defaultActiveKey="home">
                 <Nav.Item>
                     <Nav.Link eventKey="home">Active</Nav.Link>
-                    <h1>JOURNAL?</h1>
+                    
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-                    <h1>TO DOS?</h1>
+                    <Nav.Link eventKey="second">Option 2</Nav.Link>
+                    
                 </Nav.Item>
             </Nav>
+            <Tab.Content>
+            <Tab.Pane eventKey="home"><h1>JOURNAL?</h1></Tab.Pane>
+            <Tab.Pane eventKey="second"><h1>TO DOS?</h1></Tab.Pane>
+          </Tab.Content>
+            </Tab.Container>
             </Row>
         </Col>
 
