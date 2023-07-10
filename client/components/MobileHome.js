@@ -148,7 +148,7 @@ return (
             </div>
         </Col>
         <Col xs={6} style={{display: 'flex'}}>
-            <center>
+           
         <Tabs
       defaultActiveKey="journal"
       transition={false}
@@ -174,7 +174,7 @@ return (
       </Tab>  
       
       </Tabs>
-      </center>
+     
         </Col>
         <Col>
             <div className="weatherContainer">
