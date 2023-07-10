@@ -39,10 +39,6 @@ form div {
   width:max-content
 }
 
-/* .loginSpace{
-  height: 200px;
-} */
-
 .center {
   display: flex;
   justify-content: space-between;
