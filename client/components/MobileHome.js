@@ -29,8 +29,8 @@ const MobileHome = (props) =>{
 
 //journal or 'to do'
   const [active, setActive] = useState(props.active);
-  const handleSelect = (tab) =>{
-    setActive(tab)
+  const handleSelect = (eventKey) =>{
+    setActive(eventKey)
   };
 
   //date & time
@@ -153,31 +153,40 @@ return (
 
         <Col xs={6} style={{display: 'flex'}}>
             <Row>
-            <Tabs
-      defaultActiveKey="journal"
-      transition={false}
-      id="noanim-tab-example"
-      className="tabBar"
-      activeKey={active}
-      onSelect={handleSelect}
-    >
-      <Tab eventKey="journal" title="Journal">
-      <center>
-        <div className='journalBg'> 
-          <div className='paperBg'>
-            <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
-          </div>
-        </div>
-      </center>   
-      </Tab> 
-      
-      <Tab eventKey="toDos" title="To-Do List">
-      <div className='ToDoBg'> 
-      <ToDos todos={todos} userId={id} setActive={setActive} />
-      </div>
-      </Tab>  
-      
-      </Tabs>
+             
+              <Nav 
+              variant="tabs" 
+              defaultActiveKey="journal"
+              activeKey={active}
+              onSelect={handleSelect}
+              className='tabBarMobile'
+              >
+              <Nav.Item eventKey="journal" title="Journal">
+                <Nav.Link eventKey="journal">Journal</Nav.Link>             
+              </Nav.Item>
+              <Nav.Item eventKey="toDos" title="To-Do List">
+              <Nav.Link eventKey="toDos">To-Do List</Nav.Link>
+            
+              </Nav.Item>
+            </Nav>
+            {active === 'toDos' ? (
+              <>
+              <div className='ToDoBg'> 
+                <ToDos todos={todos} userId={id} setActive={setActive} />
+              </div>
+              </>
+            ):(
+              <center>
+              <div className='journalBg'> 
+                <div className='paperBg'>
+                  <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
+                </div>
+              </div>
+            </center>   
+              
+            )}
+           
+            
           
             </Row>
         </Col>

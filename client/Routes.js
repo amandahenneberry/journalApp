@@ -38,7 +38,7 @@ const Routes =(props)=>{
           {/* LAPTOP */}
         {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/home" component={MobileHome} />
             <Redirect to="/home" />
           </Switch>
         ) : (
