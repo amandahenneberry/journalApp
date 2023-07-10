@@ -148,33 +148,21 @@ return (
             </div>
         </Col>
         <Col xs={6} style={{display: 'flex'}}>
-            <Container fluid>
         <Tabs
-      defaultActiveKey="journal"
-      transition={false}
-      id="noanim-tab-example"
-      className="tabBar"
-      activeKey={active}
-      onSelect={handleSelect}
+      defaultActiveKey="profile"
+      id="uncontrolled-tab-example"
+      className="mb-3"
     >
-      <Tab eventKey="journal" title="Journal">
-      <center>
-        <div className='journalBg'> 
-          <div className='paperBg'>
-            <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
-          </div>
-        </div>
-      </center>   
-      </Tab> 
-      
-      <Tab eventKey="toDos" title="To-Do List">
-      <div className='ToDoBg'> 
-      <ToDos todos={todos} userId={id} setActive={setActive} />
-      </div>
-      </Tab>  
-      
-      </Tabs>
-      </Container>
+      <Tab eventKey="home" title="Home">
+        Tab content for Home
+      </Tab>
+      <Tab eventKey="profile" title="Profile">
+        Tab content for Profile
+      </Tab>
+      <Tab eventKey="contact" title="Contact" disabled>
+        Tab content for Contact
+      </Tab>
+    </Tabs>
      
      
         </Col>
