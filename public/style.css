@@ -13,11 +13,11 @@ body {
   min-width: 100vw; */
 }
 
-/* @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .row {
     flex-direction: column;
   }
-} */
+}
 
 form div {
   margin: 1em;
