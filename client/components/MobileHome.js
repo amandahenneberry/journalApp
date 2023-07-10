@@ -153,7 +153,7 @@ return (
             defaultActiveKey="journal"
             transition={false}
             id="noanim-tab-example"
-            className="tabBarMobile"
+            // className="tabBarMobile"
             activeKey={active}
             onSelect={handleSelect}
         >
@@ -172,7 +172,7 @@ return (
       {/* <div className='ToDoBg'> 
       <ToDos todos={todos} userId={id} setActive={setActive} />
       </div> */}
-      <h2>TO TOS</h2>
+      <h2>TO DOS</h2>
       </Tab>  
       
       </Tabs>
