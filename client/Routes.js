@@ -126,7 +126,7 @@ const Routes =(props)=>{
         <>
          {isLoggedIn ? (
           <Switch>
-            <Route path="/home" component={MobileHome} />
+            <Route path="/home" component={ MobileHome } />
             <Redirect to="/home" />
           </Switch>
         ) : (
