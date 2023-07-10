@@ -143,7 +143,6 @@ return (
   <Container fluid>
     <Row>
         <Col style={{padding:'50% 85% 10% 10%'}}>
-        <Row><br></br><br></br><br></br><br></br></Row>
             <div className= "dateContainer">
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
@@ -152,7 +151,6 @@ return (
         <h1>JOURNAL HERE!!</h1>
         </Col>
         <Col style={{padding:'25% 20% 10% 85%'}}>
-        <Row><br></br><br></br><br></br></Row>
             <div className="weatherContainer">
                 <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
             </div>
