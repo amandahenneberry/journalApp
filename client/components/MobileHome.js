@@ -147,7 +147,9 @@ return (
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
         </Col>
-        <Col xs={6}>
+
+        <Col>
+            <Row>
         <Tabs
       defaultActiveKey="profile"
       id="uncontrolled-tab-example"
@@ -163,9 +165,9 @@ return (
         Tab content for Contact
       </Tab>
     </Tabs>
-     
-     
+    </Row>
         </Col>
+
         <Col>
             <div className="weatherContainer">
                 <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
