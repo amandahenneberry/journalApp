@@ -22,24 +22,23 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
 
     return (
       <div>
-        {console.log('toggle: '+toggle)}
   
         {!toggle ? (
-          <Container>
+          <Container fluid>
             <h3>{username}'s Journal</h3>
-            <Row className="justify-content-md-center">
+            <Row >
               <Col>
               <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} />
               </Col>
             </Row>
             
-            <Row className="justify-content-md-center">
+            <Row >
             <Col>
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
             </Col>
             </Row>
 
-            <Row className="justify-content-md-center">
+            <Row >
             <Col>
             <Button type='button' variant='link' onClick={handleClick}>
             Logout
@@ -49,7 +48,8 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
            
           </Container>
         ) : (
-          <div className='newEntry'>
+        //   <div className='newEntry'>
+        <div>
             <div style={{padding: '0px 10px 0px 10px'}}>
             <Nav>
             <Stack direction='horizontal'>
