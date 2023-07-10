@@ -141,15 +141,14 @@ const [latitude, setLatitude] = useState(0);
 
 return (
   <Container fluid className="vertical-center">
-    <Row><br></br><br></br><br></br><br></br></Row>
     <Row>
-    <Col style={{padding:'50px 85px 10px 10px'}}> 
+    <Col style={{padding:'50% 85% 10% 10%'}}> 
     <Row><br></br><br></br><br></br><br></br></Row>
       <div className= "dateContainer">
       <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
       </div>
     </Col>
-    <Col xs={6} style={{display: 'flex', padding:'10px 50px 10px 50px'}}>  
+    <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>  
     <Row>
       <Tabs
       defaultActiveKey="journal"
@@ -178,16 +177,13 @@ return (
       </Tabs>
       </Row>
     </Col>
-    <Col style={{padding:'25px 20px 10px 85px'}}>
+    <Col style={{padding:'25% 20% 10% 85%'}}>
     <Row><br></br><br></br><br></br></Row>
     <div className="weatherContainer">
       <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
     </div>
-    
     </Col>
     </Row>
-    <br/>
-    <br/>
   </Container>
 )
 

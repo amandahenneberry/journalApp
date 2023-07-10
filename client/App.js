@@ -10,6 +10,7 @@ const App = () => {
    <div className='app'>
       <Routes />
     </div>
+    <br></br>
     <div className='footer'>
     <About />
     </div>

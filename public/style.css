@@ -119,7 +119,7 @@ form div {
   background-repeat: no-repeat;
   /* background-size: 600px 500px; */
   border-radius: 25px;
-  position: absolute;
+  position: relative;
   background-position: center center;
   /* background-size: cover;  */
   background-size: cover;
@@ -154,7 +154,7 @@ form div {
   text-shadow: 2px 2px 4px #00000025;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  max-width: 100%;
+  max-width: 100vw;
 
 }
 
@@ -168,7 +168,7 @@ form div {
   color: white;
   text-shadow: 2px 2px 4px #00000025;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  max-width: 100%;
+  max-width: 100vw;
 }
 
 .tabBar {
@@ -177,7 +177,7 @@ form div {
   border-left: 2px solid;
   border-image: linear-gradient(to bottom right,  #ffffffc3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
   display: flex;
-  width: 20%;
+  width: 20vw;
   position: static;
   margin-left:100px;
 }
@@ -192,11 +192,11 @@ position: relative;
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(19, 19, 19, 0.097);
   overflow: scroll;
-  height: auto;
-  max-height: 80%;
+  height: 7.5vh;
+  /* max-height: 100vh; */
   /* color: white; */
 }
 
