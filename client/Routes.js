@@ -1,13 +1,13 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import {connect, useSelector} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './components/Home';
 import {me} from './store';
 import { useDispatch } from 'react-redux';
 import { LoginPage } from './components/LoginPage';
-/**
- * COMPONENT
- */
+import { useMediaQuery } from 'react-responsive';
+import MediaQuery from 'react-responsive'
+
 const Routes =(props)=>{
   const {isLoggedIn} = props;
   const dispatch = useDispatch();
@@ -16,8 +16,22 @@ const Routes =(props)=>{
     dispatch(me())
   }, [])
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth)
+  };
+
+  useEffect (() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, []);
+
   return (
       <div>
+         <MediaQuery minWidth={992}>
+          {/* LAPTOP */}
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
@@ -29,6 +43,86 @@ const Routes =(props)=>{
 
           </Switch>
         )}
+        </MediaQuery>
+        <MediaQuery minWidth={768} maxWidth={991}>
+        {/* smartphone  or tablet?? */}
+
+        {windowWidth < 500 ? (
+        <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className='phoneBg'>
+          <center>
+          <div className="phone">
+          </div>
+          </center>
+          <div className="message">
+             Please rotate your device!
+          </div>
+        </div>
+        </div>
+      ) : (
+        <>
+         {isLoggedIn ? (
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Redirect to="/home" />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path='/' exact component={ LoginPage } />
+
+          </Switch>
+        )}
+        </>
+      )}
+
+       
+      </MediaQuery>
+      <MediaQuery maxWidth={767}>
+          {/* SMARTPHONE */}
+
+      {windowWidth < 500 ? (
+        <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className='phoneBg'>
+          <center>
+          <div className="phone">
+          </div>
+          </center>
+          <div className="message">
+             Please rotate your device!
+          </div>
+        </div>
+        </div>
+      ) : (
+        <>
+         {isLoggedIn ? (
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Redirect to="/home" />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path='/' exact component={ LoginPage } />
+
+          </Switch>
+        )}
+        </>
+      )}
+
+      
+        
+      </MediaQuery>
       </div>
     )
 }
