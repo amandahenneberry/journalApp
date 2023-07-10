@@ -29,6 +29,7 @@ const MobileHome = (props) =>{
   const handleSelect = (tab) =>{
     setActive(tab)
   };
+  const [key, setKey] = useState('home');
 
   //date & time
   const [date,  setDate] = useState(new Date());
@@ -149,21 +150,25 @@ return (
         </Col>
         <Col xs={6} style={{display: 'flex'}}>
            
-        <Row>
-            <Tabs
-            defaultActiveKey="journal"
-            transition={false}
-            id="noanim-tab-example"
-            // className="tabBarMobile"
-            activeKey={active}
-            onSelect={handleSelect}
-            >
-                 <Tab eventKey="journal" title="Journal">
-                    <h1>JOURNAL Tab</h1>
-                 </Tab>
-
-            </Tabs>
-        </Row>
+     
+        <Tabs
+      defaultActiveKey="home"
+      transition={false}
+      id="noanim-tab-example"
+      onSelect={(k) => setKey(k)}
+      className="mb-3"
+    >
+      <Tab eventKey="home" title="Home">
+        Tab content for Home
+      </Tab>
+      <Tab eventKey="profile" title="Profile">
+        Tab content for Profile
+      </Tab>
+      <Tab eventKey="contact" title="Contact" disabled>
+        Tab content for Contact
+      </Tab>
+    </Tabs>
+     
      
         </Col>
         <Col>
