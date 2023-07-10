@@ -153,7 +153,7 @@ return (
 
         <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
             <Row>
-            <Tab.Container>
+           
             <Nav variant="tabs" defaultActiveKey="home">
                 <Nav.Item>
                     <Nav.Link eventKey="home">Active</Nav.Link>
@@ -168,7 +168,7 @@ return (
             <Tab.Pane eventKey="home"><h1>JOURNAL?</h1></Tab.Pane>
             <Tab.Pane eventKey="second"><h1>TO DOS?</h1></Tab.Pane>
           </Tab.Content>
-            </Tab.Container>
+           
             </Row>
         </Col>
 
