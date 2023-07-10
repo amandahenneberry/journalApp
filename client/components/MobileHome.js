@@ -151,17 +151,33 @@ return (
             </div>
         </Col>
 
-        <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
+        <Col xs={6} style={{display: 'flex'}}>
             <Row>
-            <Nav variant="tabs" defaultActiveKey="home">
-                <Nav.Item>
-                    <Nav.Link eventKey="home">Active</Nav.Link>
-                    
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="second">Option 2</Nav.Link>        
-                </Nav.Item>
-            </Nav>
+            <Tabs
+      defaultActiveKey="journal"
+      transition={false}
+      id="noanim-tab-example"
+      className="tabBar"
+      activeKey={active}
+      onSelect={handleSelect}
+    >
+      <Tab eventKey="journal" title="Journal">
+      <center>
+        <div className='journalBg'> 
+          <div className='paperBg'>
+            <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
+          </div>
+        </div>
+      </center>   
+      </Tab> 
+      
+      <Tab eventKey="toDos" title="To-Do List">
+      <div className='ToDoBg'> 
+      <ToDos todos={todos} userId={id} setActive={setActive} />
+      </div>
+      </Tab>  
+      
+      </Tabs>
           
             </Row>
         </Col>
