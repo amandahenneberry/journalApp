@@ -26,7 +26,7 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
         {!toggle ? (
           <Container fluid>
             <h3>{username}'s Journal</h3>
-            <Row >
+            {/* <Row >
               <Col>
               <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} />
               </Col>
@@ -44,13 +44,14 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
             Logout
           </Button> 
             </Col>
-            </Row>
+            </Row> */}
            
           </Container>
         ) : (
         //   <div className='newEntry'>
         <div>
-            <div style={{padding: '0px 10px 0px 10px'}}>
+            NEW ENTRY
+            {/* <div style={{padding: '0px 10px 0px 10px'}}>
             <Nav>
             <Stack direction='horizontal'>
             <AllUserEntries username={username} entries={entries} />
@@ -67,7 +68,7 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
             </div>
             <br/>
             <br/>
-            <br/>
+            <br/> */}
           </div>
         )}
         

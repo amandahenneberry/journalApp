@@ -181,7 +181,6 @@ return (
               <center>
               <div > 
                 <div>
-                  JOURNAL
                   <MobileJournal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
                 </div>
               </div>
