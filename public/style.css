@@ -249,7 +249,7 @@ position: relative;
   border-top: 3px solid;
   border-left: 2px solid;
   border-image: linear-gradient(to bottom right,  #ffffffc3,#575aff00, #575aff00, #575aff00, #575aff00, #575aff00) 1 0 0 0;
-  /* width: 20vw; */
+  width: 50vw;
   position: static;
   /* margin-left:25%; */
 }

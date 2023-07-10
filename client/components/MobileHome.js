@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect, useSelector} from 'react-redux'
 import { NewEntryEditor  } from './Journal/NewEntry/NewEntryEditor';
-import Journal from './Journal/Journal';
+import MobileJournal from './Journal/Journal';
 import { ToDos } from './ToDoList/ToDos';
 import { logout } from '../store';
 import axios from "axios";
@@ -182,7 +182,7 @@ return (
               <div > 
                 <div>
                   JOURNAL
-                  {/* <Journal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>   */}
+                  <MobileJournal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
                 </div>
               </div>
             </center>   
