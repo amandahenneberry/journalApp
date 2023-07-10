@@ -142,7 +142,7 @@ const [latitude, setLatitude] = useState(0);
 return (
   <Container fluid>
     <Row>
-        <Col style={{padding:'50% 85% 10% 10%'}}>
+        <Col>
             <div className= "dateContainer">
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
@@ -150,7 +150,7 @@ return (
         <Col xs={6} style={{display: 'flex', padding:'10% 50% 10% 50%'}}>
         <h1>JOURNAL HERE!!</h1>
         </Col>
-        <Col style={{padding:'25% 20% 10% 85%'}}>
+        <Col>
             <div className="weatherContainer">
                 <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
             </div>
