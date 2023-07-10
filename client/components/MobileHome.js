@@ -147,7 +147,7 @@ return (
                 <DateTime date={date.toLocaleDateString()} time={date.toLocaleTimeString()}/>
             </div>
         </Col>
-        <Col xs={6} style={{display: 'flex'}}>
+        <Col xs={6}>
         <Tabs
       defaultActiveKey="profile"
       id="uncontrolled-tab-example"
