@@ -24,7 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
+// import ThemeProvider from 'react-bootstrap/ThemeProvider'
 
 
 
@@ -150,9 +150,7 @@ const [latitude, setLatitude] = useState(0);
   },[cityName])
 
 return (
-  <ThemeProvider
-  breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
->
+  
   <Container fluid>
     <Row>
         <Col>
@@ -203,9 +201,6 @@ return (
         </Col>
 
         <Col>
-        <Row><br></br>
-                  <br></br><br></br>
-                  <br></br></Row>
             <div className="weatherContainer">
                 <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
             </div>
@@ -213,7 +208,6 @@ return (
     </Row>
   
   </Container>
-  </ThemeProvider>
 )
 
   
