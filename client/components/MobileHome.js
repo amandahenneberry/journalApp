@@ -23,6 +23,11 @@ import  Weather  from './Weather/Weather'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+//
+import ThemeProvider from 'react-bootstrap/ThemeProvider'
+
+
+
 const MobileHome = (props) =>{
   const {username, id, handleClick} = props;
   const entries = useSelector(state => state.auth.entries);
@@ -145,6 +150,10 @@ const [latitude, setLatitude] = useState(0);
   },[cityName])
 
 return (
+  <ThemeProvider
+  breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+  minBreakpoint="md"
+>
   <Container fluid>
     <Row>
         <Col>
@@ -203,6 +212,7 @@ return (
     </Row>
   
   </Container>
+  </ThemeProvider>
 )
 
   
