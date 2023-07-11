@@ -63,8 +63,8 @@ const About = () =>{
                 <Container style={{textAlign: 'left'}}>
                 <Stack direction="horizontal">
                     
-                    <Container class Name="p-2" style={{paddingLeft: '10%'}}>
-                        <p>
+                    <Container className="p-2" style={{paddingLeft: '10%'}}>
+                       
                        
                         <Row>
                             <Col>
@@ -100,12 +100,12 @@ const About = () =>{
                                     <Col><li>personal birding catalogue <br></br>&nbsp;&nbsp;&nbsp;<b><span style={{color: 'cadetblue'}}>...or a neat place to mix and store <em>all of the above</em>!</span></b> </li> </Col>
                                 </Row>
                             </ul>
-                        </p>
+                    
                     </Container>
 
 
                     <Container className="p-2 ms-auto" style={{paddingRight: '10%'}}>
-                        <p>
+                        
                         <Row>
                             <Col>
                                 <b><span style={{color:'darkgoldenrod'}}>Keep track of your tasks</span></b>
@@ -142,8 +142,8 @@ const About = () =>{
                                 <Row style={{color: 'gray'}}>
                                     <Col>&nbsp;</Col>
                                 </Row>
-                            </ul>
-                        </p>
+                        </ul>
+                        
                     </Container>
 
                 </Stack>

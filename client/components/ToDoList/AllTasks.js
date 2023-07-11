@@ -13,7 +13,9 @@ export default function AllTasks({ todos, handleDelete, edit, setEdit, selectTas
       {todos
       .filter((todo) => todo.completed === false)
       .map((todo) => (
+       <div key={todo.id}>
         <SingleTodo id={todo.id} todo={todo} taskName={todo.taskName} details={todo.details} handleDelete={handleDelete} edit={edit} setEdit={setEdit} selectTask={selectTask} handleSelect={handleSelect} handleEditChange={handleEditChange} markComplete={markComplete}/>
+        </div>
       ))}
     </ul>
   );

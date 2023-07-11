@@ -172,11 +172,11 @@ return (
               className='tabBarMobile'
               >
               
-              <Nav.Item eventKey="journal" title="Journal">
-                <Nav.Link eventKey="journal">Journal</Nav.Link>             
+              <Nav.Item eventkey="journal" title="Journal">
+                <Nav.Link eventkey="journal">Journal</Nav.Link>             
               </Nav.Item>
-              <Nav.Item eventKey="toDos" title="To-Do List">
-              <Nav.Link eventKey="toDos">To-Do List</Nav.Link>
+              <Nav.Item eventkey="toDos" title="To-Do List">
+              <Nav.Link eventkey="toDos">To-Do List</Nav.Link>
             
               </Nav.Item>
             </Nav>
