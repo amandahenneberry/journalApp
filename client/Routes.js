@@ -10,6 +10,7 @@ import { MobileLoginPage } from './components/MobileLoginPage';
 import { useMediaQuery } from 'react-responsive';
 import MediaQuery from 'react-responsive'
 import About from './components/About'
+import { set } from 'react-hook-form';
 
 
 
@@ -23,12 +24,45 @@ const Routes =(props)=>{
     dispatch(me())
   }, [])
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+ 
+
+  const [laptop, setLaptop] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // if(window.innerWidth >= 992 && renderCount === 0)
+    if(window.innerWidth >= 992) {
+      setLaptop(true);
+    } else {
+      setLaptop(false);
+    }
+  }, []);
+
+
+  useEffect(() => {
+    console.log('LAPTOP? : '+laptop)
+  }, [laptop])
+
+  useEffect(() =>{
+      setCount(count+1)
+  },[]);
+
+  useEffect(() =>{
+    console.log('RENDER COUNT: '+count)
+  }, [count])
+
+  // const [renderCount, setRenderCount] = useState(0);
+  // useEffect(() =>{
+  //   setRenderCount(renderCount++)
+  // }, [laptop])
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
   };
 
   useEffect (() => {
+    if(laptop === false)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -36,30 +70,38 @@ const Routes =(props)=>{
   }, []);
 
   return (
-      <div>
-         <MediaQuery minWidth={992}>
-          {/* LAPTOP */}
-        {isLoggedIn ? (
-          <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path='/' exact component={LoginPage} />
+    <>
+          {laptop ? (
+            <div>
+              {/* <MediaQuery minWidth={992}> */}
+              {/* LAPTOP */}
+              {isLoggedIn ? (
+                <Switch>
+                  <Route path="/home" component={Home} />
+                  <Redirect to="/home" />
+                </Switch>
+              ) : (
+                <Switch>
+                  <Route path='/' exact component={LoginPage} />
+   
+                </Switch>
+                )
+              }
+             <br></br>
+             <br></br>
+             <br></br>
+            <div className='footer'>
+              <About />
+            </div>
+               {/* </MediaQuery> */}
+            </div>
+        
+          ) : (
 
-          </Switch>
-        )}
-          <br></br>
-          <br></br>
-          <br></br>
-    <div className='footer'>
-    <About />
-    </div>
-        </MediaQuery>
 
-
-        <MediaQuery minWidth={768} maxWidth={991}>
+          
+            <>
+              <MediaQuery minWidth={768} maxWidth={991}>
         {/* smartphone  or tablet?? */}
 
         {windowWidth < 500 ? (
@@ -147,9 +189,16 @@ const Routes =(props)=>{
         </>
       )}
       </MediaQuery>
+            </>
+          )}
+      
 
-      </div>
-    )
+
+        
+
+     
+      </>
+  )
 }
 
 /**
