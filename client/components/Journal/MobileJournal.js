@@ -32,12 +32,12 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
               <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} mobile={mobile} />
               </Col>
             </Row>
-{/*             
-            <Row >
+            
+            {/* <Row >
             <Col>
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
             </Col>
-            </Row>
+            </Row> */}
 
             <Row >
             <Col>
@@ -45,7 +45,7 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
             Logout
           </Button> 
             </Col>
-            </Row> */}
+            </Row>
            
           </Container>
         ) : (
