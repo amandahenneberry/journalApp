@@ -106,7 +106,7 @@ export const EntryMap = ({ entries, onEntryClick, mobile }) => {
     ) : (
       <>
       <h1>Mobile test 2...</h1>
-      <MobileDropdown />
+      <MobileDropdown entries={entries} onEntryClick={handleClick}/>
       </>
 
       

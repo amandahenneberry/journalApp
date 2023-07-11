@@ -204,6 +204,9 @@ return (
         </Col>
 
         <Col>
+        <Row><br></br>
+                  <br></br><br></br>
+                  <br></br></Row>
             <div className="weatherContainer">
                 <Weather loadingWeather={loadingWeather} cityName={cityName} temperature={temperature} description={description} high={high} low={low} icon={icon}/>
             </div>
