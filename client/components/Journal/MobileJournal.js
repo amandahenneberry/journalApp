@@ -49,13 +49,12 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
            
           </Container>
         ) : (
-        //   <div className='newEntry'>
-        <div>
-            NEW ENTRY
-            {/* <div style={{padding: '0px 10px 0px 10px'}}>
+          <div className='newEntry'>
+       
+            <div style={{padding: '0px 10px 0px 10px'}}>
             <Nav>
             <Stack direction='horizontal'>
-            <AllUserEntries username={username} entries={entries} />
+            {/* <AllUserEntries username={username} entries={entries} mobile={mobile} /> */}
               <Alert_NewEntry show={showAlert} toggle={toggle} setToggle={setToggle} variant='link'>
                 Home
               </Alert_NewEntry>
@@ -69,7 +68,7 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
             </div>
             <br/>
             <br/>
-            <br/> */}
+            <br/>
           </div>
         )}
         
