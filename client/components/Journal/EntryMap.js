@@ -107,7 +107,7 @@ export const EntryMap = ({ entries, onEntryClick, mobile }) => {
       // <h1>Mobile test 2...</h1>
       <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Dropdown Button
+        Dropdown Button test
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

@@ -20,6 +20,8 @@ import Nav from 'react-bootstrap/Nav';
 //
 import { DateTime } from './DateTime';
 import  Weather  from './Weather/Weather'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const MobileHome = (props) =>{
   const {username, id, handleClick} = props;
