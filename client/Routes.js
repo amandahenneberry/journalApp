@@ -27,7 +27,6 @@ const Routes =(props)=>{
   const [laptop, setLaptop] = useState(false);
 
   useEffect(() => {
-    // if(window.innerWidth >= 992 && renderCount === 0)
     if(window.innerWidth >= 992) {
       setLaptop(true);
     } else {
@@ -65,7 +64,6 @@ const Routes =(props)=>{
     <>
           {laptop ? (
             <div>
-              {/* <MediaQuery minWidth={992}> */}
               {/* LAPTOP */}
               {isLoggedIn ? (
                 <Switch>
@@ -85,16 +83,10 @@ const Routes =(props)=>{
             <div className='footer'>
               <About />
             </div>
-               {/* </MediaQuery> */}
             </div>
         
           ) : (
-
-
-          
             <>
-
-
               <MediaQuery minWidth={992}>
               {/* LAPTOP */}
               {isLoggedIn ? (
@@ -117,7 +109,7 @@ const Routes =(props)=>{
             </div>
                </MediaQuery>
           
-              <MediaQuery minWidth={768} maxWidth={991}>
+              <MediaQuery maxWidth={991}>
         {/* smartphone  or tablet?? */}
 
         {windowWidth < 500 ? (
@@ -160,60 +152,15 @@ const Routes =(props)=>{
         </>
       )}
       </MediaQuery>
-
-
-      <MediaQuery maxWidth={767}>
-          {/* SMARTPHONE */}
-
-      {windowWidth < 500 ? (
-        <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className='phoneBg'>
-          <center>
-          <div className="phone">
-          </div>
-          </center>
-          <div className="message">
-             Please rotate your device!
-          </div>
-        </div>
-        </div>
-      ) : (
-        <>
-         {isLoggedIn ? (
-          <Switch>
-            <Route path="/home" component={ MobileHome } />
-            <Redirect to="/home" />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path='/' exact component={ MobileLoginPage } />
-
-          </Switch>
-        )}
-          <br></br>
-          <br></br>
-          <br></br>
-          <div className='footerMobile'>
-            <About />
-          </div>
-        </>
+      </>
       )}
-      </MediaQuery>
-            </>
-          )}
       
 
 
         
 
      
-      </>
+    </>
   )
 }
 
