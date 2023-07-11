@@ -26,7 +26,7 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
   
         {!toggle ? (
           <Container fluid>
-            <h3>{username}'s Journal</h3>
+            <h3 className='journalTitle'>{username}'s Journal</h3>
             <Row >
               <Col>
               <AllUserEntries username={username} entries={entries} toggle={toggle} setToggle={setToggle} mobile={mobile} />

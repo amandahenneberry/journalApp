@@ -48,6 +48,12 @@ form div {
   align-items: center;
 }
 
+.journalTitle {
+  font-size: calc(20px + .2vw);
+  /* padding: 2%; */
+
+}
+
 .journalBg {
   background: url(./images/JournalApp_bg.avif);
   display: flex;
