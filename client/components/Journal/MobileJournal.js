@@ -33,11 +33,11 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
               </Col>
             </Row>
             
-            {/* <Row >
+            <Row >
             <Col>
             <Button type='button'  variant="link"  onClick={() => setToggle(!toggle)}>Write a new entry</Button>
             </Col>
-            </Row> */}
+            </Row>
 
             <Row >
             <Col>
