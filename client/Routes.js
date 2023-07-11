@@ -24,10 +24,7 @@ const Routes =(props)=>{
     dispatch(me())
   }, [])
 
- 
-
   const [laptop, setLaptop] = useState(false);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     // if(window.innerWidth >= 992 && renderCount === 0)
@@ -43,13 +40,8 @@ const Routes =(props)=>{
     console.log('LAPTOP? : '+laptop)
   }, [laptop])
 
-  useEffect(() =>{
-      setCount(count+1)
-  },[]);
 
-  useEffect(() =>{
-    console.log('RENDER COUNT: '+count)
-  }, [count])
+
 
   // const [renderCount, setRenderCount] = useState(0);
   // useEffect(() =>{
@@ -101,6 +93,30 @@ const Routes =(props)=>{
 
           
             <>
+
+
+              <MediaQuery minWidth={992}>
+              {/* LAPTOP */}
+              {isLoggedIn ? (
+                <Switch>
+                  <Route path="/home" component={Home} />
+                  <Redirect to="/home" />
+                </Switch>
+              ) : (
+                <Switch>
+                  <Route path='/' exact component={LoginPage} />
+   
+                </Switch>
+                )
+              }
+             <br></br>
+             <br></br>
+             <br></br>
+            <div className='footer'>
+              <About />
+            </div>
+               </MediaQuery>
+          
               <MediaQuery minWidth={768} maxWidth={991}>
         {/* smartphone  or tablet?? */}
 
