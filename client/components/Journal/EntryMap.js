@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import { MobileDropdown } from "./MobileDropdown";
 
 
 
@@ -103,19 +104,11 @@ export const EntryMap = ({ entries, onEntryClick, mobile }) => {
       )}
       </DropdownButton >
     ) : (
-
+      <>
       <h1>Mobile test 2...</h1>
-    //   <Dropdown>
-    //   <Dropdown.Toggle variant="success" id="dropdown-basic">
-    //     Dropdown Button test
-    //   </Dropdown.Toggle>
+      <MobileDropdown />
+      </>
 
-    //   <Dropdown.Menu>
-    //     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    //     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    //     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-    //   </Dropdown.Menu>
-    // </Dropdown>
       
     )}
     
