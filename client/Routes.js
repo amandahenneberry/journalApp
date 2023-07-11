@@ -109,7 +109,7 @@ const Routes =(props)=>{
             </div>
                </MediaQuery>
           
-              <MediaQuery maxWidth={991}>
+          <MediaQuery maxWidth={991}>
         {/* smartphone  or tablet?? */}
 
         {windowWidth < 500 ? (
