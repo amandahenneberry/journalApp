@@ -182,9 +182,8 @@ return (
             </Nav>
             {active === 'toDos' ? (
               <>
-              <div > 
-                TO DOS
-                {/* <ToDos todos={todos} userId={id} setActive={setActive} /> */}
+              <div className='ToDoBg'> 
+                <ToDos todos={todos} userId={id} setActive={setActive} />
               </div>
               </>
             ):(
