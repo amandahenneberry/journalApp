@@ -152,7 +152,6 @@ const [latitude, setLatitude] = useState(0);
 return (
   <ThemeProvider
   breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-  minBreakpoint="md"
 >
   <Container fluid>
     <Row>
