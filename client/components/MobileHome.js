@@ -172,11 +172,11 @@ return (
               className='tabBarMobile'
               >
               
-              <Nav.Item eventkey="journal" title="Journal">
-                <Nav.Link eventkey="journal">Journal</Nav.Link>             
+              <Nav.Item eventKey="journal" title="Journal">
+                <Nav.Link eventKey="journal">Journal</Nav.Link>             
               </Nav.Item>
-              <Nav.Item eventkey="toDos" title="To-Do List">
-              <Nav.Link eventkey="toDos">To-Do List</Nav.Link>
+              <Nav.Item eventKey="toDos" title="To-Do List">
+              <Nav.Link eventKey="toDos">To-Do List</Nav.Link>
             
               </Nav.Item>
             </Nav>
@@ -189,8 +189,8 @@ return (
               </>
             ):(
               <center>
-              <div > 
-                <div>
+              <div className='journalBg'> 
+                <div className='paperBg'>
                   <MobileJournal username ={username} entries={entries} handleClick={handleClick} cityName={cityName} weatherIcon={icon} description={description} high={high} low={low}/>  
                 </div>
               </div>

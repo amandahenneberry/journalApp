@@ -47,14 +47,14 @@ export const MobileDropdown = ({entries, onEntryClick}) => {
           onClick: handleOpen,
         })}
         {open ? (
-          <div className="menu">
+          <ul className="menu">
             {
               entries
               .sort((a,b) => {
                 return new Date(a.date) - new Date(b.date)
               })
               .map(entry => (
-                <div key={entry.id} >
+                <li key={entry.id} >
                   <Row>
                         <small style={{color: 'gray'}}>{entry.date}</small>
                         <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={entryClick}>               
@@ -62,10 +62,10 @@ export const MobileDropdown = ({entries, onEntryClick}) => {
                         {entry.title.slice(0, 20)}...
                       </Button>
                     </Row>
-                </div>
+                </li>
               ))
             }
-          </div>
+          </ul>
         ) : null}
       </div>
     );

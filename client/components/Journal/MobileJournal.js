@@ -54,7 +54,6 @@ const MobileJournal = ({username, entries, handleClick, cityName, weatherIcon, d
             <div style={{padding: '0px 10px 0px 10px'}}>
             <Nav>
             <Stack direction='horizontal'>
-            {/* <AllUserEntries username={username} entries={entries} mobile={mobile} /> */}
               <Alert_NewEntry show={showAlert} toggle={toggle} setToggle={setToggle} variant='link'>
                 Home
               </Alert_NewEntry>
