@@ -31,6 +31,7 @@ export const AllUserEntries = (props) => {
   })
   }
 
+
   useEffect(()=>console.log(`SINGLE entry state: ${entry}`, [entry]), [entry])
 
 
@@ -42,7 +43,12 @@ export const AllUserEntries = (props) => {
         {props.mobile ? (
           <>
             {entry.length <= 0? (
-            <EntryMap entries={entries} onEntryClick ={onEntryClick} mobile={props.mobile} />
+              <>
+              <EntryMap entries={entries} onEntryClick ={onEntryClick} mobile={props.mobile} />
+              <Modal size="lg" show={show} onHide={handleClose}>
+                <SingleEntry username={ username } entryId = {[entry]} handleDelete = {handleDelete} handleClose={handleClose}/>
+              </Modal>
+            </>
   
           ) : (<div>
             <EntryMap entries={entries} onEntryClick ={onEntryClick} />

@@ -3,12 +3,17 @@ import Button from 'react-bootstrap/Button';
 import  Row  from 'react-bootstrap/Row';
 
 export const MobileDropdown = ({entries, onEntryClick}) => {
-    const handleMenuOne = () => {
-      console.log('clicked one');
-    };
+    // const handleMenuOne = () => {
+    //   console.log('clicked one');
+    // };
   
-    const handleMenuTwo = () => {
-      console.log('clicked two');
+    // const handleMenuTwo = () => {
+    //   console.log('clicked two');
+    // };
+
+    const handleClick = ({ target }) => {
+        const entry = target.value;
+        onEntryClick(entry);
     };
   
     return (
@@ -19,11 +24,12 @@ export const MobileDropdown = ({entries, onEntryClick}) => {
         //   <button onClick={handleMenuTwo}>Menu 2</button>,
         // ]}
         entries={entries}
+        entryClick={handleClick}
       />
     );
   };
   
-  const Dropdown = ({ trigger, entries, onEntryClick }) => {
+  const Dropdown = ({ trigger, entries, entryClick }) => {
     const [open, setOpen] = React.useState(false);
   
     const handleOpen = () => {
@@ -42,25 +48,23 @@ export const MobileDropdown = ({entries, onEntryClick}) => {
         })}
         {open ? (
           <div className="menu">
-            {entries.map((entry, index) => (
-              <div key={index} className="menu-item">
-                {/* {React.cloneElement(entry, {
-                  onClick: () => {
-                    entry.props.onClick();
-                    setOpen(false);
-                  },
-                })} */}
-                    <Row>
+            {
+              entries
+              .sort((a,b) => {
+                return new Date(a.date) - new Date(b.date)
+              })
+              .map(entry => (
+                <div key={entry.id} >
+                  <Row>
                         <small style={{color: 'gray'}}>{entry.date}</small>
-                        <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={onEntryClick}>               
+                        <Button type ='button' size='sm' variant="link" value = {entry.id} onClick={entryClick}>               
                         <div className="vr"></div>
                         {entry.title.slice(0, 20)}...
                       </Button>
                     </Row>
-                
-
-              </div>
-            ))}
+                </div>
+              ))
+            }
           </div>
         ) : null}
       </div>

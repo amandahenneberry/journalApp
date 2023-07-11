@@ -91,7 +91,7 @@ export const EntryMap = ({ entries, onEntryClick, mobile }) => {
                 <div key={entry.id} >
                   <Row>
                         <small style={{color: 'gray'}}>{entry.date}</small>
-                        <Button size='sm' variant="link" value = {entry.id} onClick={handleClick}>               
+                        <Button size='sm' variant="link" value = {entry.id} entryClick={handleClick}>               
                         <div className="vr"></div>
                         {entry.title.slice(0, 20)}...
                       </Button>
@@ -105,8 +105,7 @@ export const EntryMap = ({ entries, onEntryClick, mobile }) => {
       </DropdownButton >
     ) : (
       <>
-      <h1>Mobile test 2...</h1>
-      <MobileDropdown entries={entries} onEntryClick={handleClick}/>
+      <MobileDropdown entries={entries} onEntryClick={onEntryClick}/>
       </>
 
       
