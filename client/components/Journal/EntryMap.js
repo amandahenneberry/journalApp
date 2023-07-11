@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 
 
 
-export const EntryMap = ({ entries, onEntryClick }) => {
+export const EntryMap = ({ entries, onEntryClick, mobile }) => {
   const [sortBy, setSortBy] = useState(false)
   const [hoverSort, onHoverSort] = useState(false)
 
@@ -28,7 +28,9 @@ export const EntryMap = ({ entries, onEntryClick }) => {
     
 
   return (
-    <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
+    <>
+    {!mobile ? (
+      <DropdownButton className='column'  size='lg' title='View Entry Log' variant="link">
       {sortBy === false ? (
         <div>
           <Button 
@@ -100,5 +102,24 @@ export const EntryMap = ({ entries, onEntryClick }) => {
         </div>
       )}
       </DropdownButton >
+    ) : (
+
+      // <h1>Mobile test 2...</h1>
+      <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Dropdown Button
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+      
+    )}
+    
+    </>
+    
   )
 }
